@@ -1,3 +1,6 @@
 .navbar-custom{
     background-color: rgb(45, 47, 51);
+    .nav-link:hover{
+        background-color: rgba(255, 255, 255, .3);
+    }
 }

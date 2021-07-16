@@ -34,8 +34,8 @@ export default function App(){
         <ErrorBoundary>
             <Background />
             <Wrapper>
-                <Header />
                 <Router>
+                    <Header />
                     <Suspense fallback={<Container>Загрузка...</Container>}>
                         <Switch>
                             <Route exact path='/' component={Main} />
@@ -46,8 +46,8 @@ export default function App(){
                             </Route>
                         </Switch>
                     </Suspense>
+                    <Footer />
                 </Router>
-                <Footer />
             </Wrapper>
         </ErrorBoundary>
     );

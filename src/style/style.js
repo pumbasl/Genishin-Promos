@@ -5,10 +5,8 @@ import papper from '../media/img/papper-min.jpg';
 const Background = styled.div({
     background: 'no-repeat center center fixed',
     backgroundSize: 'cover',
-    position: 'fixed',
     zIndex: -99,
-    filter: 'blur(5px)',
-    transform: 'scale(1.1)'
+    position: 'fixed'
 });
 
 const Wrapper = styled.div({
@@ -23,11 +21,14 @@ const Header = styled.div({
 
 const Main = styled.div({
     flex: '1 0 auto',
-    marginTop: '40px'
+    marginTop: '40px',
+    marginBottom: '40px'
 });
 
 const Footer = styled.div({
-    flex: '0 0 auto'
+    flex: '0 0 auto',
+    backgroundColor: 'black',
+    color: 'white'
 });
 
 const Papper = styled.div`
@@ -67,16 +68,23 @@ const Papper = styled.div`
     
 `;
 
+const PromoCard = styled.div`
+    &:not(:last-child){
+        margin-bottom: 15px;
+    }
+`;
 
-const PromoCard = styled.a`
+const PromoCardBlock = styled.a`
     text-decoration: none;
     color: inherit;
     border: 1px solid #000;
     padding: 15px;
     display: block;
-
-    &:not(:last-child){
-        margin-bottom: 15px;
+    
+    &:after {
+        display: block;
+        content: "";
+        clear: both;
     }
 
     &:hover{
@@ -87,4 +95,34 @@ const PromoCard = styled.a`
     }
 `;
 
-export { Background, PromoCard, Wrapper, Header, Main, Footer, Papper };
+const PromoExpired = styled.div({
+    float: 'right'
+});
+
+const FooterContainer = styled.div({
+    marginTop: '20px',
+    marginBottom: '20px',
+    display: 'flex',
+    flexWrap: 'wrap',
+    textAlign: 'center',
+    justifyContent: 'center',
+});
+
+const FooterCardTitle = styled.div`
+    width: 200px;
+
+    &:not(:last-child){
+        margin-right: auto;
+    }
+`;
+
+const FooterCardBody = styled.div`
+    font-weight: 300;
+    font-size: 90%;
+
+    &:first-child{
+        margin-top: 20px;
+    }
+`;
+
+export { FooterContainer, FooterCardTitle, FooterCardBody, Background, PromoCard, PromoCardBlock, PromoExpired, Wrapper, Header, Main, Footer, Papper };
