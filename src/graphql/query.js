@@ -8,6 +8,21 @@ module.exports = {
             expired
         }
     }`,
+
+    UserByUuid: `
+    query UserByUuid($uuid: ID!){
+        usersByUuid(uuid: $uuid){
+            uuid
+            promos{
+                _id
+                code
+                server
+                expired
+            }
+            ua
+        }
+    }`,
+
     AddPromo: `
     mutation AddPromo($code: String!, $server: String!, $expired: Float!){
         addPromo(code: $code, server: $server, expired: $expired){
@@ -15,6 +30,20 @@ module.exports = {
             server
             expired
         }
-    }
-    `
+    }`,
+
+    AddUser: `
+    mutation NewUser($promos: [String!], $server: String!, $ua: String!){
+        addUser(promos: $promos, server: $server, ua: $ua){
+            uuid
+            server
+            ua
+        }
+    }`,
+
+    EditUser: `
+    mutation EditUser($uuid: ID!, $promos: [String!]){
+        editUser(uuid: $uuid, promos: $promos)
+    }`,
+
 };

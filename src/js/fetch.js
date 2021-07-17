@@ -1,6 +1,6 @@
 const { graphql } = require('../config/config');
 
-module.exports = async function RestRequest(data){
+export default async function RestRequest(data){
     const response = await fetch(graphql, {
         method: 'POST',
         cache: 'no-cache',

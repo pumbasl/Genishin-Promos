@@ -31,6 +31,13 @@ const Footer = styled.div({
     color: 'white'
 });
 
+const Title = styled.div`
+    &:not(:first-child){
+        margin-top: 50px;
+    }
+`;
+
+
 const Papper = styled.div`
     background: url(${papper});
     background-size: cover;
@@ -74,9 +81,7 @@ const PromoCard = styled.div`
     }
 `;
 
-const PromoCardBlock = styled.a`
-    text-decoration: none;
-    color: inherit;
+const PromoCardBlock = styled.div`
     border: 1px solid #000;
     padding: 15px;
     display: block;
@@ -125,4 +130,4 @@ const FooterCardBody = styled.div`
     }
 `;
 
-export { FooterContainer, FooterCardTitle, FooterCardBody, Background, PromoCard, PromoCardBlock, PromoExpired, Wrapper, Header, Main, Footer, Papper };
+export { Title, FooterContainer, FooterCardTitle, FooterCardBody, Background, PromoCard, PromoCardBlock, PromoExpired, Wrapper, Header, Main, Footer, Papper };
