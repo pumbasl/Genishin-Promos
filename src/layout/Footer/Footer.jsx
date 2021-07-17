@@ -1,49 +1,68 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
+
+// Locales
+import { useTranslation } from 'react-i18next';
+//
 
 //Style
 import { 
     Footer as FooterStyle,
     FooterContainer,
     FooterCardTitle,
-    FooterCardBody
+    FooterCardBody,
+    FooterCardElement
 } from '../../style/style';
+
+import './style.scss';
 //
 
 export default function Header(){
+    const { t } = useTranslation();
     return(
         <FooterStyle>
             <Container>
                 <FooterContainer>
                     <FooterCardTitle>
-                        Карта сайта
+                        {t('Карта сайта')}:
                         <FooterCardBody>
-                            XML карта
+                            <FooterCardElement href="#">
+                                XML {t('карта')}
+                            </FooterCardElement>
                         </FooterCardBody>
                     </FooterCardTitle>
 
                     <FooterCardTitle>
-                        О нас
+                        {t('О нас')}:
                         <FooterCardBody>
-                            Главная
+                            <Link to="/" className="custom-link">
+                                {t('Главная')}
+                            </Link>
                         </FooterCardBody>
 
                         <FooterCardBody>
-                            Помощь в проекте
-                        </FooterCardBody>
-                    </FooterCardTitle>
-
-                    <FooterCardTitle>
-                        Информация
-                        <FooterCardBody>
-                            Условия использования
+                            <Link to="/help" className="custom-link">
+                                {t('Помощь в проекте')}
+                            </Link>
                         </FooterCardBody>
                     </FooterCardTitle>
 
                     <FooterCardTitle>
-                        Контакты
+                        {t('Информация')}:
                         <FooterCardBody>
-                            Email: email@localhost
+                            <Link to="/policy" className="custom-link">
+                                {t('Условия использования')}
+                            </Link>
+                        </FooterCardBody>
+                    </FooterCardTitle>
+
+                    <FooterCardTitle>
+                        {t('Контакты')}:
+                        <FooterCardBody>
+                            <FooterCardElement href="mailto: email@localhost">
+                                Email: email@localhost
+                            </FooterCardElement>
                         </FooterCardBody>
                     </FooterCardTitle>
                 </FooterContainer>

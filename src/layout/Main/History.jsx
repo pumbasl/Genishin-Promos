@@ -1,5 +1,9 @@
 import Moment from 'react-moment';
 
+// Locales
+import { useTranslation } from 'react-i18next';
+//
+
 //Стиль
 import { PromoCardBlock, PromoExpired, PromoCard, Title } from '../../style/style';
 import { Badge } from 'react-bootstrap';
@@ -7,10 +11,11 @@ import { Badge } from 'react-bootstrap';
 
 
 export default function History({ data }){
+    const { t } = useTranslation();
     return(
         <>
             <Title>
-                <h4>Истёкшие промокоды:</h4>
+                <h4>{t('Истёкшие промокоды')}:</h4>
             </Title>
             {data.map((promo) => (
                 <PromoCard key={promo._id}>
@@ -18,7 +23,7 @@ export default function History({ data }){
                         {promo.code}
                         <PromoExpired>
                             <Badge variant="purple">
-                                Действовал до: &nbsp; 
+                                {t('Действовал до')}: &nbsp; 
                                 <Moment
                                     format="DD.MM.YYYY HH:MM"
                                 >

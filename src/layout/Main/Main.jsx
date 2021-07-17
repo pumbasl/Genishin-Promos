@@ -7,6 +7,10 @@ import History from './History';
 import Activated from './Activated';
 //
 
+// Locales
+import { useTranslation } from 'react-i18next';
+//
+
 //Стиль
 import { PromoCardBlock, PromoExpired, PromoCard, Title } from '../../style/style';
 import { Badge } from 'react-bootstrap';
@@ -30,6 +34,7 @@ async function sleep(ms) {
 let HistoryPromo = [];
 
 export default function Main(){
+    const { t } = useTranslation();
     const [ isLoaded, setIsLoaded ] = useState(false);
     const [ error, setError ] = useState(false);
     const [ activated, setActivate ] = useState([]);
@@ -73,9 +78,10 @@ export default function Main(){
     };
 
     const sortActivatedCodes = (a, b) => {
+        //сортировка активированых кодов
         a.forEach((value) => {
             b = b.filter((item) => item._id !== value._id);
-        })
+        });
         return b;
     };
 
@@ -150,7 +156,7 @@ export default function Main(){
         return(
             <Container>
                 <Title>
-                    <h4>Актуальные промокоды:</h4>
+                    <h4>{t('Актуальные промокоды')}:</h4>
                 </Title>
                 {isLoaded.map((promo) => (
                     <PromoCard key={promo._id}>
@@ -158,7 +164,7 @@ export default function Main(){
                             {promo.code}
                             <PromoExpired>
                                 <Badge variant="purple">
-                                    Действует до: &nbsp; 
+                                    {t('Действует до')}: &nbsp; 
                                     <Moment
                                         format="DD.MM.YYYY HH:MM"
                                     >

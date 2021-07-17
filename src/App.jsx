@@ -25,7 +25,7 @@ import Footer from './layout/Footer/Footer';
 
 const Main = lazy(() => import("./layout/Main/Main"));
 const Contacts = lazy(() => import("./layout/Contacts/Contacts"));
-const Help = lazy(() => import("./layout/Help/Help"));
+const Policy = lazy(() => import("./layout/Policy/Policy"));
 const Errors = lazy(() => import("./errors/error"));
 //
 
@@ -39,8 +39,8 @@ export default function App(){
                     <Suspense fallback={<Container>Загрузка...</Container>}>
                         <Switch>
                             <Route exact path='/' component={Main} />
-                            <Route exact path='/' component={Contacts} />
-                            <Route exact path='/' component={Help} />
+                            <Route exact path='/contacts' component={Contacts} />
+                            <Route exact path='/policy' component={Policy} />
                             <Route exact path="*">
                                 <Errors id="404" />
                             </Route>

@@ -40,7 +40,8 @@ const Title = styled.div`
 
 const Papper = styled.div`
     background: url(${papper});
-    background-size: cover;
+    background-repeat: repeat-y;
+    background-size: 100%;
     padding: 15px;
     position: relative;
     border: 1px solid black;
@@ -104,20 +105,43 @@ const PromoExpired = styled.div({
     float: 'right'
 });
 
-const FooterContainer = styled.div({
-    marginTop: '20px',
-    marginBottom: '20px',
-    display: 'flex',
-    flexWrap: 'wrap',
-    textAlign: 'center',
-    justifyContent: 'center',
-});
+const FooterContainer = styled.div`
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+
+    @media (min-width: 320px) and (max-width: 529px) {
+        flex-direction: column;
+    }
+`;
 
 const FooterCardTitle = styled.div`
-    width: 200px;
+    width: 250px;
 
-    &:not(:last-child){
-        margin-right: auto;
+    @media (min-width: 320px) and (max-width: 529px) {
+        &:not(:first-child){
+            margin-top: 20px;
+        }
+    }
+
+    @media (min-width: 530px) and (max-width: 991px){
+        margin-top: 0px;
+        &:nth-child(3){
+            margin-top: 20px;
+        }
+        &:nth-child(4){
+            margin-top: 20px;
+        }
+    }
+
+    @media (min-width: 992px) and (max-width: 1199px){
+        &:nth-child(4){
+            margin-top: 20px;
+        }
     }
 `;
 
@@ -125,9 +149,19 @@ const FooterCardBody = styled.div`
     font-weight: 300;
     font-size: 90%;
 
-    &:first-child{
-        margin-top: 20px;
+    @media (min-width: 1200px){
+        &:first-child{
+            margin-top: 20px;
+        }
     }
 `;
 
-export { Title, FooterContainer, FooterCardTitle, FooterCardBody, Background, PromoCard, PromoCardBlock, PromoExpired, Wrapper, Header, Main, Footer, Papper };
+const FooterCardElement = styled.a`
+    color: inherit;
+
+    &:hover{
+        text-decoration: none;
+    }
+`;
+
+export { Title, FooterCardElement, FooterContainer, FooterCardTitle, FooterCardBody, Background, PromoCard, PromoCardBlock, PromoExpired, Wrapper, Header, Main, Footer, Papper };
