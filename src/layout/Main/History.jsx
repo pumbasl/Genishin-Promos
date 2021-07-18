@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Moment from 'react-moment';
 
 import InfiniteScroll from 'react-infinite-scroll-component';
 
@@ -7,9 +6,12 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { useTranslation } from 'react-i18next';
 //
 
+//Components
+import Card from '../../components/Card/Card';
+//
+
 //Стиль
-import { PromoCardBlock, PromoExpired, PromoCard } from '../../style/style';
-import { Badge, Button, Spinner } from 'react-bootstrap';
+import { Button, Spinner } from 'react-bootstrap';
 //
 
 
@@ -41,21 +43,14 @@ export default function History({ data }){
                 endMessage={<div className="text-center"><Button variant="purple" onClick={fetchMoreData}>{t('Загрузить еще?')}</Button></div>}
             >
                 {items.map((promo, index) => (
-                    <PromoCard key={promo._id}>
-                        <PromoCardBlock>
+                    <Card.Label key={promo._id}>
+                        <Card.Body>
                             {promo.code}|{index}
-                            <PromoExpired>
-                                <Badge variant="purple">
-                                    {t('Действовал до')}: &nbsp; 
-                                    <Moment
-                                        format="DD.MM.YYYY HH:MM"
-                                    >
-                                        {promo.expired}
-                                    </Moment>
-                                </Badge>
-                            </PromoExpired>
-                        </PromoCardBlock>
-                    </PromoCard>
+                            <Card.Time expired={promo.expired}>
+                                {t('Действовал до')}: &nbsp; 
+                            </Card.Time>
+                        </Card.Body>
+                    </Card.Label>
                 ))}
             </InfiniteScroll>
         </>

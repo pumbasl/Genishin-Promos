@@ -3,6 +3,10 @@ import { NavLink } from 'react-router-dom';
 
 import { Navbar, Nav, Dropdown } from "react-bootstrap";
 
+//Components
+import Subfields from './SubFields';
+//
+
 // Locales
 import { useTranslation } from 'react-i18next';
 //
@@ -13,16 +17,15 @@ import 'react-notifications/lib/notifications.css';
 //
 
 //Pictures
-import Earth from '../../media/img/earth.svg';
+import Earth from '../../media/img/svgLogo/earth.svg';
 //
 
 //Style
 import { Header as HeaderStyle } from '../../style/style';
-import './style.scss';
 //
 
 export default function Header(){
-    const { t, i18n } = useTranslation();
+    const { i18n } = useTranslation();
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
         localStorage.setItem('i18nextLng', lng);
@@ -30,13 +33,13 @@ export default function Header(){
 
     return(
         <HeaderStyle>
-            <Navbar collapseOnSelect expand="lg" variant="dark" className="navbar-custom">
+            <Navbar collapseOnSelect expand="xl" variant="dark" className="navbar-custom">
             <NavLink to="/" className="navbar-brand ms-2">Genshin Promo</NavLink>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="mr-auto">
-                        <NavLink to="/contacts" className="nav-link">{t('Контакты')}</NavLink>
-                    </Nav>
+                    
+                    <Subfields />
+
                     <Nav className="ml-auto">
                         <Dropdown drop="left">
                             <Dropdown.Toggle variant="purple">

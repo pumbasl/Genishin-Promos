@@ -2,11 +2,10 @@ $theme-colors: (
     "purple": rgb(152, 82, 173),
 );
 
-@import "~bootstrap/scss/bootstrap";
+@function theme-color($key: "primary") {
+    @return map-get($theme-colors, $key);
+}
 
-//Шрифт
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
-//
 
 html, body, #root{
     height: 100%;
@@ -15,3 +14,19 @@ html, body, #root{
 body{
     font-family: 'Open Sans', sans-serif;
 }
+
+::-moz-selection {
+    background: rgba(0, 255, 255, .7);
+}
+
+::selection {
+    background: rgba(0, 255, 255, .7);
+}
+
+//IMPORT
+@import "~bootstrap/scss/bootstrap";
+@import "./fonts/OpenSans-Light.ttf";
+@import "./fonts/OpenSans-Regular.ttf";
+
+@import "../layout/Header/style.scss"; // HeaderStyle
+//

@@ -6,6 +6,12 @@ import { Container } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 //
 
+//логотипы
+import VKLogo from '../../media/img/contactsLogos/logo-vk.svg';
+import TELEGRAMLogo from '../../media/img/contactsLogos/logo-telegram.svg';
+import MAILLogo from '../../media/img/contactsLogos/mail-ios.svg';
+//
+
 //Style
 import { 
     Footer as FooterStyle,
@@ -60,9 +66,15 @@ export default function Header(){
                     <FooterCardTitle>
                         {t('Контакты')}:
                         <FooterCardBody>
-                            <FooterCardElement href="mailto: email@localhost">
-                                Email: email@localhost
-                            </FooterCardElement>
+                            <a href="https://vk.com/niklauswiberg" className="custom-contact">
+                                    <img src={VKLogo} width="30px" alt="vklogo" />
+                            </a>
+                            <a href="https://t.me/deniswiberg" className="custom-contact">
+                                <img src={TELEGRAMLogo} width="30px" alt="tglogo" />
+                            </a>
+                            <a href="malito: localhost@mail.ru" className="custom-contact">
+                                <img src={MAILLogo} width="30px" alt="maillogo" />
+                            </a>
                         </FooterCardBody>
                     </FooterCardTitle>
                 </FooterContainer>

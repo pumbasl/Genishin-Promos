@@ -5,3 +5,7 @@
 .custom-link:hover{
     text-decoration: none;
 }
+
+.custom-contact:not(:last-child){
+    margin-right: 5px;
+}

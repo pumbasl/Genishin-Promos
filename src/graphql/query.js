@@ -46,4 +46,14 @@ module.exports = {
         editUser(uuid: $uuid, promos: $promos)
     }`,
 
+    getSubfields: `
+    query SubFields{
+        subfields{
+            _id
+            name
+            link
+        }
+    }
+    `,
+
 };

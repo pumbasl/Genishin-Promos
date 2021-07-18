@@ -1,6 +1,31 @@
 .navbar-custom{
     background-color: rgba(45, 47, 51, .5);
+    .custom-link{
+        color: white;
+        outline: theme-color("purple") solid 1px;
+    }
+    .custom-link:not(:last-child){
+        margin-right: 10px;
+    }
     .nav-link:hover{
         background-color: rgba(255, 255, 255, .3);
+    }
+    .web-events{
+        color: white;
+        outline: rgb(151, 255, 15) solid 1px;
+    }
+    .web-events:hover{
+        background-color: rgba(165, 165, 165, 0.3);
+    }
+}
+
+@media (min-width: 320px) and (max-width: 1199px) {
+    .nav-link{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .nav-link:first-child{
+        margin-top: 15px;
+        outline: theme-color("purple") solid 1px;
     }
 }

@@ -1,13 +1,11 @@
 import React from 'react';
-import Moment from 'react-moment';
 
 // Locales
 import { useTranslation } from 'react-i18next';
 //
 
-//Стиль
-import { PromoCardBlock, PromoExpired, PromoCard } from '../../style/style';
-import { Badge } from 'react-bootstrap';
+//Components
+import Card from '../../components/Card/Card';
 //
 
 
@@ -17,21 +15,14 @@ export default function Activated({ data }){
         <>
             <h4>{t('Активированые промокоды')}:</h4>
             {data.map((promo) => (
-                <PromoCard key={promo._id}>
-                    <PromoCardBlock>
+                <Card.Label key={promo._id}>
+                    <Card.Body>
                         {promo.code}
-                        <PromoExpired>
-                            <Badge variant="purple">
-                                {t('Действует до')}: &nbsp; 
-                                <Moment
-                                    format="DD.MM.YYYY HH:MM"
-                                >
-                                    {promo.expired}
-                                </Moment>
-                            </Badge>
-                        </PromoExpired>
-                    </PromoCardBlock>
-                </PromoCard>
+                        <Card.Time expired={promo.expired}>
+                            {t('Действует до')}: &nbsp; 
+                        </Card.Time>
+                    </Card.Body>
+                </Card.Label>
             ))}
         </>
     );

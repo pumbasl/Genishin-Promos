@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import Moment from 'react-moment';
 
 //Компонент
 import Container from '../../components/Container/Container';
 import Line from '../../components/Line/Line';
 import History from './History';
 import Activated from './Activated';
+import Card from '../../components/Card/Card';
 //
 
 // Locales
 import { useTranslation } from 'react-i18next';
-//
-
-//Стиль
-import { PromoCardBlock, PromoExpired, PromoCard } from '../../style/style';
-import { Badge } from 'react-bootstrap';
 //
 
 //Уведомления
@@ -63,8 +58,12 @@ export default function Main(){
         });
 
         await sleep(2000);
-        const win = window.open('https://genshin.mihoyo.com/en/gift', '_blank');
-        win.focus();
+        try{
+            const win = window.open('https://genshin.mihoyo.com/en/gift', '_blank');
+            win.focus();
+        } catch(e) {
+            throw new Error(e);
+        }
     };
 
     const sortCodes = (a, b) => {
@@ -158,21 +157,14 @@ export default function Main(){
             <Container>
                 <h4>{t('Актуальные промокоды')}:</h4>
                 {isLoaded.map((promo) => (
-                    <PromoCard key={promo._id}>
-                        <PromoCardBlock onClick={() => {handleClick(promo)}}>
+                    <Card.Label key={promo._id}>
+                        <Card.Body onClick={() => {handleClick(promo)}}>
                             {promo.code}
-                            <PromoExpired>
-                                <Badge variant="purple">
-                                    {t('Действует до')}: &nbsp; 
-                                    <Moment
-                                        format="DD.MM.YYYY HH:MM"
-                                    >
-                                        {promo.expired}
-                                    </Moment>
-                                </Badge>
-                            </PromoExpired>
-                        </PromoCardBlock>
-                    </PromoCard>
+                            <Card.Time expired={promo.expired}>
+                                {t('Действует до')}: &nbsp; 
+                            </Card.Time>
+                        </Card.Body>
+                    </Card.Label>
                 ))}
 
                 <Line />
