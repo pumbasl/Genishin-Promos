@@ -1,3 +1,4 @@
+import React from 'react';
 import Moment from 'react-moment';
 
 // Locales
@@ -5,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 //
 
 //Стиль
-import { PromoCardBlock, PromoExpired, PromoCard, Title } from '../../style/style';
+import { PromoCardBlock, PromoExpired, PromoCard } from '../../style/style';
 import { Badge } from 'react-bootstrap';
 //
 
@@ -14,9 +15,7 @@ export default function Activated({ data }){
     const { t } = useTranslation();
     return(
         <>
-            <Title>
-                <h4>{t('Активированые промокоды')}:</h4>
-            </Title>
+            <h4>{t('Активированые промокоды')}:</h4>
             {data.map((promo) => (
                 <PromoCard key={promo._id}>
                     <PromoCardBlock>

@@ -3,6 +3,7 @@ import Moment from 'react-moment';
 
 //Компонент
 import Container from '../../components/Container/Container';
+import Line from '../../components/Line/Line';
 import History from './History';
 import Activated from './Activated';
 //
@@ -12,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 //
 
 //Стиль
-import { PromoCardBlock, PromoExpired, PromoCard, Title } from '../../style/style';
+import { PromoCardBlock, PromoExpired, PromoCard } from '../../style/style';
 import { Badge } from 'react-bootstrap';
 //
 
@@ -149,15 +150,13 @@ export default function Main(){
     if(!isLoaded){
         return(
             <Container>
-                Загрузка...
+                {t('Загрузка...')}
             </Container>
         );
     } else if(!error){
         return(
             <Container>
-                <Title>
-                    <h4>{t('Актуальные промокоды')}:</h4>
-                </Title>
+                <h4>{t('Актуальные промокоды')}:</h4>
                 {isLoaded.map((promo) => (
                     <PromoCard key={promo._id}>
                         <PromoCardBlock onClick={() => {handleClick(promo)}}>
@@ -175,7 +174,13 @@ export default function Main(){
                         </PromoCardBlock>
                     </PromoCard>
                 ))}
+
+                <Line />
+
                 <Activated data={activated} />
+
+                <Line />
+
                 <History data={HistoryPromo} />
             </Container>
         );

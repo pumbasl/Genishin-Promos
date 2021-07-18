@@ -31,9 +31,9 @@ const Footer = styled.div({
     color: 'white'
 });
 
-const Title = styled.div`
-    &:not(:first-child){
-        margin-top: 50px;
+const Line = styled.div`
+    img{
+        width: 30%;
     }
 `;
 
@@ -164,4 +164,4 @@ const FooterCardElement = styled.a`
     }
 `;
 
-export { Title, FooterCardElement, FooterContainer, FooterCardTitle, FooterCardBody, Background, PromoCard, PromoCardBlock, PromoExpired, Wrapper, Header, Main, Footer, Papper };
+export { Line, FooterCardElement, FooterContainer, FooterCardTitle, FooterCardBody, Background, PromoCard, PromoCardBlock, PromoExpired, Wrapper, Header, Main, Footer, Papper };

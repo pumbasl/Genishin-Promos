@@ -3,12 +3,15 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 //Стиль
 import './style/mainStyle.scss';
-
 import { Wrapper } from './style/style';
 //
 
 //Предохранитель
 import ErrorBoundary from './errors/ErrorBoundary';
+//
+
+// Locales
+import { useTranslation } from 'react-i18next';
 //
 
 //Компонент
@@ -30,13 +33,14 @@ const Errors = lazy(() => import("./errors/error"));
 //
 
 export default function App(){
+    const { t } = useTranslation();
     return(
         <ErrorBoundary>
             <Background />
             <Wrapper>
                 <Router>
                     <Header />
-                    <Suspense fallback={<Container>Загрузка...</Container>}>
+                    <Suspense fallback={<Container>{t('Загрузка...')}</Container>}>
                         <Switch>
                             <Route exact path='/' component={Main} />
                             <Route exact path='/contacts' component={Contacts} />

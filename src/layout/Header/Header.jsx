@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Navbar, Nav, DropdownButton, Dropdown } from "react-bootstrap";
+import { Navbar, Nav, Dropdown } from "react-bootstrap";
 
 // Locales
 import { useTranslation } from 'react-i18next';
@@ -10,6 +10,10 @@ import { useTranslation } from 'react-i18next';
 //Уведомление
 import { NotificationContainer } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
+//
+
+//Pictures
+import Earth from '../../media/img/earth.svg';
 //
 
 //Style
@@ -34,10 +38,17 @@ export default function Header(){
                         <NavLink to="/contacts" className="nav-link">{t('Контакты')}</NavLink>
                     </Nav>
                     <Nav className="ml-auto">
-                        <DropdownButton drop="left" id="dropdawn" title="Language">
-                            <Dropdown.Item as="button" onClick={() => changeLanguage('ru-RU')}>Русский</Dropdown.Item>
-                            <Dropdown.Item as="button" onClick={() => changeLanguage('en-US')}>English</Dropdown.Item>
-                        </DropdownButton >
+                        <Dropdown drop="left">
+                            <Dropdown.Toggle variant="purple">
+                                Language
+                                <img className="ml-2" src={Earth} width="25px" alt="languageLogo" />
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item as="button" onClick={() => changeLanguage('ru-RU')}>Русский</Dropdown.Item>
+                                <Dropdown.Item as="button" onClick={() => changeLanguage('en-US')}>English</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
