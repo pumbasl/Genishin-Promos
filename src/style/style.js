@@ -164,4 +164,14 @@ const FooterCardElement = styled.a`
     }
 `;
 
-export { Line, FooterCardElement, FooterContainer, FooterCardTitle, FooterCardBody, Background, PromoCard, PromoCardBlock, PromoExpired, Wrapper, Header, Main, Footer, Papper };
+const CoockieContainer = styled.div`
+    position: fixed;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, .9);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    z-index: 999;
+`;
+
+export { CoockieContainer, Line, FooterCardElement, FooterContainer, FooterCardTitle, FooterCardBody, Background, PromoCard, PromoCardBlock, PromoExpired, Wrapper, Header, Main, Footer, Papper };
