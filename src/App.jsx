@@ -26,8 +26,8 @@ import Background from './components/background/background';
 import Header from './layout/Header/Header';
 import Footer from './layout/Footer/Footer';
 
-const Main = lazy(() => import("./layout/Main/Main"));
-const Policy = lazy(() => import("./layout/Policy/Policy"));
+const Main = lazy(() => import("./pages/Main/Main"));
+const Policy = lazy(() => import("./pages/Policy/Policy"));
 const Errors = lazy(() => import("./errors/error"));
 
 //lazy components

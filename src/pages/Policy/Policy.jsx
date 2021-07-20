@@ -7,6 +7,7 @@ import './style.scss';
 //
 
 export default function Policy(){
+    document.title = 'Genshin Promo | Terms of Use'; // TITLE PAGE
     return(
         <Container>
             <h3>Пользовательское Соглашение</h3>

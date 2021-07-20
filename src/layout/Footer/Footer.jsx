@@ -18,7 +18,8 @@ import {
     FooterContainer,
     FooterCardTitle,
     FooterCardBody,
-    FooterCardElement
+    FooterCardElement,
+    FooterCopyright
 } from '../../style/style';
 
 import './style.scss';
@@ -33,7 +34,7 @@ export default function Header(){
                     <FooterCardTitle>
                         {t('Карта сайта')}:
                         <FooterCardBody>
-                            <FooterCardElement href="#">
+                            <FooterCardElement href="/sitemap.xml">
                                 XML {t('карта')}
                             </FooterCardElement>
                         </FooterCardBody>
@@ -78,6 +79,12 @@ export default function Header(){
                         </FooterCardBody>
                     </FooterCardTitle>
                 </FooterContainer>
+                <hr color='white' />
+                <FooterCopyright>
+                    {t('Genshin-promo.com не связан с miHoYo.')} <br />
+                    {t('Genshin Impact, контент и материалы игры являются товарными знаками и принадлежат miHoYo.')} <br />
+                    Copyright &copy; 2021 Genshin-promo.com
+                </FooterCopyright>
             </Container>
         </FooterStyle>
     );

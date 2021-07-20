@@ -174,4 +174,29 @@ const CoockieContainer = styled.div`
     z-index: 999;
 `;
 
-export { CoockieContainer, Line, FooterCardElement, FooterContainer, FooterCardTitle, FooterCardBody, Background, PromoCard, PromoCardBlock, PromoExpired, Wrapper, Header, Main, Footer, Papper };
+const SelectCustom = styled.select`
+    font-family: Open Sans, sans-serif;
+    background-color: #9852ad;
+    color: white;
+    height: 35px;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
+
+    option:disabled {
+        color: #000;
+    }
+
+    &:focus{
+        outline:none;
+    }
+`;
+
+const FooterCopyright = styled.div`
+    text-align: center;
+    font-weight: 300;
+    font-size: 90%;
+    margin-bottom: 10px;
+`;
+
+export { FooterCopyright, SelectCustom, CoockieContainer, Line, FooterCardElement, FooterContainer, FooterCardTitle, FooterCardBody, Background, PromoCard, PromoCardBlock, PromoExpired, Wrapper, Header, Main, Footer, Papper };

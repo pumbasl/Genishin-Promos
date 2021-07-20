@@ -14,25 +14,31 @@ import { useTranslation } from 'react-i18next';
 
 //graphql
 import Request from '../../js/fetch';
-const { GetPromos, AddUser, UserByUuid } = require('../../graphql/query');
+const { GetPromoByServer, AddUser, UserByUuid } = require('../../graphql/query');
 //
-
-let HistoryPromo = [];
 
 export default function Main(){
     const { t } = useTranslation();
     const [ isLoaded, setIsLoaded ] = useState(false);
     const [ error, setError ] = useState(false);
     const [ activated, setActivate ] = useState([]);
+    const [ history, setHistory ] = useState(null);
+    const [ server, setServer ] = useState(localStorage.getItem('server') ? localStorage.getItem('server') : 'Europe');
+
+    document.title = 'Genshin Promo | Get Promo code!'; // TITLE PAGE
 
     const sortCodes = (a, b) => {
         //сортировка от истёкших кодов
-        for(const value of b){
+        const tempHistory = [];
+
+        b.forEach((value) => {
             if(Date.now() > value.expired){
-                HistoryPromo.push(value);
+                tempHistory.push(value);
                 a = a.filter((item) => item._id !== value._id);
             }
-        };
+        });
+
+        setHistory(tempHistory.reverse());
         return a;
     };
 
@@ -46,13 +52,15 @@ export default function Main(){
 
     useEffect(() => {
         Request({
-            query: GetPromos,
-            variables: {}
+            query: GetPromoByServer,
+            variables: JSON.stringify({
+                server: server
+            })
         })
         .then(
             (result) => {
 
-                let tempSecondArray = sortCodes(result.data.promos.slice(0), result.data.promos); // сортировка от просроченных кодов
+                let tempSecondArray = sortCodes(result.data.promosByServer.slice(0), result.data.promosByServer); // сортировка от просроченных кодов
 
                 //проверка на регистрацию
                 if(!localStorage.getItem('uuid')){
@@ -61,13 +69,14 @@ export default function Main(){
                         query: AddUser,
                         variables: JSON.stringify({
                             promos: [],
-                            server: 'EU',
+                            server: 'Europe',
                             ua: navigator.userAgent
                         })
                     })
                     .then(
                         (result) => {
                             localStorage.setItem('uuid', result.data.addUser.uuid);
+                            localStorage.setItem('server', 'Europe');
                         },
 
                         (error) => {
@@ -103,7 +112,7 @@ export default function Main(){
                 setError(error);
             }
         );
-    }, [])
+    }, [server])
 
     if(!isLoaded){
         return(
@@ -112,9 +121,20 @@ export default function Main(){
             </Container>
         );
     } else if(!error){
+        const CallBack = {
+            activated: activated,
+            setActivate: setActivate,
+            setIsLoaded: setIsLoaded,
+            sortActivatedCodes: sortActivatedCodes,
+            isLoaded: isLoaded,
+            server: server,
+            setServer: setServer
+
+        };
+        
         return(
             <Container>
-                <Actual data={isLoaded} activated={activated} setActivate={setActivate} setIsLoaded={setIsLoaded} sortActivatedCodes={sortActivatedCodes} isLoaded={isLoaded} />
+                <Actual data={isLoaded} callback={CallBack} />
 
                 <Line />
 
@@ -122,7 +142,7 @@ export default function Main(){
 
                 <Line />
 
-                <History data={HistoryPromo} />
+                <History data={history} />
             </Container>
         );
     } else {

@@ -9,6 +9,16 @@ module.exports = {
         }
     }`,
 
+    GetPromoByServer: `
+    query GetPromoByServer($server: String!){
+        promosByServer(server: $server){
+            _id
+            code
+            server
+            expired
+        }
+    }`,
+
     UserByUuid: `
     query UserByUuid($uuid: ID!){
         usersByUuid(uuid: $uuid){
@@ -41,9 +51,14 @@ module.exports = {
         }
     }`,
 
-    EditUser: `
-    mutation EditUser($uuid: ID!, $promos: [String!]){
-        editUser(uuid: $uuid, promos: $promos)
+    EditUserPromos: `
+    mutation EditUserPromos($uuid: ID!, $promos: [String!]){
+        editUserPromos(uuid: $uuid, promos: $promos)
+    }`,
+
+    EditUserServer: `
+    mutation EditUserServer($uuid: ID!, $server: String!){
+        editUserServer(uuid: $uuid, server: $server)
     }`,
 
     getSubfields: `
