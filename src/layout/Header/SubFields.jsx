@@ -29,7 +29,7 @@ const DefaultEvents = () => {
                 href="https://webstatic-sea.mihoyo.com/app/ys-map-sea/index.html"
                 target="_blank"
             >
-                <img src={MapLogo} width="18px" className="mr-2 mb-1" alt="mapLogo" />
+                <img src={MapLogo} width="18px" height="100%" className="mr-2 mb-1" alt="mapLogo" />
                 {t('Интерактивная карта')}
             </Nav.Link>
 
@@ -38,7 +38,7 @@ const DefaultEvents = () => {
                 href="https://genshin-impact.fandom.com/wiki/Genshin_Impact_Wiki"
                 target="_blank"
             >
-                <img src={WikiLogo} width="18px" className="mr-2 mb-1" alt="wikiLogo" />
+                <img src={WikiLogo} width="18px" height="100%" className="mr-2 mb-1" alt="wikiLogo" />
                 {t('Вики')}
             </Nav.Link>
 
@@ -47,7 +47,7 @@ const DefaultEvents = () => {
                 href="https://genshin-helper.com/"
                 target="_blank"
             >
-                <img src={GenshinLogo} width="18px" className="mr-2 mb-1" alt="genshinLogo" />
+                <img src={GenshinLogo} width="18px" height="100%" className="mr-2 mb-1" alt="genshinLogo" />
                 Genshin Helper
             </Nav.Link>
         </>

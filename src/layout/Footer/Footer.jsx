@@ -68,13 +68,13 @@ export default function Header(){
                         {t('Контакты')}:
                         <FooterCardBody>
                             <a href="https://vk.com/niklauswiberg" className="custom-contact">
-                                    <img src={VKLogo} width="30px" alt="vklogo" />
+                                    <img src={VKLogo} width="30px" height="100%" alt="vklogo" />
                             </a>
                             <a href="https://t.me/deniswiberg" className="custom-contact">
-                                <img src={TELEGRAMLogo} width="30px" alt="tglogo" />
+                                <img src={TELEGRAMLogo} width="30px" height="100%" alt="tglogo" />
                             </a>
                             <a href="malito: localhost@mail.ru" className="custom-contact">
-                                <img src={MAILLogo} width="30px" alt="maillogo" />
+                                <img src={MAILLogo} width="30px" height="100%" alt="maillogo" />
                             </a>
                         </FooterCardBody>
                     </FooterCardTitle>

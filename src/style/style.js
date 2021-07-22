@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
-import papper from '../media/img/papper-min.jpg';
+import papper from '../media/img/papper-min.webp';
+import background from '../media/img/genshinBackground.webp';
 
 const Background = styled.div({
     background: 'no-repeat center center fixed',
+    backgroundImage: `url(${background})`,
     backgroundSize: 'cover',
     zIndex: -99,
-    position: 'fixed'
+    position: 'fixed',
+    width: '100%',
+    height: '100%'
 });
 
 const Wrapper = styled.div({
@@ -33,7 +37,31 @@ const Footer = styled.div({
 
 const Line = styled.div`
     img{
-        width: 30%;
+        width: 40%;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px){
+        img{
+            width: 50%;
+        }
+    }
+
+    @media (min-width: 531px) and (max-width: 767px){
+        img{
+            width: 70%;
+        }
+    }
+
+    @media (min-width: 431px) and (max-width: 530px){
+        img{
+            width: 90%;
+        }
+    }
+
+    @media (min-width: 320px) and (max-width: 430px){
+        img{
+            width: 100%;
+        }
     }
 `;
 

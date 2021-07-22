@@ -1,3 +1,3 @@
 module.exports = {
-    graphql: 'http://localhost:4000/graphql'
+    graphql: 'https://radiant-inlet-24493.herokuapp.com/graphql'
 };

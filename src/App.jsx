@@ -19,7 +19,7 @@ import Container from './components/Container/Container';
 //
 
 //Background
-import Background from './components/background/background';
+import { Background } from './style/style';
 //
 
 //Страница

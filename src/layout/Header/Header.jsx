@@ -44,7 +44,7 @@ export default function Header(){
                         <Dropdown drop="left">
                             <Dropdown.Toggle variant="purple">
                                 Language
-                                <img className="ml-2" src={Earth} width="25px" alt="languageLogo" />
+                                <img className="ml-2" src={Earth} width="25px" height="100%" alt="languageLogo" />
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
