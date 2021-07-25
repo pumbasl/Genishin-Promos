@@ -13,7 +13,9 @@ export default function Activated({ data }){
     const { t } = useTranslation();
     return(
         <>
-            <h4>{t('Активированые промокоды')}:</h4>
+            <h4>
+                <b>{t('Активированные промокоды')}:</b>
+            </h4>
             {data.map((promo) => (
                 <Card.Label key={promo._id}>
                     <Card.Body>

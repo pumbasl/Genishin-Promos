@@ -38,7 +38,9 @@ export default function History({ data }){
 
     return(
         <>
-            <h4>{t('Истёкшие промокоды')}:</h4>
+            <h4>
+                <b>{t('Истёкшие промокоды')}:</b>
+            </h4>
             {items.map((promo, index) => (
                 <Card.Label key={promo._id}>
                     <Card.Body>

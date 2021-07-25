@@ -67,7 +67,9 @@ export default function Actual({
 
     return (
         <>
-            <h4>{t('Актуальные промокоды')}:</h4>
+            <h4>
+                <b>{t('Актуальные промокоды')}:</b>
+            </h4>
             <Server callback={newCallBack} />
             {data.map((promo) => (
                 <Card.Label key={promo._id}>

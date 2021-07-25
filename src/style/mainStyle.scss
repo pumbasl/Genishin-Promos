@@ -11,7 +11,7 @@ html, body, #root{
 }
 
 body{
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif !important;
 }
 
 ::-moz-selection {
@@ -24,8 +24,11 @@ body{
 
 //IMPORT
 @import "~bootstrap/scss/bootstrap";
-@import "./fonts/OpenSans-Light.ttf";
-@import "./fonts/OpenSans-Regular.ttf";
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./fonts/OpenSans-Light.ttf') format('truetype');
+}
 
 @import "../layout/Header/style.scss"; // HeaderStyle
 //

@@ -8,6 +8,10 @@ import History from './Components/History';
 import Activated from './Components/Activated';
 //
 
+//Предохранитель
+import ErrorBoundary from '../../errors/ErrorBoundary';
+//
+
 // Locales
 import { useTranslation } from 'react-i18next';
 //
@@ -60,7 +64,7 @@ export default function Main(){
         .then(
             (result) => {
 
-                let tempSecondArray = sortCodes(result.data.promosByServer.slice(0), result.data.promosByServer); // сортировка от просроченных кодов
+                let tempSecondArray = sortCodes(result.data?.promosByServer.slice(0), result.data.promosByServer); // сортировка от просроченных кодов
 
                 //проверка на регистрацию
                 if(!localStorage.getItem('uuid')){
@@ -75,8 +79,12 @@ export default function Main(){
                     })
                     .then(
                         (result) => {
-                            localStorage.setItem('uuid', result.data.addUser.uuid);
-                            localStorage.setItem('server', 'Europe');
+                            if(result.errors){
+                                setError(result.errors[0]?.message);
+                            } else {
+                                localStorage.setItem('uuid', result.data.addUser.uuid);
+                                localStorage.setItem('server', 'Europe');
+                            }
                         },
 
                         (error) => {
@@ -95,11 +103,19 @@ export default function Main(){
                     })
                     .then(
                         (result) => {
+                            if(result.errors){
+                                if(result.errors[0].message === 'Cannot return null for non-nullable field Query.usersByUuid.'){
+                                    delete localStorage.uuid
+                                    window.location.reload();
+                                } else {
+                                    setError('ERROR №2');
+                                }
+                            } else {
+                                tempSecondArray = sortActivatedCodes(result.data?.usersByUuid?.promos, tempSecondArray); //сортировка активированых промокодов
 
-                            tempSecondArray = sortActivatedCodes(result.data.usersByUuid.promos, tempSecondArray); //сортировка активированых промокодов
-
-                            setActivate(result.data.usersByUuid.promos);
-                            setIsLoaded(tempSecondArray);
+                                setActivate(result.data.usersByUuid.promos);
+                                setIsLoaded(tempSecondArray);
+                            }
                         },
                         (error) => {
                             setError(error);
@@ -114,13 +130,19 @@ export default function Main(){
         );
     }, [server])
 
-    if(!isLoaded){
+    if(error){
+        return(
+            <Container>
+                {error}
+            </Container>
+        );
+    } else if(!isLoaded){
         return(
             <Container>
                 {t('Загрузка...')}
             </Container>
         );
-    } else if(!error){
+    } else {
         const CallBack = {
             activated: activated,
             setActivate: setActivate,
@@ -133,23 +155,19 @@ export default function Main(){
         };
         
         return(
-            <Container>
-                <Actual data={isLoaded} callback={CallBack} />
+            <ErrorBoundary>
+                <Container>
+                    <Actual data={isLoaded} callback={CallBack} />
 
-                <Line />
+                    <Line />
 
-                <Activated data={activated} />
+                    <Activated data={activated} />
 
-                <Line />
+                    <Line />
 
-                <History data={history} />
-            </Container>
-        );
-    } else {
-        return(
-            <Container>
-                Error #2
-            </Container>
+                    <History data={history} />
+                </Container>
+            </ErrorBoundary>
         );
     }
 }

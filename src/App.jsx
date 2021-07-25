@@ -28,6 +28,7 @@ import Footer from './layout/Footer/Footer';
 
 const Main = lazy(() => import("./pages/Main/Main"));
 const Policy = lazy(() => import("./pages/Policy/Policy"));
+const Help = lazy(() => import("./pages/Help/Help"));
 const Errors = lazy(() => import("./errors/error"));
 const Notifications = lazy(() => import("./components/Notifications/Notifications"));
 
@@ -47,6 +48,7 @@ export default function App(){
                         <Switch>
                             <Route exact path='/' component={Main} />
                             <Route exact path='/policy' component={Policy} />
+                            <Route exact path='/help' component={Help} />
                             <Route exact path="*">
                                 <Errors id="404" />
                             </Route>

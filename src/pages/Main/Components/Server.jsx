@@ -30,7 +30,7 @@ export default function Server({ callback }){
 
     return(
         <label>
-            {t('Сервер')}: &nbsp;
+            <b>{t('Сервер')}: &nbsp;</b>
             <SelectCustom value={server} onChange={handleChange}>
                 <option disabled>{t('Выберите свой сервер')}</option>
                 <option value="Europe">Europe</option>

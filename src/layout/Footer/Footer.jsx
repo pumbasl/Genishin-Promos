@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 //логотипы
 import VKLogo from '../../media/img/contactsLogos/logo-vk.svg';
 import TELEGRAMLogo from '../../media/img/contactsLogos/logo-telegram.svg';
-import MAILLogo from '../../media/img/contactsLogos/mail-ios.svg';
+import MAILLogo from '../../media/img/contactsLogos/email.svg';
 //
 
 //Style
@@ -81,8 +81,8 @@ export default function Header(){
                 </FooterContainer>
                 <hr color='white' />
                 <FooterCopyright>
-                    {t('Genshin-promo.com не связан с miHoYo.')} <br />
-                    {t('Genshin Impact, контент и материалы игры являются товарными знаками и принадлежат miHoYo.')} <br />
+                    Genshin-promo.com не связан с miHoYo. <br />
+                    Genshin Impact, контент и материалы игры являются товарными знаками и принадлежат miHoYo. <br />
                     Copyright &copy; 2021 Genshin-promo.com
                 </FooterCopyright>
             </Container>
