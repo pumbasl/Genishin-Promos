@@ -11,11 +11,6 @@ import Subfields from './SubFields';
 import { useTranslation } from 'react-i18next';
 //
 
-//Уведомление
-import { NotificationContainer } from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
-//
-
 //Pictures
 import Earth from '../../media/img/svgLogo/earth.svg';
 //
@@ -55,7 +50,6 @@ export default function Header(){
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
-            <NotificationContainer/>
         </HeaderStyle>
     );
 }

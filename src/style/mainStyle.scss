@@ -6,7 +6,6 @@ $theme-colors: (
     @return map-get($theme-colors, $key);
 }
 
-
 html, body, #root{
     height: 100%;
 }

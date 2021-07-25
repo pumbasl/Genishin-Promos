@@ -29,6 +29,7 @@ import Footer from './layout/Footer/Footer';
 const Main = lazy(() => import("./pages/Main/Main"));
 const Policy = lazy(() => import("./pages/Policy/Policy"));
 const Errors = lazy(() => import("./errors/error"));
+const Notifications = lazy(() => import("./components/Notifications/Notifications"));
 
 //lazy components
 const CoockieContainer = lazy(() => import("./components/CookieAccept/CoockieAccept"));
@@ -50,7 +51,7 @@ export default function App(){
                                 <Errors id="404" />
                             </Route>
                         </Switch>
-
+                        <Notifications />
                         <CoockieContainer />
                     </Suspense>
                     <Footer />

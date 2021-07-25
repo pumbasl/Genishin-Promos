@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 //Компонент
 import Container from '../../components/Container/Container';
 import Line from '../../components/Line/Line';
-import Actual from './Actual';
-import History from './History';
-import Activated from './Activated';
+import Actual from './Components/Actual';
+import History from './Components/History';
+import Activated from './Components/Activated';
 //
 
 // Locales

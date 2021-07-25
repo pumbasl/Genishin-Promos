@@ -122,6 +122,7 @@ const PromoCardBlock = styled.div`
     }
 
     &:hover{
+        cursor: pointer;
         text-decoration: none;
         color: inherit;
         transition: all 0.3s ease;

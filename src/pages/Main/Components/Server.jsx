@@ -5,12 +5,12 @@ import { useTranslation } from 'react-i18next';
 //
 
 //styles
-import { SelectCustom } from '../../style/style';
+import { SelectCustom } from '../../../style/style';
 //
 
 //graphql
-import Request from '../../js/fetch';
-const { EditUserServer } = require('../../graphql/query');
+import Request from '../../../js/fetch';
+const { EditUserServer } = require('../../../graphql/query');
 //
 
 export default function Server({ callback }){

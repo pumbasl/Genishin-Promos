@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 //
 
 //Components
-import Card from '../../components/Card/Card';
+import Card from '../../../components/Card/Card';
 //
 
 

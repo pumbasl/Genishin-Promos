@@ -5,20 +5,18 @@ import { useTranslation } from 'react-i18next';
 //
 
 //Components
-import Card from '../../components/Card/Card';
+import Card from '../../../components/Card/Card';
 import Server from './Server';
 //
 
 //Уведомления
-import { NotificationManager } from 'react-notifications';
+import toast from "react-hot-toast";
 //
 
 //graphql
-import Request from '../../js/fetch';
-const { EditUserPromos } = require('../../graphql/query');
+import Request from '../../../js/fetch';
+const { EditUserPromos } = require('../../../graphql/query');
 //
-
-const clipboardy = require('clipboardy');
 
 async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
@@ -29,9 +27,11 @@ export default function Actual({
     callback
 }) {
     const { t } = useTranslation();
+
     const handleClick = async (promo) => {
-        clipboardy.write(promo.code);
-        NotificationManager.info('Вы будете перенаправлены на страницу ввода промокода через 2 секунды.');
+        navigator.clipboard.writeText(promo.code)
+
+        toast({title: t('Уведомление'), body: t('Вы будете перенаправлены на страницу ввода промокода через 2 секунды.'), time: t('Несколько секунд назад')});
 
         let tempArray = callback.activated.slice(0), tempRequestArray = [];
         tempArray.push(promo);
@@ -54,7 +54,7 @@ export default function Actual({
         await sleep(2000);
         try {
             const win = window.open('https://genshin.mihoyo.com/en/gift', '_blank');
-            win.focus();
+            win?.focus();
         } catch (e) {
             throw new Error(e);
         }

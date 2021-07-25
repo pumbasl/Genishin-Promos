@@ -1,7 +1,7 @@
-const { graphql } = require('../config/config');
-
 export default async function RestRequest(data){
-    const response = await fetch(graphql, {
+    const link = process.env.REACT_APP_GAPHQL;
+
+    const response = await fetch(link, {
         method: 'POST',
         cache: 'no-cache',
         headers: {
