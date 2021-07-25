@@ -28,6 +28,7 @@ body{
 @font-face {
     font-family: 'Open Sans';
     src: url('./fonts/OpenSans-Light.ttf') format('truetype');
+    font-display: swap;
 }
 
 @import "../layout/Header/style.scss"; // HeaderStyle

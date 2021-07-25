@@ -9,7 +9,6 @@ i18n
   .use(detector)
   .use(Backend)
   .init({
-    debug: true,
     fallbackLng: false,
     keySeparator: false, // we do not use keys in form messages.welcome
     interpolation: {
