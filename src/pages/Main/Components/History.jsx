@@ -30,10 +30,11 @@ export default function History({ data }){
         }
         
         setPreLoader(true);
-        setTimeout(() => {
-            setPreLoader(false);
+        
+        (function (){
             setItems(items.concat(data.slice(items.length, items.length + 20)));
-        }, 1500);
+            setPreLoader(false);
+        }());
     };
 
     return(
@@ -44,7 +45,7 @@ export default function History({ data }){
             {items.map((promo, index) => (
                 <Card.Label key={promo._id}>
                     <Card.Body>
-                        {promo.code}|{index}
+                        {promo.code}
                         <Card.Time expired={promo.expired}>
                             {t('Действовал до')}: &nbsp; 
                         </Card.Time>
