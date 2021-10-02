@@ -9,3 +9,4 @@ export { default as Preloader } from './Preloader/Preloader';
 export { default as Notifications } from './Notifications/Notifications';
 export { default as CookieNotify } from './CookieAccept/CoockieAccept';
 export { default as Profile } from './Profile/Profile';
+export { default as ErrorsForm } from './ErrorsForm/ErrorsForm';

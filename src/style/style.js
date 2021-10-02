@@ -169,10 +169,7 @@ const FooterCopyright = styled.div`
 `;
 
 const ContainerForForm = styled.div`
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin: auto;
     border: 1px solid #fff;
     border-radius: 3px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
