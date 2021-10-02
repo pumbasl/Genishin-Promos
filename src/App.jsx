@@ -15,7 +15,7 @@ import ErrorBoundary from './errors/ErrorBoundary';
 //
 
 //components
-import { Background, Notifications } from './components';
+import { Background, Notifications, CookieNotify } from './components';
 //
 
 //layout
@@ -29,7 +29,10 @@ export default function App(){
     return(
         <ErrorBoundary>
             <Background />
+            
             <Notifications />
+            <CookieNotify />
+
             <Wrapper>
                 <Router>
                     <Header />

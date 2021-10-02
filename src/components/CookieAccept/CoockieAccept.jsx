@@ -12,9 +12,12 @@ import { useTranslation } from 'react-i18next';
 export default function Cookie(){
     const [ show, setShow ] = useState(false);
     const [ t ] = useTranslation();
-    const handleClick = () => setShow(false);
+    const handleClick = () => {
+        localStorage.setItem('cookie', 'true');
+        setShow(false)
+    };
 
-    if(!localStorage.getItem('uuid') && !show){
+    if(!localStorage.getItem('cookie') && !show){
         setShow(true);
     }
 

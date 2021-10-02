@@ -13,3 +13,9 @@ export { default as Two } from './img/Background/2.webp';
 export { default as Three } from './img/Background/3.webp';
 export { default as Four } from './img/Background/4.webp';
 //
+
+//form
+export { default as LoginIcon } from './img/form/login.svg';
+export { default as PasswordIcon } from './img/form/password.svg';
+export { default as EmailIcon } from './img/form/email.svg';
+//

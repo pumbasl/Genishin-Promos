@@ -7,3 +7,5 @@ export { default as Card } from './Card/Card';
 export { default as TimeView } from './TimeView/TimeView';
 export { default as Preloader } from './Preloader/Preloader';
 export { default as Notifications } from './Notifications/Notifications';
+export { default as CookieNotify } from './CookieAccept/CoockieAccept';
+export { default as Profile } from './Profile/Profile';

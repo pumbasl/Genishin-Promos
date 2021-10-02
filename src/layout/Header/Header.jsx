@@ -5,7 +5,7 @@ import { Navbar, Nav } from "react-bootstrap";
 
 //Components
 import Subfields from './SubFields';
-import { LanguageButton } from '../../components';
+import { LanguageButton, Profile } from '../../components';
 //
 
 //Style
@@ -23,7 +23,7 @@ export default function Header(){
                     <Subfields />
 
                     <Nav className="ml-auto">
-                        {/* <Profile /> */}
+                        <Profile />
                         <LanguageButton />
                     </Nav>
                 </Navbar.Collapse>

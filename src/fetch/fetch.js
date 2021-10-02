@@ -9,7 +9,7 @@ async function newAccessToken(data){
         (result) => {
             if(result.ok === true){
                 localStorage.setItem('token', result.accessToken);
-                resultFetch(data);
+                resultData = resultFetch(data);
             }
         },
         (error) => {
@@ -34,8 +34,7 @@ export default async function resultFetch(data){
                     if(value.message === 'not authenticated'){
                         if(!error){
                             error = true;
-                            resultData = value.message;
-                            newAccessToken(data);
+                            resultData = newAccessToken(data);
                         }
                     }
                 }

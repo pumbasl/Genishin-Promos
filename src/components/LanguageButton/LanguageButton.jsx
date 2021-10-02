@@ -1,4 +1,4 @@
-import { Dropdown, Button, ButtonGroup, Image } from "react-bootstrap";
+import { Dropdown, Image } from "react-bootstrap";
 
 // Locales
 import { useTranslation } from 'react-i18next';
@@ -22,15 +22,10 @@ export default function LanguageButton(){
 
     return(
         <Dropdown drop="start">
-            <ButtonGroup className="h-100 me-2">
-                <Button variant="purple">
-                    <Image src={Earth} width="25px" height="100%" alt="languageLogo" />
-                </Button>
+            <Dropdown.Toggle variant="purple" className="me-2">
+                <Image src={Earth} width="25px" height="100%" alt="languageLogo" />
+            </Dropdown.Toggle>
 
-                <Dropdown.Toggle variant="purple">
-                    Language
-                </Dropdown.Toggle>
-            </ButtonGroup>
             <Dropdown.Menu>
                 <Dropdown.Item as="button" onClick={() => changeLanguage('ru-RU', 'ru')}>Русский</Dropdown.Item>
                 <Dropdown.Item as="button" onClick={() => changeLanguage('en-US', 'en')}>English</Dropdown.Item>

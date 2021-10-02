@@ -1,5 +1,15 @@
 .navbar-custom{
     background-color: rgba(45, 47, 51, .5);
+    .navbar-brand{
+        box-sizing: content-box;
+        border-bottom: 4px solid;
+        color: #FFCCCC;
+        border-image: linear-gradient(to right, rgba(149,22,133,1) 20%, rgba(255,0,78,1) 100%);
+        border-image-slice: 1;
+        // background-image: linear-gradient(to right, rgba(149,22,133,1) 20%, rgba(255,0,78,1) 100%);
+        // background-clip: text;
+        // -webkit-text-fill-color: transparent;
+    }
     .custom-link{
         color: white;
         outline: theme-color("purple") solid 1px;

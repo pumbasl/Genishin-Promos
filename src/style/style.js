@@ -13,9 +13,9 @@ const Background = styled.div`
 const BackgroundContainer = styled.div`
     border: 1px solid #fff;
     padding: 15px;
-    color: black;
+    color: #000022;
     background-color: rgba(223, 215, 215, .6);
-    border-radius: 5px;
+    border-radius: 3px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 `;
 
@@ -63,7 +63,9 @@ const PromoCardBlock = styled.div`
         text-decoration: none;
         color: inherit;
         transition: all 0.3s ease;
-        background-color: rgba(255, 255, 255, .3);
+        color: white;
+        border-radius: 5px;
+        background-color: rgba(0, 0, 0, .3);
     }
 `;
 
@@ -166,7 +168,26 @@ const FooterCopyright = styled.div`
     margin-bottom: 10px;
 `;
 
+const ContainerForForm = styled.div`
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #fff;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    color: white;
+    background-color: rgba(51, 71, 86, .5);
+    padding: 15px;
+    width: 500px;
+
+    @media (min-width: 320px) and (max-width: 540px){
+        width: 100%;
+    }
+`;
+
 export {
+    ContainerForForm,
     FooterCopyright,
     SelectCustom,
     CoockieContainer,
