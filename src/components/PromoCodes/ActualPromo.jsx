@@ -18,9 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchClickPromo } from '../../store/thunks/thunks';
 //
 
-async function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+import sleep from '../../js/sleep';
 
 export default function ActualPromo({ data }){
     const { t } = useTranslation();

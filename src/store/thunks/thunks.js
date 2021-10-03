@@ -3,15 +3,42 @@ import {
     setServer,
     setUserPromoCodes,
     setSubfields,
-    setLoading
+    setToken,
+    setErrors
 } from '../actions/actions';
 
 import Fetch from '../../fetch/fetch';
 
-import { getPromoCodes, changeServer, getUserPromo, getSubfields, newUserPromo } from '../../graphql';
+import { getPromoCodes, changeServer, getUserPromo, getSubfields, newUserPromo, login as loginQuery } from '../../graphql';
+
+export function fetchLogin(data){
+    const { login, password } = data;
+    return (dispatch) => {
+        Fetch({
+            query: loginQuery,
+            variables: JSON.stringify({
+                login: login,
+                password: password
+            })
+        }, 'api')
+        .then(
+            (response) => {
+                if(response?.error){
+                    dispatch(setErrors(response.message));
+                } else {
+                    const token = response.login.accessToken;
+                    localStorage.setItem('token', token);
+                    dispatch(setToken(token));
+                }
+            },
+            (error) => {
+                console.log(error);
+            }
+        )
+    }
+}
 
 export function fetchClickPromo(promos){
-    console.log(promos)
     return (dispatch) => {
         Fetch({
             query: newUserPromo,
@@ -74,7 +101,6 @@ export function fetchUserPromoCodes(){
         }, 'api')
         .then(
             (response) => {
-                console.log(response)
                 dispatch(setUserPromoCodes(response.getRegUserPromo.promos));
            },
            (error) => {

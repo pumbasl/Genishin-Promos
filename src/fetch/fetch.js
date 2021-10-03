@@ -36,6 +36,8 @@ export default async function resultFetch(data){
                             error = true;
                             resultData = newAccessToken(data);
                         }
+                    } else {
+                        resultData = { error: true, message: value.message };
                     }
                 }
             } else {

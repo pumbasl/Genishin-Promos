@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 
 //useform
 import { useForm } from "react-hook-form";
@@ -21,19 +21,50 @@ import { LoginIcon, PasswordIcon } from '../../media';
 import { useTranslation } from 'react-i18next';
 //
 
-export default function Registration(){
+//notify
+import { toast } from 'react-hot-toast';
+//
+
+//redux
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchLogin } from '../../store/thunks/thunks';
+import { setErrors } from '../../store/actions/actions';
+//
+
+export default function Login(){
     const { t } = useTranslation();
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const token = useSelector((store) => store.token);
+    const errorsAuth = useSelector((store) => store.errorsAuth);
+
     const schema = yup.object({
-        login: yup.string().required(t('Это поле обязательно для заполнения!')).min(4).max(25),
-        password: yup.string().required(t('Это поле обязательно для заполнения!')).min(4)
+        login: yup.string().required(t('Это поле обязательно для заполнения!')).min(4, t('Логин не может быть меньше 4 символов!')).max(25, t('Логин не может быть больше 25 символов!')),
+        password: yup.string().required(t('Это поле обязательно для заполнения!')).min(4, t('Пароль не может быть меньше 4 символов!'))
     }).required();
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     });
 
+    useEffect(() => {
+        if(errorsAuth){
+            toast({title: t('Уведомление'), body: errorsAuth, time: t('Несколько секунд назад')}); //уведомление
+            dispatch(setErrors(null));
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [errorsAuth]);
+
+    useEffect(() => {
+        if(token){
+            toast({title: t('Уведомление'), body: t('Вы успешно авторизовались.'), time: t('Несколько секунд назад')}); //уведомление
+            history.push('/');
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [token]);
+
     const onSubmit = data => {
-        console.log(data)
+        dispatch(fetchLogin(data));
     };
 
     return(
@@ -41,14 +72,14 @@ export default function Registration(){
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3" controlId="loginForm">
                     <Form.Label>
-                        Логин: 
+                        {t('Логин')}: 
                     </Form.Label>
 
                     <InputGroup>
                         <InputGroup.Text>
                             <Image src={LoginIcon} width="100%" height="100%" />
                         </InputGroup.Text>
-                        <Form.Control type="text" placeholder="Логин *" {...register("login", { required: true, minLength: 4, maxLength: 24 })} />
+                        <Form.Control type="text" placeholder={t('Логин')} {...register("login", { required: true, minLength: 4, maxLength: 24 })} />
                     </InputGroup>
 
                     <ErrorsForm message={errors.login?.message} />
@@ -56,14 +87,14 @@ export default function Registration(){
 
                 <Form.Group>
                     <Form.Label>
-                        Пароль: 
+                        {t('Пароль')}: 
                     </Form.Label>
 
                     <InputGroup>
                         <InputGroup.Text>
                             <Image src={PasswordIcon} width="100%" height="100%" />
                         </InputGroup.Text>
-                        <Form.Control type="password" placeholder="Пароль *" {...register("password", { required: true, minLength: 4 })} />
+                        <Form.Control type="password" placeholder={t('Пароль')} {...register("password", { required: true, minLength: 4 })} />
                     </InputGroup>
 
                     <ErrorsForm message={errors.password?.message} />
@@ -71,11 +102,11 @@ export default function Registration(){
                     <br />
 
                     <Form.Text className="text-light">
-                        <Link to="/auth/restore_password" className="custom-link">Забыли пароль?</Link>
+                        <Link to="/auth/restore_password" className="custom-link">{t('Забыли пароль')}?</Link>
                     </Form.Text>
                 </Form.Group>
 
-                <Button type="submit" className="mt-3" variant='dark-custom'>Авторизоваться</Button>
+                <Button type="submit" className="mt-3" variant='dark-custom'>{t('Авторизоваться')}</Button>
             </Form>
         </ContainerForForm>
     );

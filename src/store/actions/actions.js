@@ -3,8 +3,24 @@ import {
     SET_USER_PROMOCODES,
     SET_LOADING_START,
     SET_SERVER,
-    SET_SUBFIELDS
+    SET_SUBFIELDS,
+    SET_TOKEN,
+    SET_ERRORS
 } from '../types/types';
+
+export const setErrors = (errors) => {
+    return {
+        type: SET_ERRORS,
+        payload: errors
+    };
+}
+
+export const setToken = (token) => {
+    return {
+        type: SET_TOKEN,
+        payload: token
+    };
+}
 
 export const setSubfields = (data) => {
     return {

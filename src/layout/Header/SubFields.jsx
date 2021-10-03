@@ -60,7 +60,7 @@ export default function Subfields(){
 
     useEffect(() => {
         dispatch(fetchSubfields());
-    }, []);
+    }, [dispatch]);
 
     if(!subfields){
         return(<Spinner animation="grow" variant="purple" />);

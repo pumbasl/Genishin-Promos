@@ -23,9 +23,9 @@ import { useTranslation } from 'react-i18next';
 export default function Registration(){
     const { t } = useTranslation();
     const schema = yup.object({
-        login: yup.string().required(t('Это поле обязательно для заполнения!')).min(4).max(25),
-        password: yup.string().required(t('Это поле обязательно для заполнения!')).min(4),
-        re_password: yup.string().required(t('Это поле обязательно для заполнения!')).min(4)
+        login: yup.string().required(t('Это поле обязательно для заполнения!')).min(4, t('Логин не может быть меньше 4 символов!')).max(25, t('Логин не может быть больше 25 символов!')),
+        password: yup.string().required(t('Это поле обязательно для заполнения!')).min(4, t('Пароль не может быть меньше 4 символов!')),
+        re_password: yup.string().required(t('Это поле обязательно для заполнения!')).min(4, t('Пароль не может быть меньше 4 символов!'))
     }).required();
 
     const { register, handleSubmit, formState: { errors } } = useForm({
@@ -41,14 +41,14 @@ export default function Registration(){
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3" controlId="loginForm">
                     <Form.Label>
-                        Логин: 
+                        {t('Логин')}: 
                     </Form.Label>
 
                     <InputGroup>
                         <InputGroup.Text>
                             <Image src={LoginIcon} width="100%" height="100%" />
                         </InputGroup.Text>
-                        <Form.Control type="text" placeholder="Логин *" {...register("login", { required: true, minLength: 4, maxLength: 24 })} />
+                        <Form.Control type="text" placeholder={t('Логин')} {...register("login", { required: true, minLength: 4, maxLength: 24 })} />
                     </InputGroup>
 
                     <ErrorsForm message={errors.login?.message} />
@@ -56,14 +56,14 @@ export default function Registration(){
 
                 <Form.Group className="mb-3">
                     <Form.Label>
-                        Пароль: 
+                        {t('Пароль')}: 
                     </Form.Label>
 
                     <InputGroup>
                         <InputGroup.Text>
                             <Image src={PasswordIcon} width="100%" height="100%" />
                         </InputGroup.Text>
-                        <Form.Control type="password" placeholder="Пароль *" {...register("password", { required: true, minLength: 4 })} />
+                        <Form.Control type="password" placeholder={t('Пароль')} {...register("password", { required: true, minLength: 4 })} />
                     </InputGroup>
 
                     <ErrorsForm message={errors.password?.message} />
@@ -74,13 +74,13 @@ export default function Registration(){
                         <InputGroup.Text>
                             <Image src={PasswordIcon} width="100%" height="100%" />
                         </InputGroup.Text>
-                        <Form.Control type="password" placeholder="Повторите пароль *" {...register("re_password", { required: true, minLength: 4 })} />
+                        <Form.Control type="password" placeholder={t('Повторите пароль')} {...register("re_password", { required: true, minLength: 4 })} />
                     </InputGroup>
 
                     <ErrorsForm message={errors.re_password?.message} />
                 </Form.Group>
 
-                <Button type="submit" className="mt-3" variant='dark-custom'>Создать акаунт</Button>
+                <Button type="submit" className="mt-3" variant='dark-custom'>{t('Создать профиль')}</Button>
             </Form>
         </ContainerForForm>
     );

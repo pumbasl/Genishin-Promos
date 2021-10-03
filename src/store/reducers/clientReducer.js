@@ -3,13 +3,25 @@ import {
   SET_USER_PROMOCODES,
   SET_SERVER,
   SET_LOADING_START,
-  SET_SUBFIELDS
+  SET_SUBFIELDS,
+  SET_TOKEN,
+  SET_ERRORS
 } from '../types/types';
   
 import initialState from '../initialState';
   
 const clientReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SET_ERRORS:
+      return {
+        ...state,
+        errorsAuth: action.payload
+      };
+    case SET_TOKEN:
+      return {
+        ...state,
+        token: action.payload
+      };
     case SET_SUBFIELDS:
       return {
         ...state,

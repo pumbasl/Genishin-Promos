@@ -31,7 +31,6 @@ export default function PromoCodes(){
     }, [dispatch, server]);
 
     const resultCodes = CheckCodes(promocodes, userPromocodes);
-    console.log(resultCodes)
 
     if(promocodes.length === 0) {
         return(
