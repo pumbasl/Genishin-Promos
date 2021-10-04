@@ -6,13 +6,19 @@ import {
   SET_SUBFIELDS,
   SET_TOKEN,
   SET_ERRORS,
-  SET_USER_INFO
+  SET_USER_INFO,
+  SET_NEWS
 } from '../types/types';
   
 import initialState from '../initialState';
   
 const clientReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SET_NEWS:
+      return {
+        ...state,
+        news: action.payload
+      };
     case SET_USER_INFO:
       return {
         ...state,

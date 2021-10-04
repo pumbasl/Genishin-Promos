@@ -7,3 +7,4 @@ export { default as login } from './login';
 export { default as registration } from './registration';
 export { default as regUser } from './regUser';
 export { default as UserGameInfo } from './addUserGameInfo';
+export { default as getNews } from './getNews';

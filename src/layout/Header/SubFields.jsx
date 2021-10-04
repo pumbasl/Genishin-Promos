@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 
 //Style
 import { Badge, Nav, Navbar, Spinner } from "react-bootstrap";
@@ -33,11 +34,11 @@ const DefaultEvents = () => {
 
             <Nav.Link
                 className="custom-link"
-                href="https://genshin-impact.fandom.com/wiki/Genshin_Impact_Wiki"
-                target="_blank"
+                as={NavLink}
+                to="/news"
             >
                 <img src={WikiLogo} width="18px" height="100%" className="me-2 mb-1" alt="wikiLogo" />
-                {t('Вики')}
+                {t('Новости')}
             </Nav.Link>
 
             <Nav.Link

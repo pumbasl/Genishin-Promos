@@ -5,7 +5,8 @@ import {
     setSubfields,
     setToken,
     setErrors,
-    setUserInfo
+    setUserInfo,
+    setNews
 } from '../actions/actions';
 
 import Fetch from '../../fetch/fetch';
@@ -19,8 +20,26 @@ import {
     login as loginQuery,
     registration,
     regUser,
-    UserGameInfo
+    UserGameInfo,
+    getNews
 } from '../../graphql';
+
+export function fetchNews(){
+    return (dispatch) => {
+        Fetch({
+            query: getNews,
+            variables: {}
+        }, 'api')
+        .then(
+            (response) => {
+                dispatch(setNews(response.getNews));
+            },
+            (error) => {
+                console.log(error);
+            }
+        )
+    };
+}
 
 export function fetchNewUserGameInfo(data){
     return () => {

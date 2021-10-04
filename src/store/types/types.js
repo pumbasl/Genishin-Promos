@@ -6,3 +6,4 @@ export const SET_SUBFIELDS = 'SET_SUBFIELDS';
 export const SET_TOKEN = 'SET_TOKEN';
 export const SET_ERRORS = 'SET_ERRORS';
 export const SET_USER_INFO = 'SET_USER_INFO';
+export const SET_NEWS = 'SET_NEWS';

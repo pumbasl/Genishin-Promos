@@ -6,8 +6,16 @@ import {
     SET_SUBFIELDS,
     SET_TOKEN,
     SET_ERRORS,
-    SET_USER_INFO
+    SET_USER_INFO,
+    SET_NEWS
 } from '../types/types';
+
+export const setNews = (news) => {
+    return {
+        type: SET_NEWS,
+        payload: news
+    };
+}
 
 export const setUserInfo = (data) => {
     return {

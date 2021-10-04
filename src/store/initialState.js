@@ -5,7 +5,8 @@ const initialState = {
     errorsAuth: null,
     userinfo: null,
     promocodes: [],
-    userPromocodes: []
+    userPromocodes: [],
+    news: false
 };
 
 export default initialState;
