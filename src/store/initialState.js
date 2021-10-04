@@ -3,6 +3,7 @@ const initialState = {
     server: localStorage.getItem('server') || 'Europe',
     subfields: false,
     errorsAuth: null,
+    userinfo: null,
     promocodes: [],
     userPromocodes: []
 };

@@ -4,7 +4,8 @@ import {
     setUserPromoCodes,
     setSubfields,
     setToken,
-    setErrors
+    setErrors,
+    setUserInfo
 } from '../actions/actions';
 
 import Fetch from '../../fetch/fetch';
@@ -16,8 +17,40 @@ import {
     getSubfields,
     newUserPromo,
     login as loginQuery,
-    registration
+    registration,
+    regUser,
+    UserGameInfo
 } from '../../graphql';
+
+export function fetchNewUserGameInfo(data){
+    return () => {
+        Fetch({
+            query: UserGameInfo,
+            variables: JSON.stringify({
+                gameNickName: data.gameNickName ? data.gameNickName : 'Пусто',
+                adventureLvl: data.adventureLvl ? data.adventureLvl : 1,
+                mainChar: data.mainChar ? data.mainChar : 'Пусто'
+            })
+        }, 'api');
+    };
+}
+
+export function fetchUserInfo(){
+    return (dispatch) => {
+        Fetch({
+            query: regUser,
+            variables: {}
+        }, 'api')
+        .then(
+            (response) => {
+                dispatch(setUserInfo(response.regUser));
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
+    };
+}
 
 export function fetchRegistration(data){
     const { login, password, server } = data;
@@ -44,7 +77,7 @@ export function fetchRegistration(data){
             (error) => {
                 console.log(error);
             }
-        )
+        );
     }
 }
 

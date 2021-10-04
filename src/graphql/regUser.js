@@ -5,7 +5,12 @@ query regUser{
         login
         reg
         roles
-        tokenVersion
+        gameInfo{
+            ownerId
+            gameNickName
+            adventureLvl
+            mainChar
+        }
         email
         server
         ua

@@ -57,7 +57,7 @@ export default function Registration(){
 
     useEffect(() => {
         if(token){
-            toast({title: t('Уведомление'), body: t('Вы успешно зарегестрировались.'), time: t('Несколько секунд назад')}); //уведомление
+            toast({title: t('Уведомление'), body: t('Вы успешно зарегистрировались.'), time: t('Несколько секунд назад')}); //уведомление
             history.push('/');
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

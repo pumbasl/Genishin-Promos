@@ -6,3 +6,4 @@ export { default as newUserPromo } from './newUserPromo';
 export { default as login } from './login';
 export { default as registration } from './registration';
 export { default as regUser } from './regUser';
+export { default as UserGameInfo } from './addUserGameInfo';

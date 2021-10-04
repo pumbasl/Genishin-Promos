@@ -5,8 +5,16 @@ import {
     SET_SERVER,
     SET_SUBFIELDS,
     SET_TOKEN,
-    SET_ERRORS
+    SET_ERRORS,
+    SET_USER_INFO
 } from '../types/types';
+
+export const setUserInfo = (data) => {
+    return {
+        type: SET_USER_INFO,
+        payload: data
+    };
+}
 
 export const setErrors = (errors) => {
     return {
