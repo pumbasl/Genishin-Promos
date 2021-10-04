@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 //redux
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,7 +13,7 @@ import CheckCodes from '../../service/CheckPromoCodes';
 import ActualPromo from './ActualPromo';
 import UsedPromo from './UsedPromo';
 import HistoryPromo from './HistoryPromo';
-
+import Server from './Server';
 import { Preloader } from '../index';
 //
 
@@ -22,17 +22,20 @@ export default function PromoCodes(){
     const promocodes = useSelector((state) => state.promocodes);
     const userPromocodes = useSelector((state) => state.userPromocodes);
     const server = useSelector((state) => state.server);
+    const [ isLoading, setIsLoading ] = useState(false);
 
     useEffect(() => {
         dispatch(fetchPromoCodes(server));
         if(localStorage.getItem('token')){
             dispatch(fetchUserPromoCodes());
         }
+
+        setIsLoading(true);
     }, [dispatch, server]);
 
     const resultCodes = CheckCodes(promocodes, userPromocodes);
 
-    if(promocodes.length === 0) {
+    if(!isLoading) {
         return(
             <Preloader fetch />
         )
@@ -40,6 +43,7 @@ export default function PromoCodes(){
 
     return(
         <>
+            <Server />
             <ActualPromo data={resultCodes.actualCodes} />
             <UsedPromo data={userPromocodes} />
             <HistoryPromo data={resultCodes.history} />

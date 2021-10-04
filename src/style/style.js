@@ -11,10 +11,11 @@ const Background = styled.div`
 `;
 
 const BackgroundContainer = styled.div`
-    border: 1px solid #fff;
     padding: 15px;
-    color: #000022;
-    background-color: rgba(223, 215, 215, .6);
+    color: black;
+    // background-color: rgba(223, 215, 215, .6);
+    background-color: rgba(241, 212, 212, .6);
+    // background-color: rgba(75, 93, 103, .9);
     border-radius: 3px;
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 `;
@@ -62,7 +63,7 @@ const PromoCardBlock = styled.div`
         cursor: pointer;
         text-decoration: none;
         color: inherit;
-        transition: all 0.3s ease;
+        transition: all .5s ease;
         color: white;
         border-radius: 5px;
         background-color: rgba(0, 0, 0, .3);
@@ -150,7 +151,6 @@ const SelectCustom = styled.select`
     text-decoration: none;
     padding: 5px;
     border-radius: 5px;
-    margin-bottom: 10px;
 
     option:disabled {
         color: #000;
@@ -183,7 +183,12 @@ const ContainerForForm = styled.div`
     }
 `;
 
+const ServerContainer = styled.div`
+    float: right;
+`;
+
 export {
+    ServerContainer,
     ContainerForForm,
     FooterCopyright,
     SelectCustom,

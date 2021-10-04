@@ -10,3 +10,5 @@ export { default as Notifications } from './Notifications/Notifications';
 export { default as CookieNotify } from './CookieAccept/CoockieAccept';
 export { default as Profile } from './Profile/Profile';
 export { default as ErrorsForm } from './ErrorsForm/ErrorsForm';
+export { default as Avatar } from './Avatar/Avatar';
+export { default as TableWithInfo } from './TableWithInfo/TableWithInfo';

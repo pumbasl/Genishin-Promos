@@ -11,7 +11,7 @@ import { setServer } from '../../store/actions/actions';
 //
 
 //styles
-import { SelectCustom } from '../../style/style';
+import { SelectCustom, ServerContainer } from '../../style/style';
 //
 
 export default function Server(){
@@ -30,14 +30,16 @@ export default function Server(){
     };
 
     return(
-        <label>
-            <b>{t('Сервер')}: &nbsp;</b>
-            <SelectCustom value={server} onChange={handleChange}>
-                <option disabled>{t('Выберите свой сервер')}</option>
-                <option value="Europe">Europe</option>
-                <option value="America">America</option>
-                <option value="Asia">Asia</option>
-            </SelectCustom>
-        </label>
+        <ServerContainer>
+            <label>
+                {t('Сервер')}: &nbsp;
+                <SelectCustom value={server} onChange={handleChange}>
+                    <option disabled>{t('Выберите свой сервер')}</option>
+                    <option value="Europe">Europe</option>
+                    <option value="America">America</option>
+                    <option value="Asia">Asia</option>
+                </SelectCustom>
+            </label>
+        </ServerContainer>
     );
 }

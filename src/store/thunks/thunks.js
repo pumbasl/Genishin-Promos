@@ -9,7 +9,44 @@ import {
 
 import Fetch from '../../fetch/fetch';
 
-import { getPromoCodes, changeServer, getUserPromo, getSubfields, newUserPromo, login as loginQuery } from '../../graphql';
+import {
+    getPromoCodes,
+    changeServer,
+    getUserPromo,
+    getSubfields,
+    newUserPromo,
+    login as loginQuery,
+    registration
+} from '../../graphql';
+
+export function fetchRegistration(data){
+    const { login, password, server } = data;
+    return (dispatch) => {
+        Fetch({
+            query: registration,
+            variables: JSON.stringify({
+                login: login,
+                password: password,
+                server: server,
+                ua: window.navigator.userAgent
+            })
+        }, 'api')
+        .then(
+            (response) => {
+                if(response?.error){
+                    dispatch(setErrors(response.message));
+                } else {
+                    const token = response.registration.accessToken;
+                    localStorage.setItem('token', token);
+                    dispatch(setToken(token));
+                }
+            },
+            (error) => {
+                console.log(error);
+            }
+        )
+    }
+}
 
 export function fetchLogin(data){
     const { login, password } = data;

@@ -10,7 +10,6 @@ import { toast } from 'react-hot-toast';
 
 //Components
 import { Card } from '../index';
-import Server from './Server';
 //
 
 //redux
@@ -69,8 +68,6 @@ export default function ActualPromo({ data }){
                     <b>{t('Актуальные промокоды')}:</b>
                 </h4>
 
-                <Server />
-
                 <div className="mb-2">
                     {t('Пока что пусто)')}
                 </div>
@@ -83,8 +80,6 @@ export default function ActualPromo({ data }){
             <h4>
                 <b>{t('Актуальные промокоды')}:</b>
             </h4>
-
-            <Server />
 
             {data.map((promo) => (
                 <Card.Label key={promo._id}>

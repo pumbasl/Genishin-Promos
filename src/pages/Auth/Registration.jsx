@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 //useform
 import { useForm } from "react-hook-form";
@@ -16,24 +17,59 @@ import { ErrorsForm } from '../../components';
 import { LoginIcon, PasswordIcon } from '../../media';
 //
 
+//notify
+import { toast } from 'react-hot-toast';
+//
+
 //locales
 import { useTranslation } from 'react-i18next';
 //
 
+//redux
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchRegistration } from '../../store/thunks/thunks';
+import { setErrors } from '../../store/actions/actions';
+//
+
 export default function Registration(){
     const { t } = useTranslation();
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const token = useSelector((store) => store.token);
+    const errorsAuth = useSelector((store) => store.errorsAuth);
+
     const schema = yup.object({
         login: yup.string().required(t('Это поле обязательно для заполнения!')).min(4, t('Логин не может быть меньше 4 символов!')).max(25, t('Логин не может быть больше 25 символов!')),
-        password: yup.string().required(t('Это поле обязательно для заполнения!')).min(4, t('Пароль не может быть меньше 4 символов!')),
-        re_password: yup.string().required(t('Это поле обязательно для заполнения!')).min(4, t('Пароль не может быть меньше 4 символов!'))
+        password: yup.string().required(t('Это поле обязательно для заполнения!')).min(4, t('Пароль не может быть меньше 4 символов!'))
     }).required();
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     });
 
+    useEffect(() => {
+        if(errorsAuth){
+            toast({title: t('Уведомление'), body: errorsAuth, time: t('Несколько секунд назад')}); //уведомление
+            dispatch(setErrors(null));
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [errorsAuth]);
+
+    useEffect(() => {
+        if(token){
+            toast({title: t('Уведомление'), body: t('Вы успешно зарегестрировались.'), time: t('Несколько секунд назад')}); //уведомление
+            history.push('/');
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [token]);
+
     const onSubmit = data => {
-        console.log(data)
+        if(data.password === data.re_password){
+            data.server = "Europe";
+            dispatch(fetchRegistration(data));
+        } else {
+            dispatch(setErrors('PASSWORDS_NOT_MATCH'));
+        }
     };
 
     return(

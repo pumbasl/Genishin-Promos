@@ -15,6 +15,8 @@ const Help = lazy(() => import('../pages/Help/Help'));
 const Login = lazy(() => import('../pages/Auth/Login'));
 const Registration = lazy(() => import('../pages/Auth/Registration'));
 const RestorePassword = lazy(() => import('../pages/Auth/RestorePassword'));
+const Profile = lazy(() => import('../pages/Profile/Profile'));
+const Settings = lazy(() => import('../pages/Profile/Settings/Settings'));
 
 const Error = lazy(() => import('../errors/error'));
 //
@@ -30,6 +32,9 @@ export default function Routers(){
                 <Route exact path="/auth/login" component={Login} />
                 <Route exact path="/auth/reg" component={Registration} />
                 <Route exact path="/auth/restore_password" component={RestorePassword} />
+
+                <Route exact path="/profile" component={Profile} />
+                <Route exact path="/profile/settings" component={Settings} />
 
                 <Route exact path="*">
                     <Error id="404" />
