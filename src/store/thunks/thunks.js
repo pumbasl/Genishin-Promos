@@ -24,6 +24,22 @@ import {
     getNews
 } from '../../graphql';
 
+export function fetchLogout(){
+    return (dispatch) => {
+        Fetch({}, 'logout')
+        .then(
+            (response) => {
+                delete localStorage.token;
+                dispatch(setToken(null));
+                dispatch(setUserPromoCodes([]));
+            },
+            (error) => {
+                console.log(error);
+            }
+        )
+    };
+}
+
 export function fetchNews(){
     return (dispatch) => {
         Fetch({

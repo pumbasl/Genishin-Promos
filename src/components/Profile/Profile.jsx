@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next';
 
 //redux
 import { useDispatch, useSelector } from 'react-redux';
-import { setToken, setUserPromoCodes } from '../../store/actions/actions';
+import { fetchLogout } from '../../store/thunks/thunks';
 //
 
 export default function ProfileButtons(){
@@ -23,9 +23,7 @@ export default function ProfileButtons(){
     const token = useSelector((state) => state.token);
 
     const handleLogout = () => {
-        delete localStorage.token;
-        dispatch(setToken(null));
-        dispatch(setUserPromoCodes([]));
+        dispatch(fetchLogout());
     };
 
     if(!token){

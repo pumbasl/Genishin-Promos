@@ -22,10 +22,10 @@ async function newAccessToken(data){
 }
 
 
-export default async function resultFetch(data){
+export default async function resultFetch(data, api){
     let resultData;
 
-    await Fetch(data, 'api')
+    await Fetch(data, api)
     .then(res => res.json())
     .then(
         (result) => {
@@ -62,7 +62,7 @@ async function Fetch(data, api){
         credentials: 'include',
         headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': 'https://radiant-inlet-24493.herokuapp.com',
+            'Access-Control-Allow-Origin': process.env.REACT_APP_ENDPOINT,
             'authorization': `Bearer ${localStorage.getItem('token')}`
         },
         body: JSON.stringify(data)
