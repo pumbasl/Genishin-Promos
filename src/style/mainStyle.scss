@@ -32,7 +32,7 @@ $theme-colors: (
 @font-face {
     font-family: 'Open Sans';
     src: url('./fonts/OpenSans-Light.ttf') format('truetype');
-    font-display: auto;
+    font-display: fallback;
 }
 
 @import "../layout/Header/style.scss"; // HeaderStyle

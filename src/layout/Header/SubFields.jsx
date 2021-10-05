@@ -78,7 +78,7 @@ export default function Subfields(){
                         href={subfield.link}
                         target="_blank"
                     >
-                        <img src={EventLogo} width="18px" className="me-2" alt="eventLogo" />
+                        <img src={EventLogo} width="18px" height="100%" className="me-2" alt="eventLogo" />
                         <Badge variant="purple">{t('Веб событие')}</Badge> &nbsp;
                         {subfield.name}
                     </Nav.Link>

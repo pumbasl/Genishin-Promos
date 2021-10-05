@@ -1,6 +1,6 @@
 let error = false;
 
-async function newAccessToken(data){
+async function newAccessToken(data, api){
     let resultData;
 
     await Fetch({}, 'refresh_token')
@@ -9,7 +9,7 @@ async function newAccessToken(data){
         (result) => {
             if(result.ok === true){
                 localStorage.setItem('token', result.accessToken);
-                resultData = resultFetch(data);
+                resultData = resultFetch(data, api);
             }
         },
         (error) => {
@@ -34,7 +34,7 @@ export default async function resultFetch(data, api){
                     if(value.message === 'not authenticated'){
                         if(!error){
                             error = true;
-                            resultData = newAccessToken(data);
+                            resultData = newAccessToken(data, api);
                         }
                     } else {
                         resultData = { error: true, message: value.message };
