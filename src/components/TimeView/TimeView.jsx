@@ -6,19 +6,19 @@ export default function TimeSee({ children, time, customFormat }){
         const date = format(time, 'dd.MM.yyyy HH:mm')
 
         return(
-            <>
+            <b>
                 {children}
                 {date}
-            </>
+            </b>
         );
     } else {
         const date = format(time, customFormat)
 
         return(
-            <>
+            <b>
                 {children}
                 {date}
-            </>
+            </b>
         );
     }
 }

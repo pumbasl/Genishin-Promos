@@ -35,26 +35,39 @@ export default function News(){
         );
     }
 
+    if(news?.length === 0){
+        return(
+            <Container>
+                {t('Новостей нет.')}
+            </Container>
+        );
+    }
+
+    const newsElements = () => 
+        news.map((value) => (
+            <VerticalTimelineElement
+                key={value._id}
+                className="vertical-timeline-element--work"
+                contentStyle={{ background: 'white', color: 'black' }}
+                date={<TimeView time={value.date} customFormat='dd.MM.yyyy'>{t('Дата')}: </TimeView>}
+                iconStyle={{ background: 'indianred', color: '#fff' }}
+                icon={<Image width="100%" height="100%" src={NewsIcon} />}
+            >
+                <h3 className="vertical-timeline-element-title">{value.title}</h3>
+                <h4 className="vertical-timeline-element-subtitle">{value.subtitle}</h4>
+                <p className="mb-3">
+                    {value.text}
+                </p>
+                <Badge bg="dark-custom">
+                    {t('Автор')}: <span style={{color: '#FFB319'}}>{value.author.login}</span>
+                </Badge>
+            </VerticalTimelineElement>
+        ));
+
     return(
         <Container>
            <VerticalTimeline>
-               {news.map((value) => (
-                   <VerticalTimelineElement
-                        key={value._id}
-                        className="vertical-timeline-element--work"
-                        contentStyle={{ background: 'white', color: 'black' }}
-                        date={<TimeView time={value.date} customFormat='dd.MM.yyyy'>{t('Дата')}: </TimeView>}
-                        iconStyle={{ background: 'indianred', color: '#fff' }}
-                        icon={<Image width="100%" height="100%" src={NewsIcon} />}
-                    >
-                        <h3 className="vertical-timeline-element-title">{value.title}</h3>
-                        <h4 className="vertical-timeline-element-subtitle">{value.subtitle}</h4>
-                        <p className="mb-3">
-                            {value.text}
-                        </p>
-                        <Badge bg="info">Author: <span style={{color: 'black'}}>{value.author.login}</span></Badge>
-                    </VerticalTimelineElement>
-               ))}
+               {newsElements()}
             </VerticalTimeline>
         </Container>
     );

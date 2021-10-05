@@ -9,7 +9,7 @@ import { AvatarImage } from '../../media/';
 export default function Avatar({ type, width }){
     if(type === 'rounded'){
         return(
-            <Image src={AvatarImage} width="250px" height="250px" rounded alt="avatar" />
+            <Image className="mt-4" src={AvatarImage} width="250px" height="250px" rounded alt="avatar" />
         );
     }
 

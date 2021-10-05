@@ -12,6 +12,13 @@ import { useTranslation } from 'react-i18next';
 
 export default function TableWithInfo({ data }){
     const { t } = useTranslation();
+    const roles = arrayRole => 
+        arrayRole.map((role, index) => (
+            <b key={index}>
+                {t(role)}, &nbsp;
+            </b>
+        ));
+
     return(
         <>
             <Table>
@@ -31,6 +38,10 @@ export default function TableWithInfo({ data }){
                     <tr>
                         <td>{t('Ваш мейн персонаж')}: </td>
                         <td>{data?.gameInfo?.mainChar}</td>
+                    </tr>
+                    <tr>
+                        <td>{t('Статус')}: </td>
+                        <td>{roles(data.roles)}</td>
                     </tr>
                     <tr>
                         <td>{t('Дата регистрации')}: </td>
