@@ -62,6 +62,7 @@ async function Fetch(data, api){
         credentials: 'include',
         headers: {
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'https://radiant-inlet-24493.herokuapp.com',
             'authorization': `Bearer ${localStorage.getItem('token')}`
         },
         body: JSON.stringify(data)
