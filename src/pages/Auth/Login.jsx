@@ -27,16 +27,16 @@ import { toast } from 'react-hot-toast';
 
 //redux
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchLogin } from '../../store/thunks/thunks';
-import { setErrors } from '../../store/actions/actions';
+import { fetchLogin } from '../../store/thunks/userThunks';
+import { setErrors } from '../../store/actions/userActions';
 //
 
 export default function Login(){
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const history = useHistory();
-    const token = useSelector((store) => store.token);
-    const errorsAuth = useSelector((store) => store.errorsAuth);
+    const token = useSelector((state) => state.user.token);
+    const errorsAuth = useSelector((state) => state.user.errorsAuth);
 
     const schema = yup.object({
         login: yup.string().required(t('Это поле обязательно для заполнения!')).min(4, t('Логин не может быть меньше 4 символов!')).max(25, t('Логин не может быть больше 25 символов!')),

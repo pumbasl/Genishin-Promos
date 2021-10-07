@@ -18,6 +18,7 @@ const RestorePassword = lazy(() => import('../pages/Auth/RestorePassword'));
 const Profile = lazy(() => import('../pages/Profile/Profile'));
 const News = lazy(() => import('../pages/News/News'));
 const Settings = lazy(() => import('../pages/Profile/Settings/Settings'));
+const Admin = lazy(() => import('../pages/Admin/Admin'));
 
 const Error = lazy(() => import('../errors/error'));
 //
@@ -37,6 +38,8 @@ export default function Routers(){
 
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/profile/settings" component={Settings} />
+
+                <Route exact path="/admin" component={Admin} />
 
                 <Route exact path="*">
                     <Error id="404" />

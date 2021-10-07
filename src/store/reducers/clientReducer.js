@@ -10,7 +10,7 @@ import {
   SET_NEWS
 } from '../types/types';
   
-import initialState from '../initialState';
+import initialState from '../initialStateClient';
   
 const clientReducer = (state = initialState, action) => {
   switch (action.type) {

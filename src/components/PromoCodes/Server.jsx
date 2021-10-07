@@ -6,8 +6,8 @@ import { useTranslation } from 'react-i18next';
 
 //redux
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchChangeServer } from '../../store/thunks/thunks';
-import { setServer } from '../../store/actions/actions';
+import { fetchChangeServer } from '../../store/thunks/userThunks';
+import { setServer } from '../../store/actions/userActions';
 //
 
 //styles
@@ -17,7 +17,7 @@ import { SelectCustom, ServerContainer } from '../../style/style';
 export default function Server(){
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const server = useSelector((state) => state.server);
+    const server = useSelector((state) => state.user.server);
 
     const handleChange = async (event) => {
         localStorage.setItem('server', event.target.value);

@@ -7,7 +7,7 @@ import {
     setErrors,
     setUserInfo,
     setNews
-} from '../actions/actions';
+} from '../actions/userActions';
 
 import Fetch from '../../fetch/fetch';
 
@@ -61,11 +61,7 @@ export function fetchNewUserGameInfo(data){
     return (dispatch) => {
         Fetch({
             query: UserGameInfo,
-            variables: JSON.stringify({
-                gameNickName: data.gameNickName ? data.gameNickName : 'Пусто',
-                adventureLvl: data.adventureLvl ? data.adventureLvl : 1,
-                mainChar: data.mainChar ? data.mainChar : 'Пусто'
-            })
+            variables: JSON.stringify(data)
         }, 'api')
         .then(
             (response) => {

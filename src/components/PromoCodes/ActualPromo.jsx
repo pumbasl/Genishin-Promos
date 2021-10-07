@@ -14,7 +14,7 @@ import { Card } from '../index';
 
 //redux
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchClickPromo } from '../../store/thunks/thunks';
+import { fetchClickPromo } from '../../store/thunks/userThunks';
 //
 
 import sleep from '../../js/sleep';
@@ -22,7 +22,7 @@ import sleep from '../../js/sleep';
 function ActualPromo({ data }){
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const userPromos = useSelector((state) => state.userPromocodes);
+    const userPromos = useSelector((state) => state.user.userPromocodes);
 
     const handleClick = async (promo) => {
         navigator.clipboard.writeText(promo.code)

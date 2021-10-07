@@ -27,8 +27,8 @@ import { toast } from 'react-hot-toast';
 
 //redux
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchNewUserGameInfo } from '../../../store/thunks/thunks';
-import { setErrors } from '../../../store/actions/actions';
+import { fetchNewUserGameInfo } from '../../../store/thunks/userThunks';
+import { setErrors } from '../../../store/actions/userActions';
 //
 
 export default function Settings(){
@@ -36,8 +36,8 @@ export default function Settings(){
     const { t } = useTranslation();
     const history = useHistory();
     const dispatch = useDispatch();
-    const token = useSelector((store) => store.token);
-    const errorsAuth = useSelector((store) => store.errorsAuth);
+    const token = useSelector((state) => state.user.token);
+    const errorsAuth = useSelector((state) => state.user.errorsAuth);
 
     const schema = yup.object({
         gameNickName: yup.string().min(1, t('Игровое имя не может быть меньше 1 символа!')).max(25, t('Игровое имя  не может быть больше 25 символов!')),

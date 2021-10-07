@@ -14,13 +14,13 @@ import { useTranslation } from 'react-i18next';
 
 //redux
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchLogout } from '../../store/thunks/thunks';
+import { fetchLogout } from '../../store/thunks/userThunks';
 //
 
 export default function ProfileButtons(){
     const { t } = useTranslation();
     const dispatch = useDispatch();
-    const token = useSelector((state) => state.token);
+    const token = useSelector((state) => state.user.token);
 
     const handleLogout = () => {
         dispatch(fetchLogout());

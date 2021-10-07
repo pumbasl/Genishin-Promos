@@ -16,7 +16,7 @@ import { useTranslation } from 'react-i18next';
 
 //redux
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSubfields } from '../../store/thunks/thunks';
+import { fetchSubfields } from '../../store/thunks/userThunks';
 //
 
 const DefaultEvents = () => {
@@ -55,7 +55,7 @@ const DefaultEvents = () => {
 
 export default function Subfields(){
     const dispatch = useDispatch();
-    const subfields = useSelector((state) => state.subfields);
+    const subfields = useSelector((state) => state.user.subfields);
 
     const { t } = useTranslation();
 

@@ -13,7 +13,7 @@ import { News as NewsIcon } from '../../media';
 
 //redux
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchNews } from '../../store/thunks/thunks';
+import { fetchNews } from '../../store/thunks/userThunks';
 //
 
 //locales
@@ -23,7 +23,7 @@ import { useTranslation } from 'react-i18next';
 export default function News(){
     const dispatch = useDispatch();
     const { t } = useTranslation();
-    const news = useSelector((state) => state.news);
+    const news = useSelector((state) => state.user.news);
 
     useEffect(() => {
         dispatch(fetchNews());
