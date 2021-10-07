@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 // Locales
 import { useTranslation } from 'react-i18next';
@@ -8,10 +8,22 @@ import { useTranslation } from 'react-i18next';
 import { Card } from '../index';
 //
 
-
-export default function Activated({ data }){
+function Activated({ data }){
     const { t } = useTranslation();
     
+    const renderPromocode = (promo) => {
+        return(
+            <Card.Label key={promo._id}>
+                <Card.Body>
+                    {promo.code}
+                    <Card.Time expired={promo.expired}>
+                        {t('Действует до')}: &nbsp; 
+                    </Card.Time>
+                </Card.Body>
+            </Card.Label>
+        );
+    };
+
     if(data.length === 0) {
         return(
             <>
@@ -30,16 +42,9 @@ export default function Activated({ data }){
             <h4>
                 <b>{t('Активированные промокоды')}:</b>
             </h4>
-            {data.map((promo) => (
-                <Card.Label key={promo._id}>
-                    <Card.Body>
-                        {promo.code}
-                        <Card.Time expired={promo.expired}>
-                            {t('Действует до')}: &nbsp; 
-                        </Card.Time>
-                    </Card.Body>
-                </Card.Label>
-            ))}
+            {data.map(renderPromocode)}
         </>
     );
 }
+
+export default memo(Activated);

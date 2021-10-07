@@ -1,27 +1,5 @@
 let error = false;
 
-async function newAccessToken(data, api){
-    let resultData;
-
-    await Fetch({}, 'refresh_token')
-    .then(res => res.json())
-    .then(
-        (result) => {
-            if(result.ok === true){
-                localStorage.setItem('token', result.accessToken);
-                resultData = resultFetch(data, api);
-            }
-        },
-        (error) => {
-            console.log(error);
-            resultData = { error: true, message: error.message };
-        }
-    );
-    
-    return resultData;
-}
-
-
 export default async function resultFetch(data, api){
     let resultData;
 
@@ -52,6 +30,29 @@ export default async function resultFetch(data, api){
         }
     );
 
+    return resultData;
+}
+
+async function newAccessToken(data, api){
+    let resultData;
+
+    await Fetch({}, 'refresh_token')
+    .then(res => res.json())
+    .then(
+        (result) => {
+            if(result.ok === true){
+                localStorage.setItem('token', result.accessToken);
+                resultData = resultFetch(data, api);
+            } else {
+                throw new Error('FAIL_UPDATE_TOKENS');
+            }
+        },
+        (error) => {
+            console.log(error);
+            resultData = { error: true, message: error.message };
+        }
+    );
+    
     return resultData;
 }
 

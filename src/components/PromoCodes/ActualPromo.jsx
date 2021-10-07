@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 // Locales
 import { useTranslation } from 'react-i18next';
@@ -19,7 +19,7 @@ import { fetchClickPromo } from '../../store/thunks/thunks';
 
 import sleep from '../../js/sleep';
 
-export default function ActualPromo({ data }){
+function ActualPromo({ data }){
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const userPromos = useSelector((state) => state.userPromocodes);
@@ -61,6 +61,19 @@ export default function ActualPromo({ data }){
         }
     };
 
+    const renderPromocode = (promo) => {
+        return(
+            <Card.Label key={promo._id}>
+                <Card.Body onClick={() => { handleClick(promo) }}>
+                    {promo.code}
+                    <Card.Time expired={promo.expired}>
+                        {t('Действует до')}: &nbsp;
+                    </Card.Time>
+                </Card.Body>
+            </Card.Label>
+        );
+    };
+
     if(data.length === 0){
         return (
            <>
@@ -81,16 +94,9 @@ export default function ActualPromo({ data }){
                 <b>{t('Актуальные промокоды')}:</b>
             </h4>
 
-            {data.map((promo) => (
-                <Card.Label key={promo._id}>
-                    <Card.Body onClick={() => { handleClick(promo) }}>
-                        {promo.code}
-                        <Card.Time expired={promo.expired}>
-                            {t('Действует до')}: &nbsp;
-                        </Card.Time>
-                    </Card.Body>
-                </Card.Label>
-            ))}
+            {data.map(renderPromocode)}
         </>
     );
 }
+
+export default memo(ActualPromo);

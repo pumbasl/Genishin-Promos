@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 //
 
 //style
-import { Button, ButtonGroup, DropdownButton, Dropdown } from 'react-bootstrap';
+import { Button, ButtonGroup, Dropdown } from 'react-bootstrap';
 //
 
 //locales
@@ -28,7 +28,7 @@ export default function ProfileButtons(){
 
     if(!token){
         return(
-            <ButtonGroup className="me-2">
+            <ButtonGroup className="dropDown-custom ms-1 me-2">
                 <Button as={Link} to="/auth/login" variant="dark-custom">
                     {t('Авторизация')}
                 </Button>
@@ -40,11 +40,17 @@ export default function ProfileButtons(){
         );
     } else {
         return(
-            <DropdownButton id="dropdown-basic-button" title={t('Профиль')} className="me-2" variant="dark-custom">
-                <Dropdown.Item as={Link} to="/profile">{t('Личный кабинет')}</Dropdown.Item>
-                <Dropdown.Item as={Link} to="/profile/settings">{t('Настройки')}</Dropdown.Item>
-                <Dropdown.Item onClick={handleLogout}>{t('Выйти')}</Dropdown.Item>
-            </DropdownButton>
+            <Dropdown className="dropDown-custom ms-1">
+                <Dropdown.Toggle variant="dark-custom" className="me-2">
+                {t('Профиль')}
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                    <Dropdown.Item as={Link} to="/profile">{t('Личный кабинет')}</Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/profile/settings">{t('Настройки')}</Dropdown.Item>
+                    <Dropdown.Item onClick={handleLogout}>{t('Выйти')}</Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>
         );
     }
 }

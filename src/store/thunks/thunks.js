@@ -34,7 +34,7 @@ export function fetchLogout(){
                 dispatch(setUserPromoCodes([]));
             },
             (error) => {
-                console.log(error);
+                ErrorCatch(error, dispatch);
             }
         )
     };
@@ -51,14 +51,14 @@ export function fetchNews(){
                 dispatch(setNews(response.getNews));
             },
             (error) => {
-                console.log(error);
+                ErrorCatch(error, dispatch);
             }
         )
     };
 }
 
 export function fetchNewUserGameInfo(data){
-    return () => {
+    return (dispatch) => {
         Fetch({
             query: UserGameInfo,
             variables: JSON.stringify({
@@ -66,7 +66,16 @@ export function fetchNewUserGameInfo(data){
                 adventureLvl: data.adventureLvl ? data.adventureLvl : 1,
                 mainChar: data.mainChar ? data.mainChar : 'Пусто'
             })
-        }, 'api');
+        }, 'api')
+        .then(
+            (response) => {
+                console.log('ok');
+            },
+
+            (error) => {
+                ErrorCatch(error, dispatch);
+            }
+        );
     };
 }
 
@@ -81,7 +90,7 @@ export function fetchUserInfo(){
                 dispatch(setUserInfo(response.regUser));
             },
             (error) => {
-                console.log(error);
+                ErrorCatch(error, dispatch);
             }
         );
     };
@@ -110,7 +119,7 @@ export function fetchRegistration(data){
                 }
             },
             (error) => {
-                console.log(error);
+                ErrorCatch(error, dispatch);
             }
         );
     }
@@ -137,7 +146,7 @@ export function fetchLogin(data){
                 }
             },
             (error) => {
-                console.log(error);
+                ErrorCatch(error, dispatch);
             }
         )
     }
@@ -156,7 +165,7 @@ export function fetchClickPromo(promos){
                 dispatch(setUserPromoCodes(response.editRegUserPromos.promos));
             },
             (error) => {
-                console.log(error);
+                ErrorCatch(error, dispatch);
             }
         )
     }
@@ -173,7 +182,7 @@ export function fetchSubfields(){
                 dispatch(setSubfields(response.subfields));
             },
             (error) => {
-                console.log(error);
+                ErrorCatch(error, dispatch);
             }
         )
     }
@@ -187,13 +196,13 @@ export function fetchChangeServer(server){
                 server: server
             })
         }, 'api')
-       .then(
-           (response) => {
+        .then(
+            (response) => {
                 dispatch(setServer(server));
-           },
-           (error) => {
-               console.log(error);
-           }
+            },
+            (error) => {
+                ErrorCatch(error, dispatch);
+            }
        )
     }
 }
@@ -207,10 +216,10 @@ export function fetchUserPromoCodes(){
         .then(
             (response) => {
                 dispatch(setUserPromoCodes(response.getRegUserPromo.promos));
-           },
-           (error) => {
-               console.log(error);
-           }
+            },
+            (error) => {
+                ErrorCatch(error, dispatch);
+            }
         )
     }
 }
@@ -228,8 +237,20 @@ export function fetchPromoCodes(server){
                 dispatch(setPromoCodes(response?.promosByServer));
             },
             (error) => {
-                console.log(error);
+                ErrorCatch(error, dispatch);
             }
         )
+    }
+}
+
+function ErrorCatch(error, dispatch){
+    if(error.message === 'FAIL_UPDATE_TOKENS'){
+        console.log('FAILED REFRESH TOKEN | LOGOUT');
+        Fetch({}, 'logout');
+        delete localStorage.token;
+        dispatch(setToken(null));
+        dispatch(setUserPromoCodes([]));
+    } else {
+        console.log(error);
     }
 }

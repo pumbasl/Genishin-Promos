@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 
 // Locales
 import { useTranslation } from 'react-i18next';
@@ -12,7 +12,7 @@ import { Card } from '../index';
 import { Button, Spinner } from 'react-bootstrap';
 //
 
-export default function History({ data }){
+function History({ data }){
     const [ t ] = useTranslation();
     const [preLoader, setPreLoader] = useState(false);
     const [endMessage, setEndMessage] = useState(false);
@@ -37,21 +37,25 @@ export default function History({ data }){
         }());
     };
 
+    const renderPromocode = (promo) => {
+        return(
+            <Card.Label key={promo._id}>
+                <Card.Body>
+                    {promo.code}
+                    <Card.Time expired={promo.expired}>
+                        {t('Действовал до')}: &nbsp; 
+                    </Card.Time>
+                </Card.Body>
+            </Card.Label>
+        );
+    };
+
     return(
         <>
             <h4>
                 <b>{t('Истёкшие промокоды')}:</b>
             </h4>
-            {items.map((promo, index) => (
-                <Card.Label key={promo._id}>
-                    <Card.Body>
-                        {promo.code}
-                        <Card.Time expired={promo.expired}>
-                            {t('Действовал до')}: &nbsp; 
-                        </Card.Time>
-                    </Card.Body>
-                </Card.Label>
-            ))}
+            {items.map((renderPromocode))}
             {
                 preLoader 
                 ? (<div className="text-center">
@@ -68,3 +72,5 @@ export default function History({ data }){
         </>
     );
 }
+
+export default memo(History);

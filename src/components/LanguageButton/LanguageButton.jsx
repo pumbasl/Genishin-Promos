@@ -21,7 +21,7 @@ export default function LanguageButton(){
     document.documentElement.lang = localStorage.getItem('hrefLang') ? localStorage.getItem('hrefLang') : 'en';
 
     return(
-        <Dropdown drop="start">
+        <Dropdown drop="start" className="ms-1">
             <Dropdown.Toggle variant="purple" className="me-2">
                 <Image src={Earth} width="25px" height="100%" alt="languageLogo" />
             </Dropdown.Toggle>

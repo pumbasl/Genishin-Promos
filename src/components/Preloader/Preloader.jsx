@@ -3,7 +3,7 @@ import React from 'react';
 import { Spinner } from 'react-bootstrap';
 
 //components
-import { Background } from '../../style/style';
+import { Background } from '../index';
 //
 
 export default function Preloader({ fetch }){

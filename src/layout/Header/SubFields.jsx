@@ -59,6 +59,21 @@ export default function Subfields(){
 
     const { t } = useTranslation();
 
+    const renderSubFields = (subfield) => {
+        return(
+            <Nav.Link
+                key={subfield._id}
+                className="web-events"
+                href={subfield.link}
+                target="_blank"
+            >
+                <img src={EventLogo} width="18px" height="100%" className="me-2" alt="eventLogo" />
+                <Badge bg="purple">{t('Веб событие')}</Badge> &nbsp;
+                {subfield.name}
+            </Nav.Link>
+        );
+    };
+
     useEffect(() => {
         dispatch(fetchSubfields());
     }, [dispatch]);
@@ -71,18 +86,7 @@ export default function Subfields(){
                 
                 <DefaultEvents />
 
-                {subfields.map((subfield) => (
-                    <Nav.Link
-                        key={subfield._id}
-                        className="web-events"
-                        href={subfield.link}
-                        target="_blank"
-                    >
-                        <img src={EventLogo} width="18px" height="100%" className="me-2" alt="eventLogo" />
-                        <Badge variant="purple">{t('Веб событие')}</Badge> &nbsp;
-                        {subfield.name}
-                    </Nav.Link>
-                ))}
+                {subfields.map(renderSubFields)}
             </Navbar.Collapse>
         );
     }
