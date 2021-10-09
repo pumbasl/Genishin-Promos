@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React, { useState } from 'react';
 
 // Locales
 import { useTranslation } from 'react-i18next';
@@ -12,7 +12,7 @@ import { Card } from '../index';
 import { Button, Spinner } from 'react-bootstrap';
 //
 
-function History({ data }){
+export default function History({ data }){
     const [ t ] = useTranslation();
     const [preLoader, setPreLoader] = useState(false);
     const [endMessage, setEndMessage] = useState(false);
@@ -72,5 +72,3 @@ function History({ data }){
         </>
     );
 }
-
-export default memo(History);

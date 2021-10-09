@@ -9,3 +9,6 @@ export { default as regUser } from './regUser';
 export { default as UserGameInfo } from './addUserGameInfo';
 export { default as getNews } from './getNews';
 export { default as allUsers } from './allUsers';
+export { default as logoutUser } from './logoutUser';
+export { default as searchUsers } from './searchUsers';
+export { default as editUser } from './editUser';

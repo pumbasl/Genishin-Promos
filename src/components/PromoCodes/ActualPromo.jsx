@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 
 // Locales
 import { useTranslation } from 'react-i18next';
@@ -19,7 +19,7 @@ import { fetchClickPromo } from '../../store/thunks/userThunks';
 
 import sleep from '../../js/sleep';
 
-function ActualPromo({ data }){
+export default function ActualPromo({ data }){
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const userPromos = useSelector((state) => state.user.userPromocodes);
@@ -98,5 +98,3 @@ function ActualPromo({ data }){
         </>
     );
 }
-
-export default memo(ActualPromo);

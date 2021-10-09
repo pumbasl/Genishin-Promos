@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 //components
 import { Table, Button } from 'react-bootstrap';
+import Search from './SearchComponents';
 //
 
 //redux
@@ -13,14 +14,24 @@ import { fetchAdminAllUsers } from '../../store/thunks/adminThunks';
 import { useTranslation } from 'react-i18next';
 //
 
+//modals
+import ActionUswerModal from './Modals/ActionUserModal';
+//
+
 export default function UsersTable(){
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const users = useSelector((state) => state.admin.users);
+    const [ showModal, setShowModal ] = useState(false);
+    const [ dataModal, setDataModal ] = useState({});
+    
 
     const handleClick = (user) => {
-        console.log(user);
+        setShowModal(true);
+        setDataModal(user);
     };
+
+    const handleClose = () => setShowModal(false);
 
     const tableRender = (user, index) => {
         return(
@@ -43,7 +54,14 @@ export default function UsersTable(){
 
     return(
         <>
-            <div className="text-center">Таблица пользователей</div>
+            <ActionUswerModal show={showModal} close={handleClose} data={dataModal} />
+            
+            <div className="custom-botder-bottom mb-2">
+                Таблица пользователей
+            </div>
+
+            <Search />
+
             <Table responsive>
                 <thead>
                     <tr>
@@ -56,7 +74,7 @@ export default function UsersTable(){
                 <tbody>
                     {users.map(tableRender)}
                 </tbody>
-        </Table>
+            </Table>
         </>
     );
 }

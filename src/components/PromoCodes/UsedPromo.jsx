@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 
 // Locales
 import { useTranslation } from 'react-i18next';
@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { Card } from '../index';
 //
 
-function Activated({ data }){
+export default function Activated({ data }){
     const { t } = useTranslation();
     
     const renderPromocode = (promo) => {
@@ -46,5 +46,3 @@ function Activated({ data }){
         </>
     );
 }
-
-export default memo(Activated);

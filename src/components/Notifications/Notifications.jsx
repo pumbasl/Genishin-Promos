@@ -11,6 +11,7 @@ export default function Notifications() {
           position: 'fixed',
           top: 60,
           right: 0,
+          zIndex: 99999
         }}
         >
         {toasts.map((toast) => (

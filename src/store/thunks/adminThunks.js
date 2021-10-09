@@ -5,17 +5,84 @@ import {
 import {
     setUserPromoCodes,
     setToken,
+    setErrors
 } from '../actions/userActions';
 
 import {
-    allUsers
+    allUsers,
+    logoutUser,
+    searchUsers,
+    editUser
 } from '../../graphql';
+
+//notify
+import { toast } from 'react-hot-toast';
+//
 
 import Fetch from '../../fetch/fetch';
 
+export function fetchEditUser(data){
+    return async (dispatch) => {
+        await Fetch({
+            query: editUser,
+            variables: JSON.stringify(data)
+        }, 'api')
+        .then(
+            (response) => {
+                if(response?.error){
+                    dispatch(setErrors(response.message));
+                } else {
+                    toast({title: "Уведомление", body: 'Пользователь успешно сохранен.', time: "Несколько секунд назад"}); //уведомление
+                }
+            },
+            (error) => {
+                ErrorCatch(error, dispatch);
+            }
+        );
+    };
+}
+
+export function fetchSearchUsers(name){
+    return async (dispatch) => {
+        await Fetch({
+            query: searchUsers,
+            variables: JSON.stringify({
+                name
+            })
+        }, 'api')
+        .then(
+            (response) => {
+                dispatch(setUsers(response.searchUsersByName));
+            },
+            (error) => {
+                ErrorCatch(error, dispatch);
+            }
+        );
+    };
+}
+
+export function fetchLogOutUser(id){
+    return async (dispatch) => {
+        await Fetch({
+            query: logoutUser,
+            variables: JSON.stringify({
+                id
+            })
+        }, 'api')
+        .then(
+            (response) => {
+                console.log(response)
+            },
+            (error) => {
+                ErrorCatch(error, dispatch);
+            }
+        );
+    };
+}
+
 export function fetchAdminAllUsers(){
-    return (dispatch) => {
-        Fetch({
+    return async (dispatch) => {
+        await Fetch({
             query: allUsers,
             variables: {}
         }, 'api')

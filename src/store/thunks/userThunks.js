@@ -25,8 +25,8 @@ import {
 } from '../../graphql';
 
 export function fetchLogout(){
-    return (dispatch) => {
-        Fetch({}, 'logout')
+    return async (dispatch) => {
+        await Fetch({}, 'logout')
         .then(
             (response) => {
                 delete localStorage.token;
@@ -41,8 +41,8 @@ export function fetchLogout(){
 }
 
 export function fetchNews(){
-    return (dispatch) => {
-        Fetch({
+    return async (dispatch) => {
+        await Fetch({
             query: getNews,
             variables: {}
         }, 'api')
@@ -58,8 +58,8 @@ export function fetchNews(){
 }
 
 export function fetchNewUserGameInfo(data){
-    return (dispatch) => {
-        Fetch({
+    return async (dispatch) => {
+        await Fetch({
             query: UserGameInfo,
             variables: JSON.stringify(data)
         }, 'api')
@@ -76,8 +76,8 @@ export function fetchNewUserGameInfo(data){
 }
 
 export function fetchUserInfo(){
-    return (dispatch) => {
-        Fetch({
+    return async (dispatch) => {
+        await Fetch({
             query: regUser,
             variables: {}
         }, 'api')
@@ -94,8 +94,8 @@ export function fetchUserInfo(){
 
 export function fetchRegistration(data){
     const { login, password, server } = data;
-    return (dispatch) => {
-        Fetch({
+    return async (dispatch) => {
+        await Fetch({
             query: registration,
             variables: JSON.stringify({
                 login: login,
@@ -123,8 +123,8 @@ export function fetchRegistration(data){
 
 export function fetchLogin(data){
     const { login, password } = data;
-    return (dispatch) => {
-        Fetch({
+    return async (dispatch) => {
+        await Fetch({
             query: loginQuery,
             variables: JSON.stringify({
                 login: login,
@@ -149,8 +149,8 @@ export function fetchLogin(data){
 }
 
 export function fetchClickPromo(promos){
-    return (dispatch) => {
-        Fetch({
+    return async (dispatch) => {
+        await Fetch({
             query: newUserPromo,
             variables: JSON.stringify({
                 promos: promos
@@ -168,8 +168,8 @@ export function fetchClickPromo(promos){
 }
 
 export function fetchSubfields(){
-    return (dispatch) => {
-        Fetch({
+    return async (dispatch) => {
+        await Fetch({
             query: getSubfields,
             variables: {}
         }, 'api')
@@ -185,8 +185,8 @@ export function fetchSubfields(){
 }
 
 export function fetchChangeServer(server){
-    return (dispatch) => {
-        Fetch({
+    return async (dispatch) => {
+        await Fetch({
             query: changeServer,
             variables: JSON.stringify({
                 server: server
@@ -204,8 +204,8 @@ export function fetchChangeServer(server){
 }
 
 export function fetchUserPromoCodes(){
-    return (dispatch) => {
-        Fetch({
+    return async (dispatch) => {
+        await Fetch({
             query: getUserPromo,
             variables: {}
         }, 'api')
@@ -221,8 +221,8 @@ export function fetchUserPromoCodes(){
 }
 
 export function fetchPromoCodes(server){
-    return (dispatch) => {
-        Fetch({
+    return async (dispatch) => {
+        await Fetch({
             query: getPromoCodes,
             variables: JSON.stringify({
                 server: server

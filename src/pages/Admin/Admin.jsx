@@ -21,7 +21,6 @@ export default function Admin(){
     const token = useSelector((state) => state.user.token);
     const userinfo = useSelector((state) => state.user.userinfo);
     
-
     if(!token) history.push('/');
     if(userinfo && !userinfo.roles.includes('Admin')) history.push('/');
 

@@ -51,6 +51,13 @@ body{
     color: white;
 }
 
+.custom-botder-bottom{
+    box-sizing: content-box;
+    border-bottom: 2px solid;
+    border-image: linear-gradient(to right, rgba(149,22,133,1) 20%, rgba(255,0,78,1) 100%);
+    border-image-slice: 1;
+}
+
 ::-moz-selection {
     background: rgba(0, 255, 255, .7);
 }
