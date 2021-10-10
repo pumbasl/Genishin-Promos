@@ -12,3 +12,4 @@ export { default as allUsers } from './allUsers';
 export { default as logoutUser } from './logoutUser';
 export { default as searchUsers } from './searchUsers';
 export { default as editUser } from './editUser';
+export { default as addPromoCode } from './addPromoCode';

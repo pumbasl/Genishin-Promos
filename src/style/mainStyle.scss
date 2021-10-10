@@ -30,8 +30,8 @@ $theme-colors: (
 @import "~bootstrap/scss/bootstrap";
 
 @font-face {
-    font-family: 'Open Sans';
-    src: url('./fonts/OpenSans-Light.ttf') format('truetype');
+    font-family: 'Manrope';
+    src: url('./fonts/Manrope-Light.ttf') format('truetype');
     font-display: fallback;
 }
 
@@ -43,7 +43,7 @@ html, body, #root{
 }
 
 body{
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'Manrope', sans-serif !important;
     font-weight: bold;
 }
 

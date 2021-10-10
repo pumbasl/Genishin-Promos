@@ -12,7 +12,8 @@ import {
     allUsers,
     logoutUser,
     searchUsers,
-    editUser
+    editUser,
+    addPromoCode
 } from '../../graphql';
 
 //notify
@@ -20,6 +21,28 @@ import { toast } from 'react-hot-toast';
 //
 
 import Fetch from '../../fetch/fetch';
+
+export function fetchAddPromoCode(data){
+    return async (dispatch) => {
+        await Fetch({
+            query: addPromoCode,
+            variables: JSON.stringify(data)
+        }, 'api')
+        .then(
+            (response) => {
+                if(response?.error){
+                    dispatch(setErrors(response.message));
+                } else {
+                    toast({title: "Уведомление", body: 'Промокод успешно добавлен', time: "Несколько секунд назад"}); //уведомление
+                }
+            },
+
+            (error) => {
+                ErrorCatch(error, dispatch);
+            }
+        );
+    };
+}
 
 export function fetchEditUser(data){
     return async (dispatch) => {

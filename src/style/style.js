@@ -187,7 +187,16 @@ const ServerContainer = styled.div`
     float: right;
 `;
 
+const PlaceHolderForForm = styled.div`
+    background-color: rgba(255, 255, 255, .3);
+    text-align: center;
+    line-height: 35vh;
+    width: 100%;
+    height: 35vh;
+`;
+
 export {
+    PlaceHolderForForm,
     ServerContainer,
     ContainerForForm,
     FooterCopyright,
