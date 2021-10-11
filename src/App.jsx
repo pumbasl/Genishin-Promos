@@ -25,7 +25,7 @@ import Footer from './layout/Footer/Footer';
 //
 
 //firebase
-import './config/firebase';
+//import './config/firebase';
 //
 
 export default function App(){
