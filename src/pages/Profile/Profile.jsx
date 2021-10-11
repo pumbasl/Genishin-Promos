@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 
 //components
@@ -15,11 +15,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchUserInfo } from '../../store/thunks/userThunks';
 //
 
+//lazy components
+const UploadAvatar = lazy(() => import('./Modals/UploadAvatar'));
+//
 
 export default function Profile(){
     const history = useHistory();
     const dispatch = useDispatch();
     const { t } = useTranslation();
+    const [ showModal, setShowModal ] = useState(false);
     const token = useSelector((state) => state.user.token);
     const data = useSelector((state) => state.user.userinfo);
     document.title = 'Genshin Promo | Profile';
@@ -40,11 +44,33 @@ export default function Profile(){
         );
     }
 
+    const ModalUploader = ({ show }) => {
+        if(!show) return null;
+
+        return(
+            <Suspense fallback={<Preloader fetch />}>
+                <UploadAvatar show={showModal} close={() => setShowModal(false)} />
+            </Suspense>
+        );
+    };
+
+    const handleOpenModal = () => setShowModal(true);
+
     return(
         <Container>
             <Row>
                 <Col className="text-center">
                     <Avatar type="rounded"/>
+                    <div className="mt-2">
+                        <Button
+                            variant="dark-custom"
+                            onClick={handleOpenModal}
+                        >
+                            {t('Изменить аватарку')}
+                        </Button>
+                        
+                        <ModalUploader show={showModal} />
+                    </div>
                 </Col>
                 <Col>
                     <TableWithInfo data={data} />  
