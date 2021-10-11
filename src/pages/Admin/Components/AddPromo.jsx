@@ -29,7 +29,7 @@ import { toast } from 'react-hot-toast';
 export default function AddPromo(){
     const dispatch = useDispatch();
     const errorsAuth = useSelector((state) => state.user.errorsAuth);
-    const [ date, setDate ] = useState();
+    const [ date, setDate ] = useState(null);
     
     const schema = yup.object({
         code: yup.string().required("Это поле обязательно для заполнения!"),

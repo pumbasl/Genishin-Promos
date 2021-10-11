@@ -48,7 +48,7 @@ export function fetchNews(){
         }, 'api')
         .then(
             (response) => {
-                dispatch(setNews(response.getNews));
+                dispatch(setNews(response.getNews.reverse()));
             },
             (error) => {
                 ErrorCatch(error, dispatch);

@@ -8,6 +8,7 @@ import SelectFormLoading from './Components/SelectFormLoading';
 
 //lazy form
 const AddPromo = lazy(() => import('./Components/AddPromo'));
+const AddNews = lazy(() => import('./Components/AddNews'));
 //
 
 const FormButtons = ({ id }) => {
@@ -15,6 +16,10 @@ const FormButtons = ({ id }) => {
 
     if(id === 1){
         return <AddPromo />;
+    }
+
+    if(id === 2){
+        return <AddNews />;
     }
 };
 
@@ -27,7 +32,7 @@ export default function ActionButtons(){
                 Добавить промокод
             </Button>
 
-            <Button variant="dark-custom">
+            <Button variant="dark-custom" onClick={() => setForm(2)}>
                 Добавить новость
             </Button>
 

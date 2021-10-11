@@ -13,7 +13,8 @@ import {
     logoutUser,
     searchUsers,
     editUser,
-    addPromoCode
+    addPromoCode,
+    addNews
 } from '../../graphql';
 
 //notify
@@ -21,6 +22,27 @@ import { toast } from 'react-hot-toast';
 //
 
 import Fetch from '../../fetch/fetch';
+
+export function fetchAddNews(data){
+    return async (dispatch) => {
+        await Fetch({
+            query: addNews,
+            variables: JSON.stringify(data)
+        }, 'api')
+        .then(
+            (response) => {
+                if(response?.error){
+                    dispatch(setErrors(response.message));
+                } else {
+                    toast({title: "Уведомление", body: 'Новость успешно создана', time: "Несколько секунд назад"}); //уведомление
+                }
+            },
+            (error) => {
+                ErrorCatch(error, dispatch);
+            }
+        );
+    };
+}
 
 export function fetchAddPromoCode(data){
     return async (dispatch) => {

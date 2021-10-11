@@ -24,6 +24,10 @@ import Main from './layout/Main/Main';
 import Footer from './layout/Footer/Footer';
 //
 
+//firebase
+import './config/firebase';
+//
+
 export default function App(){
     //alerts push
     window.OneSignal = window.OneSignal || [];
