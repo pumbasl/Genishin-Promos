@@ -6,7 +6,7 @@ export { default as WikiLogo } from './img/svgLogo/wiki.svg';
 export { default as GenshinLogo } from './img/svgLogo/g.svg';
 export { default as EventLogo } from './img/svgLogo/confetti.svg';
 export { default as Earth } from './img/svgLogo/earth.svg';
-export { default as AvatarImage } from './img/defaultAvatar.webp';
+export { default as DefaultAvatar } from './img/defaultAvatar.webp';
 export { default as News } from './img/news.webp';
 
 //background img

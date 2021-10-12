@@ -5,15 +5,18 @@ query regUser{
         login
         reg
         roles
+        email
+        avatar{
+            urlPath
+            ref
+        }
+        server
+        ua
         gameInfo{
-            ownerId
             gameNickName
             adventureLvl
             mainChar
         }
-        email
-        server
-        ua
     }
 }
 `;

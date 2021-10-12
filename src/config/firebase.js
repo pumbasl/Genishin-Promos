@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
 import { getStorage } from "firebase/storage";
+import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
+// import { getAnalytics } from "firebase/analytics";
 // // TODO: Add SDKs for Firebase products that you want to use
 // // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,6 +19,10 @@ export const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
+export const appCheck = initializeAppCheck(app, {
+  provider: new ReCaptchaV3Provider('6Lf6hMQcAAAAAHcejRuraQ6P8bvbWEppbVa_0Pj_'),
+  isTokenAutoRefreshEnabled: true
+});
 export const storage = getStorage(app);
 // export const storageRef = (name) => ref(storage, `/images/${name}`);
 // export const analytics = getAnalytics(app);

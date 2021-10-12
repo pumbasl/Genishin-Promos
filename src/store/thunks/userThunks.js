@@ -21,7 +21,8 @@ import {
     registration,
     regUser,
     UserGameInfo,
-    getNews
+    getNews,
+    setAvatar
 } from '../../graphql';
 
 export function fetchLogout(){
@@ -54,6 +55,27 @@ export function fetchNews(){
                 ErrorCatch(error, dispatch);
             }
         )
+    };
+}
+
+export function fetchNewAvatar(url, ref) {
+    return async (dispatch) => {
+        await Fetch({
+            query: setAvatar,
+            variables: JSON.stringify({
+                url,
+                ref
+            })
+        }, 'api')
+        .then(
+            (response) => {
+                console.log('ok');
+                dispatch(fetchUserInfo());
+            },
+            (error) => {
+                ErrorCatch(error, dispatch);
+            }
+        );
     };
 }
 
