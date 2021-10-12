@@ -1,9 +1,9 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 
 //components
 import { Container, Avatar, TableWithInfo, Preloader } from '../../components';
-import { Row, Col, Button, ButtonGroup } from 'react-bootstrap';
+import { Row, Col, Button, ButtonGroup, Badge } from 'react-bootstrap';
 //
 
 //locales
@@ -13,10 +13,7 @@ import { useTranslation } from 'react-i18next';
 //redux
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUserInfo } from '../../store/thunks/userThunks';
-//
-
-//lazy components
-const UploadAvatar = lazy(() => import('./Modals/UploadAvatar'));
+import UploadAvatar from './Modals/UploadAvatar';
 //
 
 export default function Profile(){
@@ -44,23 +41,17 @@ export default function Profile(){
         );
     }
 
-    const ModalUploader = ({ show }) => {
-        if(!show) return null;
-
-        return(
-            <Suspense fallback={<Preloader fetch />}>
-                <UploadAvatar show={showModal} close={() => setShowModal(false)} />
-            </Suspense>
-        );
-    };
-
     const handleOpenModal = () => setShowModal(true);
 
     return(
         <Container>
+            <UploadAvatar show={showModal} close={() => setShowModal(false)} />
             <Row>
                 <Col className="text-center">
                     <Avatar type="rounded"/>
+                    <div>
+                        <Badge bg="info">{t('1MB максимальный размер фотографии.')}</Badge>
+                    </div>
                     <div className="mt-2">
                         <Button
                             variant="dark-custom"
@@ -68,8 +59,7 @@ export default function Profile(){
                         >
                             {t('Изменить аватарку')}
                         </Button>
-                        
-                        <ModalUploader show={showModal} />
+
                     </div>
                 </Col>
                 <Col>

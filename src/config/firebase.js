@@ -1,6 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
+
+import { getMessaging, getToken, onMessage } from "firebase/messaging";
 // import { getAnalytics } from "firebase/analytics";
 // // TODO: Add SDKs for Firebase products that you want to use
 // // https://firebase.google.com/docs/web/setup#available-libraries
@@ -23,6 +25,32 @@ export const appCheck = initializeAppCheck(app, {
   provider: new ReCaptchaV3Provider('6Lf6hMQcAAAAAHcejRuraQ6P8bvbWEppbVa_0Pj_'),
   isTokenAutoRefreshEnabled: true
 });
+
+//storage
 export const storage = getStorage(app);
-// export const storageRef = (name) => ref(storage, `/images/${name}`);
-// export const analytics = getAnalytics(app);
+//
+
+//push alerts
+const messaging = getMessaging(app);
+
+export const getTokenCheck = async () => {
+  return await getToken(messaging, { vapidKey: "BMD_9O2xKKIJXYiA4LNUdKeVEjydSrAATwwqb3hk5TwENSS4BoaAshtITxaEuLkhCkCAsW7TArerJIsMywyoyuE" })
+  .then((currentToken) => {
+    if(currentToken){
+      console.log('current token for client: ', currentToken);
+    } else {
+      console.log('No registration token available. Request permission to generate one.');
+    }
+  })
+  .catch((error) => {
+    console.log(error);
+  })
+};
+
+export const onMessageListener = () =>
+  new Promise((resolve) => {
+    onMessage(messaging, (payload) => {
+      resolve(payload);
+    });
+});
+//

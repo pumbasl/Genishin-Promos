@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 //router
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -24,21 +24,25 @@ import Main from './layout/Main/Main';
 import Footer from './layout/Footer/Footer';
 //
 
+//alerts push
+import { getTokenCheck, onMessageListener } from './config/firebase';
+//
+
+//notify
+import { toast } from 'react-hot-toast';
+//
+
+//alerts
+getTokenCheck(); // проверка токена
+
+onMessageListener().then(payload => {
+    toast({title: payload.notification.title, body: payload.notification.body, time: "Несколько секунд назад"}, { duration: 8000 }); //уведомление
+    console.log(payload); // вывод уведомления в консоль
+}).catch(err => console.log('failed: ', err));
+//
+
+
 export default function App(){
-    //alerts push
-    window.OneSignal = window.OneSignal || [];
-    const OneSignal = window.OneSignal;
-
-    useEffect(() => {
-        OneSignal.push(() => {
-            OneSignal.init({
-                appId: "c3d3e99e-6f5b-4bb6-b5d4-814b036c9802"
-            })
-        });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
-    //
-
     return(
         <ErrorBoundary>
             <Background />
