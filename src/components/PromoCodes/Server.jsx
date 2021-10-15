@@ -30,7 +30,7 @@ export default function Server(){
     };
 
     return(
-        <ServerContainer>
+        <ServerContainer className="text-end">
             <label>
                 {t('Сервер')}: &nbsp;
                 <SelectCustom value={server} onChange={handleChange}>

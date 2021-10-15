@@ -13,7 +13,6 @@ import CheckCodes from '../../service/CheckPromoCodes';
 import ActualPromo from './ActualPromo';
 import UsedPromo from './UsedPromo';
 import HistoryPromo from './HistoryPromo';
-import Server from './Server';
 import { Preloader } from '../index';
 //
 
@@ -43,10 +42,9 @@ export default function PromoCodes(){
 
     return(
         <>
-            <Server />
             <ActualPromo data={resultCodes.actualCodes} />
             <UsedPromo data={userPromocodes} />
-            <HistoryPromo data={resultCodes.history} />
+            <HistoryPromo data={resultCodes.history.reverse()} />
         </>
     );
 }

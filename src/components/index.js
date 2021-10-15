@@ -2,7 +2,7 @@ export { default as LanguageButton } from './LanguageButton/LanguageButton';
 export { default as List } from './List/List';
 export { default as Container } from './Container/Container';
 export { default as Background } from './Background/Background';
-export { default as PromoCodes } from './PromoCodes/PromoCodes';
+export { default as PromoCodes } from './PromoCodes';
 export { default as Card } from './Card/Card';
 export { default as TimeView } from './TimeView/TimeView';
 export { default as Preloader } from './Preloader/Preloader';

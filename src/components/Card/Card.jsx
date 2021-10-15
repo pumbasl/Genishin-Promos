@@ -12,28 +12,28 @@ import { PromoCardBlock, PromoExpired, PromoCard } from '../../style/style';
 
 const Card = {
 
-    Label: function Label(props){
+    Label: function Label({ children, ...props }){
         return(
-            <PromoCard>
-                {props.children}
+            <PromoCard {...props}>
+                {children}
             </PromoCard>
         );
     },
 
-    Body: function Body(props){
+    Body: function Body({ children, ...props }){
         return(
-            <PromoCardBlock onClick={props.onClick}>
-                {props.children}
+            <PromoCardBlock {...props}>
+                {children}
             </PromoCardBlock>
         );
     },
 
-    Time: function Time(props){
+    Time: function Time({ children, expired, ...props }){
         return(
-            <PromoExpired>
+            <PromoExpired {...props}>
                 <Badge bg="purple">
-                    <TimeView time={props.expired}>
-                        {props.children}
+                    <TimeView time={expired}>
+                        {children}
                     </TimeView>
                 </Badge>
             </PromoExpired>

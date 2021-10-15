@@ -56,7 +56,7 @@ export default function UsersTable(){
         <>
             <ActionUswerModal show={showModal} close={handleClose} data={dataModal} />
             
-            <div className="custom-botder-bottom mb-2">
+            <div className="custom-border-bottom mb-2">
                 Таблица пользователей
             </div>
 

@@ -43,6 +43,15 @@ const DefaultEvents = () => {
 
             <Nav.Link
                 className="custom-link"
+                as={NavLink}
+                to="/forum"
+            >
+                <img src={WikiLogo} width="18px" height="100%" className="me-2 mb-1" alt="wikiLogo" />
+                {t('Статьи')}
+            </Nav.Link>
+
+            <Nav.Link
+                className="custom-link"
                 href="https://genshin-helper.com/"
                 target="_blank"
             >

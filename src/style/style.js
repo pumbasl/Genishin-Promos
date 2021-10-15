@@ -1,4 +1,8 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { fadeIn, pulse } from 'react-animations';
+
+const fadeInAnimation = keyframes`${fadeIn}`;
+const pulseAnimation = keyframes`${pulse}`;
 
 const Background = styled.div`
     background: no-repeat center center fixed;
@@ -43,6 +47,7 @@ const Footer = styled.div({
 });
 
 const PromoCard = styled.div`
+    animation: 1s ${fadeInAnimation};
     &:not(:last-child){
         margin-bottom: 15px;
     }
@@ -60,19 +65,19 @@ const PromoCardBlock = styled.div`
     }
 
     &:hover{
+        animation: .3s ${pulseAnimation};
         cursor: pointer;
         text-decoration: none;
         color: inherit;
-        transition: all .5s ease;
         color: white;
         border-radius: 5px;
         background-color: rgba(0, 0, 0, .3);
     }
 `;
 
-const PromoExpired = styled.div({
-    float: 'right'
-});
+const PromoExpired = styled.div`
+    float: right;
+`;
 
 const FooterContainer = styled.div`
     margin-top: 20px;
@@ -147,6 +152,7 @@ const SelectCustom = styled.select`
     font-family: Open Sans, sans-serif;
     background-color: #9852ad;
     color: white;
+    width: 150px;
     height: 35px;
     text-decoration: none;
     padding: 5px;
@@ -158,6 +164,12 @@ const SelectCustom = styled.select`
 
     &:focus{
         outline:none;
+    }
+`;
+
+const ServerContainer = styled.div`
+    @media (min-width: 320px) and (max-width: 513){
+        margin-bottom: 15px;
     }
 `;
 
@@ -183,10 +195,6 @@ const ContainerForForm = styled.div`
     }
 `;
 
-const ServerContainer = styled.div`
-    float: right;
-`;
-
 const PlaceHolderForForm = styled.div`
     background-color: rgba(255, 255, 255, .3);
     text-align: center;
@@ -195,9 +203,19 @@ const PlaceHolderForForm = styled.div`
     height: 35vh;
 `;
 
+const TitleThread = styled.h1`
+
+`;
+
+const ContentThread = styled.div`
+
+`;
+
 export {
-    PlaceHolderForForm,
+    ContentThread,
+    TitleThread,
     ServerContainer,
+    PlaceHolderForForm,
     ContainerForForm,
     FooterCopyright,
     SelectCustom,

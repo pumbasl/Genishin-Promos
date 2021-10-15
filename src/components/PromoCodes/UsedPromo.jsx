@@ -24,25 +24,19 @@ export default function Activated({ data }){
         );
     };
 
-    if(data.length === 0) {
-        return(
-            <>
-                <h4>
-                    <b>{t('Активированные промокоды')}:</b>
-                </h4>
-                <div className="mb-2">
-                    {t('Пока что пусто)')}
-                </div>
-            </>
-        );
-    }
+    const EmptyContainer = () => (
+        <div className="mb-2">
+            {t('Пусто.')}
+        </div>
+    );
 
     return(
         <>
             <h4>
                 <b>{t('Активированные промокоды')}:</b>
             </h4>
-            {data.map(renderPromocode)}
+
+            { data.length !== 0 ? (data.map(renderPromocode)) : (<EmptyContainer />) }
         </>
     );
 }
