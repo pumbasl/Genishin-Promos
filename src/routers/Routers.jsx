@@ -14,7 +14,7 @@ const Policy = lazy(() => import('../pages/Policy/Policy'));
 const Help = lazy(() => import('../pages/Help/Help'));
 const Login = lazy(() => import('../pages/Auth/Login'));
 const Registration = lazy(() => import('../pages/Auth/Registration'));
-const RestorePassword = lazy(() => import('../pages/Auth/RestorePassword'));
+// const RestorePassword = lazy(() => import('../pages/Auth/RestorePassword'));
 const Profile = lazy(() => import('../pages/Profile/Profile'));
 const News = lazy(() => import('../pages/News/News'));
 const Settings = lazy(() => import('../pages/Profile/Settings/Settings'));
@@ -34,7 +34,7 @@ export default function Routers(){
 
                 <Route exact path="/auth/login" component={Login} />
                 <Route exact path="/auth/reg" component={Registration} />
-                <Route exact path="/auth/restore_password" component={RestorePassword} />
+                {/* <Route exact path="/auth/restore_password" component={RestorePassword} /> */}
 
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/profile/settings" component={Settings} />

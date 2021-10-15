@@ -115,14 +115,12 @@ export function fetchUserInfo(){
 }
 
 export function fetchRegistration(data){
-    const { login, password, server } = data;
+    console.log(data)
     return async (dispatch) => {
         await Fetch({
             query: registration,
             variables: JSON.stringify({
-                login: login,
-                password: password,
-                server: server,
+                ...data,
                 ua: window.navigator.userAgent
             })
         }, 'api')

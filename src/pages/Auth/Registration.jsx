@@ -39,8 +39,20 @@ export default function Registration(){
     const errorsAuth = useSelector((state) => state.user.errorsAuth);
 
     const schema = yup.object({
-        login: yup.string().required(t('Это поле обязательно для заполнения!')).min(4, t('Логин не может быть меньше 4 символов!')).max(25, t('Логин не может быть больше 25 символов!')),
-        password: yup.string().required(t('Это поле обязательно для заполнения!')).min(4, t('Пароль не может быть меньше 4 символов!'))
+        login: yup.string()
+        .required(t('Это поле обязательно для заполнения!'))
+        .min(4, t('Логин не может быть меньше 4 символов!'))
+        .max(25, t('Логин не может быть больше 25 символов!'))
+        .matches(/^[a-zA-Z0-9]+$/, t('Логин может состоять только из латинских символов и цифр.')),
+
+        password: yup.string()
+        .required(t('Это поле обязательно для заполнения!'))
+        .min(4, t('Пароль не может быть меньше 4 символов!')),
+
+        re_password: yup.string()
+        .required(t('Это поле обязательно для заполнения!'))
+        .min(4, t('Пароль не может быть меньше 4 символов!'))
+        .oneOf([yup.ref('password'), null], t('Пароли не совпадают.'))
     }).required();
 
     const { register, handleSubmit, formState: { errors } } = useForm({
@@ -64,12 +76,8 @@ export default function Registration(){
     }, [token]);
 
     const onSubmit = data => {
-        if(data.password === data.re_password){
-            data.server = "Europe";
-            dispatch(fetchRegistration(data));
-        } else {
-            dispatch(setErrors('PASSWORDS_NOT_MATCH'));
-        }
+        data.server = "Europe";
+        dispatch(fetchRegistration(data));
     };
 
     return(
