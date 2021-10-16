@@ -12,3 +12,5 @@ export { default as Profile } from './Profile/Profile';
 export { default as ErrorsForm } from './ErrorsForm/ErrorsForm';
 export { default as Avatar } from './Avatar/Avatar';
 export { default as TableWithInfo } from './TableWithInfo/TableWithInfo';
+export { default as WebEvents } from './WebEvents/WebEvents';
+export { default as Server } from './Server/Server';

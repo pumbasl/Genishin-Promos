@@ -148,31 +148,6 @@ const CoockieContainer = styled.div`
     z-index: 999;
 `;
 
-const SelectCustom = styled.select`
-    font-family: Open Sans, sans-serif;
-    background-color: #9852ad;
-    color: white;
-    width: 150px;
-    height: 35px;
-    text-decoration: none;
-    padding: 5px;
-    border-radius: 5px;
-
-    option:disabled {
-        color: #000;
-    }
-
-    &:focus{
-        outline:none;
-    }
-`;
-
-const ServerContainer = styled.div`
-    @media (min-width: 320px) and (max-width: 513){
-        margin-bottom: 15px;
-    }
-`;
-
 const FooterCopyright = styled.div`
     text-align: center;
     font-weight: 300;
@@ -203,6 +178,18 @@ const PlaceHolderForForm = styled.div`
     height: 35vh;
 `;
 
+const ButtonChangeServerStyle = styled.div`
+    animation: infinite 2s ${pulseAnimation};
+    position: fixed;
+    right: 0;
+    top: 7%;
+    margin-right: 10px;
+`;
+
+const WebEventCard = styled.div`
+
+`;
+
 const TitleThread = styled.h1`
 
 `;
@@ -212,13 +199,13 @@ const ContentThread = styled.div`
 `;
 
 export {
+    ButtonChangeServerStyle,
+    WebEventCard,
     ContentThread,
     TitleThread,
-    ServerContainer,
     PlaceHolderForForm,
     ContainerForForm,
     FooterCopyright,
-    SelectCustom,
     CoockieContainer,
     FooterCardElement,
     FooterContainer,

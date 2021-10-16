@@ -1,7 +1,7 @@
 import React from 'react';
 
 //components
-import { Container, PromoCodes } from '../../components';
+import { Container, PromoCodes, WebEvents } from '../../components';
 //
 
 export default function Main(){
@@ -9,6 +9,7 @@ export default function Main(){
     
     return(
         <Container>
+            <WebEvents />
             <PromoCodes />
         </Container>
     );

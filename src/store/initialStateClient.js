@@ -1,7 +1,7 @@
 const initialState = {
     token: localStorage.getItem('token') || null,
     server: localStorage.getItem('server') || 'Europe',
-    subfields: false,
+    subfields: [],
     errorsAuth: null,
     userinfo: null,
     promocodes: [],

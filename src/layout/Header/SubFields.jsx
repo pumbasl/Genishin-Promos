@@ -1,37 +1,22 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 //Style
-import { Badge, Nav, Navbar, Spinner } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 //
 
 //Pictures
-import { MapLogo, WikiLogo, GenshinLogo, EventLogo } from '../../media';
+import { MapLogo, WikiLogo, GenshinLogo } from '../../media';
 //
 
 // Locales
 import { useTranslation } from 'react-i18next';
 //
 
-
-//redux
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchSubfields } from '../../store/thunks/userThunks';
-//
-
 const DefaultEvents = () => {
     const { t } = useTranslation();
     return(
         <>
-            <Nav.Link
-                className="custom-link"
-                href="https://webstatic-sea.mihoyo.com/app/ys-map-sea/index.html"
-                target="_blank"
-            >
-                <img src={MapLogo} width="18px" height="100%" className="me-2 mb-1" alt="mapLogo" />
-                {t('Интерактивная карта')}
-            </Nav.Link>
-
             <Nav.Link
                 className="custom-link"
                 as={NavLink}
@@ -52,6 +37,15 @@ const DefaultEvents = () => {
 
             <Nav.Link
                 className="custom-link"
+                href="https://webstatic-sea.mihoyo.com/app/ys-map-sea/index.html"
+                target="_blank"
+            >
+                <img src={MapLogo} width="18px" height="100%" className="me-2 mb-1" alt="mapLogo" />
+                {t('Интерактивная карта')}
+            </Nav.Link>
+
+            <Nav.Link
+                className="custom-link"
                 href="https://genshin-helper.com/"
                 target="_blank"
             >
@@ -63,40 +57,9 @@ const DefaultEvents = () => {
 };
 
 export default function Subfields(){
-    const dispatch = useDispatch();
-    const subfields = useSelector((state) => state.user.subfields);
-
-    const { t } = useTranslation();
-
-    const renderSubFields = (subfield) => {
-        return(
-            <Nav.Link
-                key={subfield._id}
-                className="web-events"
-                href={subfield.link}
-                target="_blank"
-            >
-                <img src={EventLogo} width="18px" height="100%" className="me-2" alt="eventLogo" />
-                <Badge bg="purple">{t('Веб событие')}</Badge> &nbsp;
-                {subfield.name}
-            </Nav.Link>
-        );
-    };
-
-    useEffect(() => {
-        dispatch(fetchSubfields());
-    }, [dispatch]);
-
-    if(!subfields){
-        return(<Spinner animation="grow" variant="purple" />);
-    } else {
-        return(
-            <Navbar.Collapse className="justify-content-center">
-                
-                <DefaultEvents />
-
-                {subfields.map(renderSubFields)}
-            </Navbar.Collapse>
-        );
-    }
+    return(
+        <Navbar.Collapse className="justify-content-center">
+            <DefaultEvents />
+        </Navbar.Collapse>
+    )
 }

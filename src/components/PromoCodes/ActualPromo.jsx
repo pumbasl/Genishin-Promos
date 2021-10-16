@@ -4,17 +4,12 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 //
 
-//style
-import { Row, Col } from 'react-bootstrap';
-//
-
 //notify
 import { toast } from 'react-hot-toast';
 //
 
 //Components
 import { Card } from '../index';
-import Server from './Server';
 //
 
 //redux
@@ -87,17 +82,9 @@ export default function ActualPromo({ data }){
 
     return(
         <>
-            <Row className="mb-2">
-                <Col>
-                    <h4>
-                        <b>{t('Актуальные промокоды')}:</b>
-                    </h4>
-                </Col>
-
-                <Col>
-                    <Server />
-                </Col>
-            </Row>
+            <h4>
+                <b>{t('Актуальные промокоды')}:</b>
+            </h4>
 
             { data.length !== 0 ? (data.map(renderPromocode)) : (<EmptyContainer />) }
         </>

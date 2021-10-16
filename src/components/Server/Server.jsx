@@ -11,7 +11,8 @@ import { setServer } from '../../store/actions/userActions';
 //
 
 //styles
-import { SelectCustom, ServerContainer } from '../../style/style';
+import { Form, FloatingLabel, Dropdown } from 'react-bootstrap';
+import { ButtonChangeServerStyle } from '../../style/style';
 //
 
 export default function Server(){
@@ -26,20 +27,31 @@ export default function Server(){
         } else {
             dispatch(setServer(event.target.value));
         }
-        // await UserService.ChangeServer(event.target.value);
     };
 
-    return(
-        <ServerContainer className="text-end">
-            <label>
-                {t('Сервер')}: &nbsp;
-                <SelectCustom value={server} onChange={handleChange}>
-                    <option disabled>{t('Выберите свой сервер')}</option>
+    const ChangeServer = () => (
+        <div>
+            <FloatingLabel controlId="floatingSelect" label={t('Изменить сервер')}>
+                <Form.Select value={server} onChange={handleChange}>
                     <option value="Europe">Europe</option>
                     <option value="America">America</option>
                     <option value="Asia">Asia</option>
-                </SelectCustom>
-            </label>
-        </ServerContainer>
+                </Form.Select>
+            </FloatingLabel>
+        </div>
+    );
+    
+    return(
+        <ButtonChangeServerStyle>
+            <Dropdown>
+                <Dropdown.Toggle variant="dark-custom" id="dropdown-server">
+                    {t('Сервер?')}
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                    <ChangeServer />
+                </Dropdown.Menu>
+            </Dropdown>
+        </ButtonChangeServerStyle>
     );
 }
