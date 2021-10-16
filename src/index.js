@@ -9,7 +9,7 @@ import { Preloader } from './components';
 //
 
 import { Provider } from 'react-redux';
-import Store from './store/store';
+import { store } from './store/store';
 
 // //serviceWorker
 // if ('serviceWorker' in navigator) {
@@ -25,7 +25,7 @@ import Store from './store/store';
 ReactDOM.render(
   <React.StrictMode>
     <Suspense fallback={<Preloader />}>
-      <Provider store={Store}>
+      <Provider store={store}>
         <App />
       </Provider>
     </Suspense>

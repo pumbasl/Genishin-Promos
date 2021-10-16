@@ -1,8 +1,9 @@
+import { createReducer } from '@reduxjs/toolkit';
+
 import {
   SET_PROMOCODES,
   SET_USER_PROMOCODES,
   SET_SERVER,
-  SET_LOADING_START,
   SET_SUBFIELDS,
   SET_TOKEN,
   SET_ERRORS,
@@ -11,62 +12,44 @@ import {
 } from '../types/types';
   
 import initialState from '../initialStateClient';
-  
-const clientReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case SET_NEWS:
-      return {
-        ...state,
-        news: action.payload
-      };
-    case SET_USER_INFO:
-      return {
-        ...state,
-        userinfo: action.payload
-      };
-    case SET_ERRORS:
-      return {
-        ...state,
-        errorsAuth: action.payload
-      };
-    case SET_TOKEN:
-      return {
-        ...state,
-        token: action.payload
-      };
-    case SET_SUBFIELDS:
-      return {
-        ...state,
-        subfields: action.payload
-      };
 
-    case SET_SERVER:
-      return {
-        ...state,
-        server: action.payload
-      };
+const clientReducer = createReducer(initialState, (clientReducer) => {
+  clientReducer
+    .addCase(SET_NEWS, (state, action) => {
+      state.news = action.payload;
+    })
 
-    case SET_USER_PROMOCODES:
-      return {
-        ...state,
-        userPromocodes: action.payload
-      };
+    .addCase(SET_USER_INFO, (state, action) => {
+      state.userinfo = action.payload;
+    })
 
-    case SET_PROMOCODES:
-      return {
-        ...state,
-        promocodes: action.payload
-      };
-      
-    case SET_LOADING_START:
-    return {
-      ...state,
-      loading: true,
-    };
+    .addCase(SET_ERRORS, (state, action) => {
+      state.errorsAuth = action.payload;
+    })
 
-    default:
+    .addCase(SET_TOKEN, (state, action) => {
+      state.token = action.payload;
+    })
+
+    .addCase(SET_SUBFIELDS, (state, action) => {
+      state.subfields = action.payload;
+    })
+
+    .addCase(SET_SERVER, (state, action) => {
+      state.server = action.payload;
+    })
+
+    .addCase(SET_USER_PROMOCODES, (state, action) => {
+      state.userPromocodes = action.payload;
+    })
+
+    .addCase(SET_PROMOCODES, (state, action) => {
+      state.promocodes = action.payload;
+    })
+
+    .addDefaultCase((state, action) => {
       return state;
-  }
-};
+    })
+});
   
 export default clientReducer;

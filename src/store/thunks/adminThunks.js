@@ -23,6 +23,23 @@ import { toast } from 'react-hot-toast';
 
 import Fetch from '../../fetch/fetch';
 
+export function fetchAdminAllUsers(){
+    return async (dispatch) => {
+        await Fetch({
+            query: allUsers,
+            variables: {}
+        }, 'api')
+        .then(
+            (response) => {
+                dispatch(setUsers(response.regUsers));
+            },
+            (error) => {
+                ErrorCatch(error, dispatch);
+            }
+        )
+    };
+}
+
 export function fetchAddNews(data){
     return async (dispatch) => {
         await Fetch({
@@ -122,23 +139,6 @@ export function fetchLogOutUser(id){
                 ErrorCatch(error, dispatch);
             }
         );
-    };
-}
-
-export function fetchAdminAllUsers(){
-    return async (dispatch) => {
-        await Fetch({
-            query: allUsers,
-            variables: {}
-        }, 'api')
-        .then(
-            (response) => {
-                dispatch(setUsers(response.regUsers));
-            },
-            (error) => {
-                ErrorCatch(error, dispatch);
-            }
-        )
     };
 }
 
