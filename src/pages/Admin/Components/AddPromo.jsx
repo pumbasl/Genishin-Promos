@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 //components
 import { Form, InputGroup, Image, Button } from 'react-bootstrap';
 import { ErrorsForm } from '../../../components';
-import DateTimePicker from 'react-datetime-picker';
 //
 
 //icons
@@ -29,11 +28,17 @@ import { toast } from 'react-hot-toast';
 export default function AddPromo(){
     const dispatch = useDispatch();
     const errorsAuth = useSelector((state) => state.user.errorsAuth);
-    const [ date, setDate ] = useState(null);
     
     const schema = yup.object({
-        code: yup.string().required("Это поле обязательно для заполнения!"),
-        server: yup.string().required("Это поле обязательно для заполнения!")
+        code: yup.string()
+        .required("Это поле обязательно для заполнения!"),
+
+        server: yup.string()
+        .required("Это поле обязательно для заполнения!"),
+
+        expired: yup.string()
+        .required("Это поле обязательно для заполнения!")
+
     }).required();
 
     const { register, handleSubmit, formState: { errors } } = useForm({
@@ -41,12 +46,8 @@ export default function AddPromo(){
     });
 
     const onSubmit = data => {
-        if(!date){
-            toast({title: "Уведомление", body: 'Вы не выбрали дату!', time: "Несколько секунд назад"}); 
-        } else {
-            data.expired = Date.parse(date);
-            dispatch(fetchAddPromoCode(data));
-        }
+        data.expired = Date.parse(data.expired);
+        dispatch(fetchAddPromoCode(data));
     };
     
     useEffect(() => {
@@ -94,9 +95,9 @@ export default function AddPromo(){
                     Дата просрочки кода:
                 </Form.Label>
 
-                <DateTimePicker
-                    value={date}
-                    onChange={setDate}
+                <Form.Control
+                    type="datetime-local"
+                    {...register("expired", { required: true })}
                 />
 
                 <ErrorsForm message={errors.date?.message} />

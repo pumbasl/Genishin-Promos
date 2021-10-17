@@ -13,10 +13,10 @@ import { MapLogo, WikiLogo, GenshinLogo } from '../../media';
 import { useTranslation } from 'react-i18next';
 //
 
-const DefaultEvents = () => {
+export default function Subfields(){
     const { t } = useTranslation();
     return(
-        <>
+        <Navbar.Collapse className="justify-content-center">
             <Nav.Link
                 className="custom-link"
                 as={NavLink}
@@ -52,14 +52,6 @@ const DefaultEvents = () => {
                 <img src={GenshinLogo} width="18px" height="100%" className="me-2 mb-1" alt="genshinLogo" />
                 Genshin Helper
             </Nav.Link>
-        </>
-    );
-};
-
-export default function Subfields(){
-    return(
-        <Navbar.Collapse className="justify-content-center">
-            <DefaultEvents />
         </Navbar.Collapse>
     )
 }

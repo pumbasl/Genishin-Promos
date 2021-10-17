@@ -12,10 +12,9 @@ import { setServer } from '../../store/actions/userActions';
 
 //styles
 import { Form, FloatingLabel, Dropdown } from 'react-bootstrap';
-import { ButtonChangeServerStyle } from '../../style/style';
 //
 
-export default function Server(){
+export default function Server(props){
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const server = useSelector((state) => state.user.server);
@@ -42,16 +41,14 @@ export default function Server(){
     );
     
     return(
-        <ButtonChangeServerStyle>
-            <Dropdown>
-                <Dropdown.Toggle variant="dark-custom" id="dropdown-server">
-                    {t('Сервер?')}
-                </Dropdown.Toggle>
+        <Dropdown {...props}>
+            <Dropdown.Toggle variant="purple" id="dropdown-server">
+                {t('Изменить сервер')}
+            </Dropdown.Toggle>
 
-                <Dropdown.Menu>
-                    <ChangeServer />
-                </Dropdown.Menu>
-            </Dropdown>
-        </ButtonChangeServerStyle>
+            <Dropdown.Menu>
+                <ChangeServer />
+            </Dropdown.Menu>
+        </Dropdown>
     );
 }
