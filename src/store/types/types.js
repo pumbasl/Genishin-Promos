@@ -8,6 +8,7 @@ export const SET_TOKEN = 'SET_TOKEN';
 export const SET_ERRORS = 'SET_ERRORS';
 export const SET_USER_INFO = 'SET_USER_INFO';
 export const SET_NEWS = 'SET_NEWS';
+export const SET_LOADING = 'SET_LOADING';
 //
 
 //admin

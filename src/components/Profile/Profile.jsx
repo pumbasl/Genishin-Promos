@@ -45,7 +45,7 @@ export default function ProfileButtons(props){
                 {t('Профиль')}
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu className="me-1">
+                <Dropdown.Menu variant="dark" className="me-1">
                     <Dropdown.Item as={Link} to="/profile">{t('Личный кабинет')}</Dropdown.Item>
                     <Dropdown.Item as={Link} to="/profile/settings">{t('Настройки')}</Dropdown.Item>
                     <Dropdown.Item onClick={handleLogout}>{t('Выйти')}</Dropdown.Item>

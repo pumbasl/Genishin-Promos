@@ -8,7 +8,8 @@ import {
     SET_TOKEN,
     SET_ERRORS,
     SET_USER_INFO,
-    SET_NEWS
+    SET_NEWS,
+    SET_LOADING
 } from '../types/types';
   
 export const setNews = createAction(SET_NEWS, prepare);
@@ -19,6 +20,7 @@ export const setSubfields = createAction(SET_SUBFIELDS, prepare);
 export const setPromoCodes = createAction(SET_PROMOCODES, prepare);
 export const setUserPromoCodes = createAction(SET_USER_PROMOCODES, prepare);
 export const setServer = createAction(SET_SERVER, prepare);
+export const setLoading = createAction(SET_LOADING, prepare);
 
 function prepare(a) {
     return {

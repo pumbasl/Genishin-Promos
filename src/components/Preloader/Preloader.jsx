@@ -2,21 +2,10 @@ import React from 'react';
 
 import { Spinner } from 'react-bootstrap';
 
-//components
-import { Background } from '../index';
-//
+import { ProgressBar } from '../';
 
 export default function Preloader({ fetch }){
-    if(!fetch){
-        return(
-            <>
-                <Background />
-                <Spinner animation="grow" variant="purple" />
-            </>
-        );
-    }
-
     return(
-        <Spinner animation="grow" variant="purple" />
+        fetch ? (<Spinner animation="grow" variant="purple" />) : (<ProgressBar />)
     );
 }

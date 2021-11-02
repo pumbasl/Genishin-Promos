@@ -1,4 +1,5 @@
 const initialState = {
+    Loading: true,
     token: localStorage.getItem('token') || null,
     server: localStorage.getItem('server') || 'Europe',
     subfields: [],

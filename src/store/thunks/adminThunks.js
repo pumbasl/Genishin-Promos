@@ -14,7 +14,8 @@ import {
     searchUsers,
     editUser,
     addPromoCode,
-    addNews
+    addNews,
+    addWebEvent
 } from '../../graphql';
 
 //notify
@@ -22,6 +23,27 @@ import { toast } from 'react-hot-toast';
 //
 
 import Fetch from '../../fetch/fetch';
+
+export function fetchAddWebEvent(data){
+    return async (dispatch) => {
+        await Fetch({
+            query: addWebEvent,
+            variables: JSON.stringify(data)
+        }, 'api')
+        .then(
+            (response) => {
+                if(response?.error){
+                    dispatch(setErrors(response.message));
+                } else {
+                    toast({title: "Уведомление", body: 'Веб-ивент успешно создан', time: "Несколько секунд назад"}); //уведомление
+                }
+            },
+            (error) => {
+                ErrorCatch(error, dispatch);
+            }
+        );
+    };
+}
 
 export function fetchAdminAllUsers(){
     return async (dispatch) => {

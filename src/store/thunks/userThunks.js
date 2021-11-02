@@ -6,7 +6,8 @@ import {
     setToken,
     setErrors,
     setUserInfo,
-    setNews
+    setNews,
+    setLoading
 } from '../actions/userActions';
 
 import Fetch from '../../fetch/fetch';
@@ -231,6 +232,7 @@ export function fetchUserPromoCodes(){
         }, 'api')
         .then(
             (response) => {
+                dispatch(setLoading(false));
                 dispatch(setUserPromoCodes(response.getRegUserPromo.promos));
             },
             (error) => {

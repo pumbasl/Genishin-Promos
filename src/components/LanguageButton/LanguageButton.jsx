@@ -26,7 +26,7 @@ export default function LanguageButton(props){
                 <Image src={Earth} width="20px" height="100%" alt="languageLogo" style={{paddingBottom: 1}} />
             </Dropdown.Toggle>
 
-            <Dropdown.Menu>
+            <Dropdown.Menu variant="dark">
 
                 <Dropdown.Item as="button" onClick={() => changeLanguage('ru-RU', 'ru')}>
                     Русский

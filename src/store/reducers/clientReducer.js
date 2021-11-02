@@ -8,13 +8,18 @@ import {
   SET_TOKEN,
   SET_ERRORS,
   SET_USER_INFO,
-  SET_NEWS
+  SET_NEWS,
+  SET_LOADING
 } from '../types/types';
   
 import initialState from '../initialStateClient';
 
 const clientReducer = createReducer(initialState, (clientReducer) => {
   clientReducer
+    .addCase(SET_LOADING, (state, action) => {
+      state.Loading = action.payload;
+    })
+
     .addCase(SET_NEWS, (state, action) => {
       state.news = action.payload;
     })

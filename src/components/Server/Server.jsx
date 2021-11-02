@@ -11,15 +11,19 @@ import { setServer } from '../../store/actions/userActions';
 //
 
 //styles
-import { Form, FloatingLabel, Dropdown } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap';
 //
+
+const serverList = ['Europe', 'America', 'Asia'];
 
 export default function Server(props){
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const server = useSelector((state) => state.user.server);
 
-    const handleChange = async (event) => {
+    const handleClick = async (event) => {
+        if(server === event.target.value) return;
+
         localStorage.setItem('server', event.target.value);
         if(localStorage.getItem('token')){
             dispatch(fetchChangeServer(event.target.value))
@@ -29,26 +33,30 @@ export default function Server(props){
     };
 
     const ChangeServer = () => (
-        <div>
-            <FloatingLabel controlId="floatingSelect" label={t('Изменить сервер')}>
-                <Form.Select value={server} onChange={handleChange}>
-                    <option value="Europe">Europe</option>
-                    <option value="America">America</option>
-                    <option value="Asia">Asia</option>
-                </Form.Select>
-            </FloatingLabel>
-        </div>
+        <Dropdown.Menu variant="dark">
+            <Dropdown.Item as="button" onClick={handleClick} value={serverList[0]} active={ server === serverList[0] ? (true) : (false) }>
+                Europe
+            </Dropdown.Item>
+
+            <Dropdown.Item as="button" onClick={handleClick} value={serverList[1]} active={ server === serverList[1] ? (true) : (false) }>
+                America
+            </Dropdown.Item>
+
+            <Dropdown.Item as="button" onClick={handleClick} value={serverList[2]} active={ server === serverList[2] ? (true) : (false) }>
+                Asia
+            </Dropdown.Item>
+        </Dropdown.Menu>
     );
     
     return(
         <Dropdown {...props}>
+
             <Dropdown.Toggle variant="purple" id="dropdown-server">
                 {t('Изменить сервер')}
             </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-                <ChangeServer />
-            </Dropdown.Menu>
+            <ChangeServer />
+
         </Dropdown>
     );
 }
