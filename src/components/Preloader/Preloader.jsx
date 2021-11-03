@@ -1,11 +1,8 @@
 import React from 'react';
-
 import { Spinner } from 'react-bootstrap';
 
-import { ProgressBar } from '../';
-
-export default function Preloader({ fetch }){
+export default function Preloader(){
     return(
-        fetch ? (<Spinner animation="grow" variant="purple" />) : (<ProgressBar />)
+        <Spinner animation="grow" variant="purple" />
     );
 }

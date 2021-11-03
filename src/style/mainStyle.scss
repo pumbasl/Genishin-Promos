@@ -30,13 +30,6 @@ $theme-colors: (
 
 //IMPORT
 @import "~bootstrap/scss/bootstrap";
-
-@font-face {
-    font-family: 'Manrope';
-    src: url('./fonts/Manrope-Light.ttf') format('truetype');
-    font-display: fallback;
-}
-
 @import "../layout/Header/style.scss"; // HeaderStyle
 //
 

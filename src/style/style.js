@@ -186,16 +186,6 @@ const ButtonChangeServerStyle = styled.div`
     margin-right: 10px;
 `;
 
-const PreloaderCenter = styled.div`
-    background-color: rgb(241, 212, 212);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-`;
-
 const WebEventCard = styled.div`
 
 `;
@@ -209,7 +199,6 @@ const ContentThread = styled.div`
 `;
 
 export {
-    PreloaderCenter,
     ButtonChangeServerStyle,
     WebEventCard,
     ContentThread,
