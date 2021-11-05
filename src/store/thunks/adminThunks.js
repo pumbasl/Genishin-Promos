@@ -155,7 +155,11 @@ export function fetchLogOutUser(id){
         }, 'api')
         .then(
             (response) => {
-                console.log(response)
+                if(response.revokeRefreshTokensForRegUser){
+                    toast({title: "Уведомление", body: 'Авторизация успешно сброшена.', time: "Несколько секунд назад"}); //уведомление
+                } else {
+                    toast({title: "Уведомление", body: 'Что то пошло не так.', time: "Несколько секунд назад"}); //уведомление
+                }
             },
             (error) => {
                 ErrorCatch(error, dispatch);

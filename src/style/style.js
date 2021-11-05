@@ -190,6 +190,20 @@ const WebEventCard = styled.div`
 
 `;
 
+const CardThread = styled.div`
+    width: 100%;
+    border: 1px solid black;
+    padding: 10px;
+
+    &:not(:last-child){
+        margin-bottom: 10px;
+    }
+
+    & .information{
+        float: right;
+    }
+`;
+
 const TitleThread = styled.h1`
 
 `;
@@ -199,6 +213,7 @@ const ContentThread = styled.div`
 `;
 
 export {
+    CardThread,
     ButtonChangeServerStyle,
     WebEventCard,
     ContentThread,
