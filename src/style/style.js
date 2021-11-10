@@ -1,4 +1,8 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { fadeIn, pulse } from 'react-animations';
+
+const fadeInAnimation = keyframes`${fadeIn}`;
+const pulseAnimation = keyframes`${pulse}`;
 
 const Background = styled.div`
     background: no-repeat center center fixed;
@@ -43,6 +47,7 @@ const Footer = styled.div({
 });
 
 const PromoCard = styled.div`
+    animation: 1s ${fadeInAnimation};
     &:not(:last-child){
         margin-bottom: 15px;
     }
@@ -60,19 +65,19 @@ const PromoCardBlock = styled.div`
     }
 
     &:hover{
+        animation: .3s ${pulseAnimation};
         cursor: pointer;
         text-decoration: none;
         color: inherit;
-        transition: all .5s ease;
         color: white;
         border-radius: 5px;
         background-color: rgba(0, 0, 0, .3);
     }
 `;
 
-const PromoExpired = styled.div({
-    float: 'right'
-});
+const PromoExpired = styled.div`
+    float: right;
+`;
 
 const FooterContainer = styled.div`
     margin-top: 20px;
@@ -143,24 +148,6 @@ const CoockieContainer = styled.div`
     z-index: 999;
 `;
 
-const SelectCustom = styled.select`
-    font-family: Open Sans, sans-serif;
-    background-color: #9852ad;
-    color: white;
-    height: 35px;
-    text-decoration: none;
-    padding: 5px;
-    border-radius: 5px;
-
-    option:disabled {
-        color: #000;
-    }
-
-    &:focus{
-        outline:none;
-    }
-`;
-
 const FooterCopyright = styled.div`
     text-align: center;
     font-weight: 300;
@@ -183,10 +170,6 @@ const ContainerForForm = styled.div`
     }
 `;
 
-const ServerContainer = styled.div`
-    float: right;
-`;
-
 const PlaceHolderForForm = styled.div`
     background-color: rgba(255, 255, 255, .3);
     text-align: center;
@@ -195,12 +178,59 @@ const PlaceHolderForForm = styled.div`
     height: 35vh;
 `;
 
+const ButtonChangeServerStyle = styled.div`
+    animation: infinite 2s ${pulseAnimation};
+    position: fixed;
+    right: 0;
+    top: 7%;
+    margin-right: 10px;
+`;
+
+const WebEventCard = styled.div`
+
+`;
+
+const CardThread = styled.div`
+    width: 100%;
+    border: 1px solid black;
+    padding: 10px;
+
+    &:hover{
+        transition: all .3s ease-out;
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, .3); 
+    }
+
+    &:not(:last-child){
+        margin-bottom: 10px;
+    }
+
+    & .information{
+        float: right;
+
+        & .authorName{
+            color: #FBD148;
+        }
+    }
+`;
+
+const TitleThread = styled.h1`
+
+`;
+
+const ContentThread = styled.div`
+
+`;
+
 export {
+    CardThread,
+    ButtonChangeServerStyle,
+    WebEventCard,
+    ContentThread,
+    TitleThread,
     PlaceHolderForForm,
-    ServerContainer,
     ContainerForForm,
     FooterCopyright,
-    SelectCustom,
     CoockieContainer,
     FooterCardElement,
     FooterContainer,

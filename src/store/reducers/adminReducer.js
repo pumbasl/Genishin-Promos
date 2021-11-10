@@ -1,20 +1,20 @@
+import { createReducer } from '@reduxjs/toolkit';
+
 import {
-    SET_ADMIN_USERS
-  } from '../types/types';
+  SET_ADMIN_USERS
+} from '../types/types';
     
-  import initialState from '../initialStateAdmin';
-    
-  const adminReducer = (state = initialState, action) => {
-    switch (action.type) {
-      case SET_ADMIN_USERS:
-        return {
-          ...state,
-          users: action.payload
-        };
-  
-      default:
-        return state;
-    }
-  };
-    
-  export default adminReducer;
+import initialState from '../initialStateAdmin';
+
+const adminReducer = createReducer(initialState, (adminReducer) => {
+  adminReducer
+    .addCase(SET_ADMIN_USERS, (state, action) => {
+      state.users = action.payload;
+    })
+
+    .addDefaultCase((state, action) => {
+      return state;
+    })
+});
+
+export default adminReducer;

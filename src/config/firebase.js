@@ -37,7 +37,7 @@ export const getTokenCheck = async () => {
   return await getToken(messaging, { vapidKey: "BMD_9O2xKKIJXYiA4LNUdKeVEjydSrAATwwqb3hk5TwENSS4BoaAshtITxaEuLkhCkCAsW7TArerJIsMywyoyuE" })
   .then((currentToken) => {
     if(currentToken){
-      console.log('current token for client: ', currentToken);
+      return;
     } else {
       console.log('No registration token available. Request permission to generate one.');
     }

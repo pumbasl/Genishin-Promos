@@ -1,15 +1,10 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import './i18n';
 import App from './App';
 
-//components
-import { Preloader } from './components';
-//
-
 import { Provider } from 'react-redux';
-import Store from './store/store';
+import { store } from './store/store';
 
 // //serviceWorker
 // if ('serviceWorker' in navigator) {
@@ -24,11 +19,9 @@ import Store from './store/store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Suspense fallback={<Preloader />}>
-      <Provider store={Store}>
-        <App />
-      </Provider>
-    </Suspense>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

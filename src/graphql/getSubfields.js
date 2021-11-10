@@ -3,6 +3,7 @@ const getSubfields = `query Subfields{
       _id
       name
       link
+      expired
     }
 }`;
 

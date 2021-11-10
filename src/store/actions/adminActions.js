@@ -1,10 +1,13 @@
+import { createAction } from '@reduxjs/toolkit';
+
 import {
     SET_ADMIN_USERS
 } from '../types/types';
 
-export const setUsers = (users) => {
+export const setUsers = createAction(SET_ADMIN_USERS, prepare);
+
+function prepare(a) {
     return {
-        type: SET_ADMIN_USERS,
-        payload: users
+        payload: a
     };
 }

@@ -18,7 +18,7 @@ import * as yup from "yup";
 //redux
 import { useDispatch, useSelector } from 'react-redux';
 import { setErrors } from '../../../store/actions/userActions';
-import { fetchAddPromoCode } from '../../../store/thunks/adminThunks';
+import { fetchAddWebEvent } from '../../../store/thunks/adminThunks';
 //
 
 //notify
@@ -30,10 +30,7 @@ export default function AddPromo(){
     const errorsAuth = useSelector((state) => state.user.errorsAuth);
     
     const schema = yup.object({
-        code: yup.string()
-        .required("Это поле обязательно для заполнения!"),
-
-        server: yup.string()
+        name: yup.string()
         .required("Это поле обязательно для заполнения!"),
 
         expired: yup.string()
@@ -47,7 +44,7 @@ export default function AddPromo(){
 
     const onSubmit = data => {
         data.expired = Date.parse(data.expired);
-        dispatch(fetchAddPromoCode(data));
+        dispatch(fetchAddWebEvent(data));
     };
     
     useEffect(() => {
@@ -62,37 +59,37 @@ export default function AddPromo(){
         <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-3" controlId="actionFormAddCode">
                 <Form.Label>
-                    Промокод:
+                    Название ивента:
                 </Form.Label>
 
                 <InputGroup>
                     <InputGroup.Text>
                         <Image src={LoginIcon} width="100%" height="100%" />
                     </InputGroup.Text>
-                    <Form.Control type="text" placeholder="Промокод" {...register("code", { required: true })} />
+                    <Form.Control type="text" placeholder="Ивент" {...register("name", { required: true })} />
                 </InputGroup>
 
                 <ErrorsForm message={errors.code?.message} />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="actionFormServer">
+            <Form.Group className="mb-3" controlId="actionFormAddCode">
                 <Form.Label>
-                    Выберите сервер:
+                    Ссылка:
                 </Form.Label>
 
-                <Form.Select {...register("server", { required: true })}>
-                    <option>Europe</option>
-                    <option>Asia</option>
-                    <option>America</option>
-                    <option>All</option>
-                </Form.Select>
+                <InputGroup>
+                    <InputGroup.Text>
+                        <Image src={LoginIcon} width="100%" height="100%" />
+                    </InputGroup.Text>
+                    <Form.Control type="text" placeholder="Ссылка" {...register("link", { required: true })} />
+                </InputGroup>
 
-                <ErrorsForm message={errors.server?.message} />
+                <ErrorsForm message={errors.code?.message} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="actionFormDate">
                 <Form.Label className="me-2">
-                    Дата просрочки кода:
+                    Дата окончания:
                 </Form.Label>
 
                 <Form.Control

@@ -12,7 +12,7 @@ import { Card } from '../index';
 import { Button, Spinner } from 'react-bootstrap';
 //
 
-export default function History({ data }){
+export default function History({ data, ...props }){
     const [ t ] = useTranslation();
     const [preLoader, setPreLoader] = useState(false);
     const [endMessage, setEndMessage] = useState(false);
@@ -51,7 +51,7 @@ export default function History({ data }){
     };
 
     return(
-        <>
+        <div {...props}>
             <h4>
                 <b>{t('Истёкшие промокоды')}:</b>
             </h4>
@@ -69,6 +69,6 @@ export default function History({ data }){
                             </Button>
                         </div>))
             }
-        </>
+        </div>
     );
 }

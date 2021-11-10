@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { Earth } from '../../media';
 //
 
-export default function LanguageButton(){
+export default function LanguageButton(props){
     const { i18n } = useTranslation();
     
     const changeLanguage = (lng, hrefLang) => {
@@ -21,19 +21,41 @@ export default function LanguageButton(){
     document.documentElement.lang = localStorage.getItem('hrefLang') ? localStorage.getItem('hrefLang') : 'en';
 
     return(
-        <Dropdown drop="start" className="ms-1">
+        <Dropdown {...props}>
             <Dropdown.Toggle variant="purple" className="me-2">
-                <Image src={Earth} width="25px" height="100%" alt="languageLogo" />
+                <Image src={Earth} width="20px" height="100%" alt="languageLogo" style={{paddingBottom: 1}} />
             </Dropdown.Toggle>
 
-            <Dropdown.Menu>
-                <Dropdown.Item as="button" onClick={() => changeLanguage('ru-RU', 'ru')}>Русский</Dropdown.Item>
-                <Dropdown.Item as="button" onClick={() => changeLanguage('en-US', 'en')}>English</Dropdown.Item>
-                <Dropdown.Item as="button" onClick={() => changeLanguage('de', 'de')}>Deutsch</Dropdown.Item>
-                <Dropdown.Item as="button" onClick={() => changeLanguage('fr-FR', 'fr')}>Français</Dropdown.Item>
-                <Dropdown.Item as="button" onClick={() => changeLanguage('ko', 'ko')}>한국어</Dropdown.Item>
-                <Dropdown.Item as="button" onClick={() => changeLanguage('zh-TW', 'zh')}>中文（繁體）</Dropdown.Item>
-                <Dropdown.Item as="button" onClick={() => changeLanguage('ja', 'ja')}>日本語</Dropdown.Item>
+            <Dropdown.Menu variant="dark">
+
+                <Dropdown.Item as="button" onClick={() => changeLanguage('ru-RU', 'ru')}>
+                    Русский
+                </Dropdown.Item>
+
+                <Dropdown.Item as="button" onClick={() => changeLanguage('en-US', 'en')}>
+                    English
+                </Dropdown.Item>
+
+                <Dropdown.Item as="button" onClick={() => changeLanguage('de', 'de')}>
+                    Deutsch
+                </Dropdown.Item>
+
+                <Dropdown.Item as="button" onClick={() => changeLanguage('fr-FR', 'fr')}>
+                    Français
+                </Dropdown.Item>
+
+                <Dropdown.Item as="button" onClick={() => changeLanguage('ko', 'ko')}>
+                    한국어
+                </Dropdown.Item>
+
+                <Dropdown.Item as="button" onClick={() => changeLanguage('zh-TW', 'zh')}>
+                    中文（繁體）
+                </Dropdown.Item>
+
+                <Dropdown.Item as="button" onClick={() => changeLanguage('ja', 'ja')}>
+                    日本語
+                </Dropdown.Item>
+                
             </Dropdown.Menu>
         </Dropdown>
     );

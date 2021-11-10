@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 
 //router
 import { BrowserRouter as Router } from 'react-router-dom';
 //
 
-//styles
-import './style/mainStyle.scss';
+//locales
+import './i18n';
+//
 
+//styles
+import './style/scss/mainStyle.scss';
 import { Wrapper } from './style/style';
 //
 
@@ -41,22 +44,22 @@ onMessageListener().then(payload => {
 }).catch(err => console.log('failed: ', err));
 //
 
-
 export default function App(){
     return(
         <ErrorBoundary>
             <Background />
-            
-            <Notifications />
-            <CookieNotify />
+            <Suspense fallback={<></>}>
+                <Notifications />
+                <CookieNotify />
 
-            <Wrapper>
-                <Router>
-                    <Header />
-                    <Main />
-                    <Footer />
-                </Router>
-            </Wrapper>
+                <Wrapper>
+                    <Router>
+                        <Header />
+                        <Main />
+                        <Footer />
+                    </Router>
+                </Wrapper>
+            </Suspense>
         </ErrorBoundary>
     );
 }

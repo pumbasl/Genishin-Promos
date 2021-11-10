@@ -15,3 +15,4 @@ export { default as editUser } from './editUser';
 export { default as addPromoCode } from './addPromoCode';
 export { default as addNews } from './addNews';
 export { default as setAvatar } from './setAvatar';
+export { default as addWebEvent } from './addWebEvent';

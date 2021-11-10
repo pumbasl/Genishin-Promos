@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchLogout } from '../../store/thunks/userThunks';
 //
 
-export default function ProfileButtons(){
+export default function ProfileButtons(props){
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const token = useSelector((state) => state.user.token);
@@ -40,12 +40,12 @@ export default function ProfileButtons(){
         );
     } else {
         return(
-            <Dropdown className="dropDown-custom ms-1">
-                <Dropdown.Toggle variant="dark-custom" className="me-2">
+            <Dropdown {...props}>
+                <Dropdown.Toggle variant="dark-custom">
                 {t('Профиль')}
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu>
+                <Dropdown.Menu variant="dark" className="me-1">
                     <Dropdown.Item as={Link} to="/profile">{t('Личный кабинет')}</Dropdown.Item>
                     <Dropdown.Item as={Link} to="/profile/settings">{t('Настройки')}</Dropdown.Item>
                     <Dropdown.Item onClick={handleLogout}>{t('Выйти')}</Dropdown.Item>
