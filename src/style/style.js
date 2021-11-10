@@ -186,16 +186,18 @@ const ButtonChangeServerStyle = styled.div`
     margin-right: 10px;
 `;
 
-const WebEventCard = styled.div`
-
-`;
-
-const CardThread = styled.div`
+const CardThread = styled.a`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     border: 1px solid black;
+    color: black;
+    text-decoration: none;
     padding: 10px;
 
     &:hover{
+        color: black;
         transition: all .3s ease-out;
         cursor: pointer;
         background-color: rgba(255, 255, 255, .3); 
@@ -205,29 +207,26 @@ const CardThread = styled.div`
         margin-bottom: 10px;
     }
 
-    & .information{
-        float: right;
+    & .title{
+        .subTitle{
+            color: grey;
+            font-size: 70%;
+        }
+    }
 
+    & .information{
         & .authorName{
             color: #FBD148;
         }
     }
 `;
 
-const TitleThread = styled.h1`
-
-`;
-
-const ContentThread = styled.div`
-
-`;
+const ThreadContainer = styled.div``;
 
 export {
+    ThreadContainer,
     CardThread,
     ButtonChangeServerStyle,
-    WebEventCard,
-    ContentThread,
-    TitleThread,
     PlaceHolderForForm,
     ContainerForForm,
     FooterCopyright,

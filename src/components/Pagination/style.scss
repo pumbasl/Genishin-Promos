@@ -3,17 +3,23 @@
 .pagination{
     margin: 0;
     justify-content: center;
+    user-select: none;
     .page-item{
         .page-link{
             border: 0;
             color: white;
             background-color: $dark-custom;
+
+            &:hover{
+                color: white;
+                background-color: rgb(14, 46, 53);
+            }
         }
     }
 
     .active{
         .page-link{
-            color: black;
+            color: $dark-custom;
             background-color: $orange;
             border-color: $orange;
 

@@ -39,8 +39,13 @@
     "winBuild": "set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
     "build": "react-scripts build",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
+    "copy": "react-snap",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "reactSnap": {
+    "destination": "dist",
+    "inlineCss": true
   },
   "eslintConfig": {
     "extends": [
@@ -64,6 +69,7 @@
     "css-loader": "^6.3.0",
     "mini-css-extract-plugin": "^2.3.0",
     "node-sass": "^6.0.1",
+    "react-snap": "^1.23.0",
     "sass-loader": "^12.1.0",
     "source-map-explorer": "^2.5.2"
   }

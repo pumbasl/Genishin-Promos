@@ -53,7 +53,7 @@ export default function WebEvents(){
                 <b>{t('Браузерные события')}:</b>
             </h4>
 
-            { webEvents.length !== 0 ? (webEvents.map(renderWebEvents)) : (<div>{t('Пусто')}</div>) }
+            { webEvents.length !== 0 ? (webEvents.map(renderWebEvents)) : (<div className="mb-1">{t('Пусто')}</div>) }
         </>
     );
 }

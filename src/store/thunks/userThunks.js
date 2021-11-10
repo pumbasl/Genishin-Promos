@@ -10,6 +10,7 @@ import {
 } from '../actions/userActions';
 
 import Fetch from '../../fetch/fetch';
+import ErrorCatch from '../../js/ErrorCatcher';
 
 import {
     getPromoCodes,
@@ -256,17 +257,5 @@ export function fetchPromoCodes(server){
                 ErrorCatch(error, dispatch);
             }
         )
-    }
-}
-
-function ErrorCatch(error, dispatch){
-    if(error.message === 'FAIL_UPDATE_TOKENS'){
-        console.log('FAILED REFRESH TOKEN | LOGOUT');
-        Fetch({}, 'logout');
-        delete localStorage.token;
-        dispatch(setToken(null));
-        dispatch(setUserPromoCodes([]));
-    } else {
-        console.log(error);
     }
 }

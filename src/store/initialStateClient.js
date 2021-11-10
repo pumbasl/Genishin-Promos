@@ -7,6 +7,7 @@ const initialState = {
     userinfo: null,
     promocodes: [],
     userPromocodes: [],
+    threads: [],
     news: false
 };
 

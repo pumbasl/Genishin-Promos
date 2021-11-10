@@ -16,3 +16,4 @@ export { default as addPromoCode } from './addPromoCode';
 export { default as addNews } from './addNews';
 export { default as setAvatar } from './setAvatar';
 export { default as addWebEvent } from './addWebEvent';
+export { default as allThreads } from './allThreads';

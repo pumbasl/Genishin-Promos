@@ -22,8 +22,8 @@ export default function Pagination({ items, setPageItems, itemsPerPage, activePa
     }, [itemOffset, itemsPerPage, setPageItems, items]);
     return(
         <ReactPaginate
-            previousLabel="Previous"
-            nextLabel="Next"
+            previousLabel="<"
+            nextLabel=">"
             pageClassName="page-item"
             pageLinkClassName="page-link"
             previousClassName="page-item"
@@ -34,8 +34,8 @@ export default function Pagination({ items, setPageItems, itemsPerPage, activePa
             breakClassName="page-item"
             breakLinkClassName="page-link"
             pageCount={pageCount}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
+            marginPagesDisplayed={3}
+            pageRangeDisplayed={3}
             onPageChange={handlePageChange}
             containerClassName="pagination"
             activeClassName="active"

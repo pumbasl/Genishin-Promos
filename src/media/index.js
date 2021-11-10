@@ -18,6 +18,8 @@ export { default as Four } from './img/Background/4.webp';
 
 //form
 export { default as LoginIcon } from './img/form/login.svg';
+export { default as TextIcon } from './img/form/textarea-t.svg';
 export { default as PasswordIcon } from './img/form/password.svg';
 export { default as EmailIcon } from './img/form/email.svg';
+export { default as LinkIcon } from './img/form/link.svg';
 //

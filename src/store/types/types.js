@@ -11,6 +11,11 @@ export const SET_NEWS = 'SET_NEWS';
 export const SET_LOADING = 'SET_LOADING';
 //
 
+//forum
+export const SET_THREADS = 'SET_THREADS';
+export const SET_THREAD = 'SET_THREAD';
+//
+
 //admin
 export const SET_ADMIN_USERS = 'SET_ADMIN_USERS';
 //
