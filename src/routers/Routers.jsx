@@ -41,6 +41,7 @@ export default function Routers(){
                 {/* <Route exact path="/auth/restore_password" component={RestorePassword} /> */}
 
                 <Route exact path="/forum" component={MainForum} />
+                <Route exact path="/forum/:page" component={MainForum} />
                 <Route exact path="/forum/thread/:idThread" component={Thread} />
                 <Route exact path="/forum/create/" component={CreateThread} />
 

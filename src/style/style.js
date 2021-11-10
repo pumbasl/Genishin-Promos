@@ -195,12 +195,22 @@ const CardThread = styled.div`
     border: 1px solid black;
     padding: 10px;
 
+    &:hover{
+        transition: all .3s ease-out;
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, .3); 
+    }
+
     &:not(:last-child){
         margin-bottom: 10px;
     }
 
     & .information{
         float: right;
+
+        & .authorName{
+            color: #FBD148;
+        }
     }
 `;
 

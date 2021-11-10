@@ -9,7 +9,7 @@ import './i18n';
 //
 
 //styles
-import './style/mainStyle.scss';
+import './style/scss/mainStyle.scss';
 import { Wrapper } from './style/style';
 //
 

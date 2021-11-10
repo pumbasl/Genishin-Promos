@@ -1,30 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 
-import { Container } from '../../components';
+import { Badge } from 'react-bootstrap';
+import { Container, Pagination } from '../../components';
 import { CardThread } from '../../style/style';
 
-const massive = [
-    {
-        id: 1,
-        title: 'Forward Optimization Manager',
-        author: 'Fino',
-        checks: 74,
-        messages: 8,
-        likes: 87
-    },
+const massive = [];
 
-    {
-        id: 2,
-        title: 'Dynamic Communications Analyst',
-        author: 'Devante',
-        checks: 74,
-        messages: 8,
-        likes: 174
-    }
-];
-
-export default function MainForum(){
+export default function MainForum(props){
+    const [ items, setItems ] = useState([]);
     const history = useHistory();
 
     const handleClick = (id) => {
@@ -42,16 +26,30 @@ export default function MainForum(){
                {thread.title}
 
                 <div className="information">
-                    Автор: {thread.author}
-                    Лайки: {thread.likes}
+                    <Badge bg='dark-custom'>
+                        Автор: <span className="authorName">{thread.author}</span>
+                    </Badge>
                 </div>
             </CardThread>
         );
     };
 
+    if(massive.length < 1) return (
+        <Container>
+            Empty
+        </Container>
+    );
+
     return(
         <Container>
-            {massive.map((Threads))}
+            {items.map((Threads))}
+
+            <Pagination
+                items={massive}
+                setPageItems={setItems}
+                itemsPerPage={4}
+                activePage={props.match.params.page}
+            />
         </Container>
     );
 }
