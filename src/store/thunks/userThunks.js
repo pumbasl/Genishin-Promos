@@ -33,6 +33,7 @@ export function fetchLogout(){
             (response) => {
                 delete localStorage.token;
                 dispatch(setToken(null));
+                dispatch(setUserInfo(null));
                 dispatch(setUserPromoCodes([]));
             },
             (error) => {

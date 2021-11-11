@@ -17,8 +17,6 @@ export default function CreateThread(){
         content: null
     });
 
-    console.log(newThread)
-
     const PreCheck = () => {
         return(
             <div className="precheck">

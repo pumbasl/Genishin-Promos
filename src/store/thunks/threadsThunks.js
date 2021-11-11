@@ -2,22 +2,24 @@ import Fetch from '../../fetch/fetch';
 import ErrorCatch from '../../js/ErrorCatcher';
 
 import {
-    setThreads
+    setThreads,
+    setThread
 } from '../actions/threadsActions';
 
 import {
-    allThreads
+    allThreads,
+    getThreadById
 } from '../../graphql';
 
 export function fetchThread(id){
     return async (dispatch) => {
         await Fetch({
-            query: allThreads, //в беке нужно сделать запрос, что бы вытащить инфу об одной теме по ид
+            query: getThreadById,
             variables: JSON.stringify({ id })
         }, 'api')
         .then(
             (response) => {
-                console.log(response);
+                dispatch(setThread(response?.getThreadById));
             },
             (error) => {
                 ErrorCatch(error, dispatch);

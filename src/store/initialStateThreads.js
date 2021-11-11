@@ -1,5 +1,5 @@
 const initialState = {
-    threads: [],
+    threads: false,
     thread: false
 };
 

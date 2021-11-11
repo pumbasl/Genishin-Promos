@@ -1,21 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 
-import { Badge } from 'react-bootstrap';
-import { Container, Pagination, TimeView } from '../../components';
+import { Badge, Button } from 'react-bootstrap';
+import { Container, Pagination, TimeView, Preloader } from '../../components';
 import { CardThread } from '../../style/style';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchThreads } from '../../store/thunks/threadsThunks';
+import { fetchUserInfo } from '../../store/thunks/userThunks';
 
 export default function MainForum(props){
     const [ items, setItems ] = useState([]);
     const threads = useSelector((state) => state.threads.threads);
+    const data = useSelector((state) => state.user.userinfo);
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const handleClick = (id) => {
+    const handleClick = (id, event) => {
+        event.preventDefault();
         history.push(`/forum/thread/${id}`);
+    };
+
+    const CreateThreadButton = () => {
+        if(data?.roles.includes('Admin')) return (
+            <div className="text-end">
+                <Button
+                    className="mb-2"
+                    variant='dark-custom'
+                    onClick={() => history.push('/forum/create')}
+                >
+                    Создать статью
+                </Button>
+            </div>
+        );
+
+        return null;
     };
 
     const Threads = (thread) => {
@@ -23,7 +42,7 @@ export default function MainForum(props){
             <CardThread
                 key={thread._id}
                 href={`/forum/thread/${thread._id}`}
-                onClick={() => {handleClick(thread._id)}}
+                onClick={(event) => handleClick(thread._id, event)}
             >
                 <div className="title">
                     {thread.title}
@@ -48,9 +67,16 @@ export default function MainForum(props){
 
     useEffect(() => {
         dispatch(fetchThreads());
+        dispatch(fetchUserInfo());
     }, [dispatch]);
 
-    if(threads.length < 1) return (
+    if(!threads) return (
+        <Container>
+            <Preloader />
+        </Container>
+    );
+
+    if(threads?.length < 1) return (
         <Container>
             Empty
         </Container>
@@ -58,6 +84,8 @@ export default function MainForum(props){
 
     return(
         <Container>
+            <CreateThreadButton />
+
             {items.map((Threads))}
 
             <hr />
