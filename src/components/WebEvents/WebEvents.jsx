@@ -25,12 +25,23 @@ import { fetchSubfields } from '../../store/thunks/userThunks';
 export default function WebEvents(){
     const dispatch = useDispatch();
     const { t } = useTranslation();
-    const webEvents = useSelector((state) => state.user.subfields);
+    const webEvents = useSelector((state) => state.user.webEvents);
+
+    const handleClick = async (webEvent) => {
+        try {
+            const win = window.open(webEvent.link, '_blank');
+            win?.focus();
+        } catch (e) {
+            throw new Error(e);
+        }
+    };
 
     const renderWebEvents = (webEvent) => {
+        if(webEvent.expired < Date.now()) return null;
+
         return(
             <Card.Label key={webEvent._id}>
-                <Card.Body>
+                <Card.Body onClick={() => { handleClick(webEvent) }}>
                     <Image src={EventLogo} width="25px" height="100%" />
                     &nbsp;
                     {webEvent.name}

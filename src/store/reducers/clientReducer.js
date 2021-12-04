@@ -4,7 +4,7 @@ import {
   SET_PROMOCODES,
   SET_USER_PROMOCODES,
   SET_SERVER,
-  SET_SUBFIELDS,
+  SET_WEBEVENTS,
   SET_TOKEN,
   SET_ERRORS,
   SET_USER_INFO,
@@ -36,8 +36,8 @@ const clientReducer = createReducer(initialState, (clientReducer) => {
       state.token = action.payload;
     })
 
-    .addCase(SET_SUBFIELDS, (state, action) => {
-      state.subfields = action.payload;
+    .addCase(SET_WEBEVENTS, (state, action) => {
+      state.webEvents = action.payload;
     })
 
     .addCase(SET_SERVER, (state, action) => {

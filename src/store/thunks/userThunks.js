@@ -2,7 +2,7 @@ import {
     setPromoCodes,
     setServer,
     setUserPromoCodes,
-    setSubfields,
+    setWebEvents,
     setToken,
     setErrors,
     setUserInfo,
@@ -197,7 +197,7 @@ export function fetchSubfields(){
         }, 'api')
         .then(
             (response) => {
-                dispatch(setSubfields(response.subfields));
+                dispatch(setWebEvents(response.subfields));
             },
             (error) => {
                 ErrorCatch(error, dispatch);

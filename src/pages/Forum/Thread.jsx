@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 
 import { Container, Preloader } from '../../components';
 import { ThreadContainer } from '../../style/style';
+import Interweave from 'interweave';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchThread } from '../../store/thunks/threadsThunks';
@@ -38,7 +39,7 @@ export default function Thread({ match }){
                 <hr />
 
                 <div>
-                    {thread?.content}
+                    <Interweave content={thread?.content} />
                 </div>
             </ThreadContainer>
         </Container>

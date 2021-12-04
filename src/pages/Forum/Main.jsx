@@ -11,6 +11,7 @@ import { fetchUserInfo } from '../../store/thunks/userThunks';
 
 export default function MainForum(props){
     const [ items, setItems ] = useState([]);
+    const pageSelect = props.match?.params?.page || 1;
     const threads = useSelector((state) => state.threads.threads);
     const data = useSelector((state) => state.user.userinfo);
     const history = useHistory();
@@ -94,7 +95,7 @@ export default function MainForum(props){
                 items={threads}
                 setPageItems={setItems}
                 itemsPerPage={10}
-                activePage={props.match.params.page}
+                activePage={pageSelect}
             />
         </Container>
     );
