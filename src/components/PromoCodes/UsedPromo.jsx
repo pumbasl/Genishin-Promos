@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { Card } from '../index';
 //
 
-export default function Activated({ data }){
+function Activated({ data }){
     const { t } = useTranslation();
     
     const renderPromocode = (promo) => {
@@ -36,7 +36,9 @@ export default function Activated({ data }){
                 <b>{t('Активированные промокоды')}:</b>
             </h4>
 
-            { data.length !== 0 ? (data.map(renderPromocode)) : (<EmptyContainer />) }
+            { data.length !== 0 ? (data.slice(0, 5).map(renderPromocode)) : (<EmptyContainer />) }
         </>
     );
 }
+
+export default React.memo(Activated);

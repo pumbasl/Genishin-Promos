@@ -5,7 +5,7 @@ import {
     SET_THREAD
 } from '../types/types';
     
-import initialState from '../initialStateThreads';
+import { initialStateThreads as initialState } from '../initialState';
 
 const threadReducer = createReducer(initialState, (threadReducer) => {
   threadReducer

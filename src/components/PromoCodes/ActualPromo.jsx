@@ -19,15 +19,13 @@ import { fetchClickPromo } from '../../store/thunks/userThunks';
 
 import sleep from '../../js/sleep';
 
-export default function ActualPromo({ data }){
+function ActualPromo({ data }){
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const userPromos = useSelector((state) => state.user.userPromocodes);
 
     const handleClick = async (promo) => {
-        navigator.clipboard.writeText(promo.code)
-
-        if(localStorage.getItem('token')){
+    if(localStorage.getItem('token')){
             toast({title: t('Уведомление'), body: t('Вы будете перенаправлены на страницу ввода промокода через 2 секунды.'), time: t('Несколько секунд назад')}); //уведомление
 
             let tempArray = [];
@@ -42,7 +40,7 @@ export default function ActualPromo({ data }){
             await sleep(2000);
             
             try {
-                const win = window.open('https://genshin.mihoyo.com/en/gift', '_blank');
+                const win = window.open(`https://genshin.mihoyo.com/en/gift?code=${promo.code}`, '_blank');
                 win?.focus();
             } catch (e) {
                 throw new Error(e);
@@ -53,7 +51,7 @@ export default function ActualPromo({ data }){
             await sleep(2000);
             
             try {
-                const win = window.open('https://genshin.mihoyo.com/en/gift', '_blank');
+                const win = window.open(`https://genshin.mihoyo.com/en/gift?code=${promo.code}`, '_blank');
                 win?.focus();
             } catch (e) {
                 throw new Error(e);
@@ -90,3 +88,5 @@ export default function ActualPromo({ data }){
         </>
     );
 }
+
+export default React.memo(ActualPromo);

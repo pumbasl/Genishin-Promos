@@ -12,7 +12,7 @@ import {
   SET_LOADING
 } from '../types/types';
   
-import initialState from '../initialStateClient';
+import { initialStateClient as initialState } from '../initialState';
 
 const clientReducer = createReducer(initialState, (clientReducer) => {
   clientReducer
