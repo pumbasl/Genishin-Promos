@@ -33,7 +33,7 @@ export default function Server(props){
     };
 
     const ChangeServer = () => (
-        <Dropdown.Menu variant="dark">
+        <Dropdown.Menu variant="dark" className="me-1">
             <Dropdown.Item as="button" onClick={handleClick} value={serverList[0]} active={ server === serverList[0] ? (true) : (false) }>
                 Europe
             </Dropdown.Item>

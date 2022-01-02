@@ -1,5 +1,5 @@
 export default function CheckCodes(serverAllCodes, usersActivatedCodes){
-    let resultActualCodes = sortCodes(serverAllCodes.slice(0), serverAllCodes); // сортировка от просроченных кодов
+    let resultActualCodes = sortOldCodes(serverAllCodes.slice(0), serverAllCodes); // сортировка от просроченных кодов
     resultActualCodes.a = sortActivatedCodes(usersActivatedCodes, resultActualCodes.a); // сортировка активированых промокодов
     return { actualCodes: resultActualCodes.a, history: resultActualCodes.b };
 }
@@ -12,7 +12,7 @@ function sortActivatedCodes(a, b){
     return b;
 }
 
-function sortCodes(a, b){
+function sortOldCodes(a, b){
     //сортировка от истёкших кодов
     const tempHistory = [];
 

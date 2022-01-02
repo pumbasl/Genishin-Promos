@@ -8,8 +8,12 @@ import { Preloader } from '../components';
 import { Switch, Route } from 'react-router-dom';
 //
 
+//statis pages
+import Main from '../pages/Main/Main';
+import Error from '../errors/error';
+//
+
 //lazy pages
-const Main = lazy(() => import('../pages/Main/Main'));
 const Policy = lazy(() => import('../pages/Policy/Policy'));
 const Help = lazy(() => import('../pages/Help/Help'));
 const Login = lazy(() => import('../pages/Auth/Login'));
@@ -20,11 +24,6 @@ const News = lazy(() => import('../pages/News/News'));
 const Settings = lazy(() => import('../pages/Profile/Settings/Settings'));
 const Admin = lazy(() => import('../pages/Admin/Admin'));
 
-const Thread = lazy(() => import('../pages/Forum/Thread'));
-const MainForum = lazy(() => import('../pages/Forum/Main'));
-const CreateThread = lazy(() => import('../pages/Forum/CreateThread'));
-
-const Error = lazy(() => import('../errors/error'));
 //
 
 export default function Routers(){
@@ -39,11 +38,6 @@ export default function Routers(){
                 <Route exact path="/auth/login" component={Login} />
                 <Route exact path="/auth/reg" component={Registration} />
                 {/* <Route exact path="/auth/restore_password" component={RestorePassword} /> */}
-
-                <Route exact path="/forum" component={MainForum} />
-                <Route exact path="/forum/:page" component={MainForum} />
-                <Route exact path="/forum/thread/:idThread" component={Thread} />
-                <Route exact path="/forum/create/" component={CreateThread} />
 
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/profile/settings" component={Settings} />

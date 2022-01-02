@@ -27,6 +27,12 @@ html, body, #root{
     height: 100%;
 }
 
+@font-face {
+    font-family: 'Manrope';
+    src: url('../fonts/Manrope-Light.ttf') format('truetype');
+    font-display: fallback;
+}
+
 body{
     font-family: 'Manrope', sans-serif !important;
     font-weight: bold;

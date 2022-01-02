@@ -28,15 +28,6 @@ export default function Subfields(){
 
             <Nav.Link
                 className="custom-link"
-                as={NavLink}
-                to="/forum"
-            >
-                <img src={WikiLogo} width="18px" height="100%" className="me-2 mb-1" alt="wikiLogo" />
-                {t('Статьи')}
-            </Nav.Link>
-
-            <Nav.Link
-                className="custom-link"
                 href="https://webstatic-sea.mihoyo.com/app/ys-map-sea/index.html"
                 target="_blank"
             >

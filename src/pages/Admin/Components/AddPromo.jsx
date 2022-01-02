@@ -6,7 +6,7 @@ import { ErrorsForm } from '../../../components';
 //
 
 //icons
-import { LoginIcon } from '../../../media';
+import { TextIcon } from '../../../media';
 //
 
 //useform
@@ -67,7 +67,7 @@ export default function AddPromo(){
 
                 <InputGroup>
                     <InputGroup.Text>
-                        <Image src={LoginIcon} width="100%" height="100%" />
+                        <Image src={TextIcon} width="100%" height="100%" />
                     </InputGroup.Text>
                     <Form.Control type="text" placeholder="Промокод" {...register("code", { required: true })} />
                 </InputGroup>

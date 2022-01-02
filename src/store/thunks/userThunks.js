@@ -2,7 +2,7 @@ import {
     setPromoCodes,
     setServer,
     setUserPromoCodes,
-    setSubfields,
+    setWebEvents,
     setToken,
     setErrors,
     setUserInfo,
@@ -10,6 +10,7 @@ import {
 } from '../actions/userActions';
 
 import Fetch from '../../fetch/fetch';
+import ErrorCatch from '../../js/ErrorCatcher';
 
 import {
     getPromoCodes,
@@ -32,6 +33,7 @@ export function fetchLogout(){
             (response) => {
                 delete localStorage.token;
                 dispatch(setToken(null));
+                dispatch(setUserInfo(null));
                 dispatch(setUserPromoCodes([]));
             },
             (error) => {
@@ -195,7 +197,7 @@ export function fetchSubfields(){
         }, 'api')
         .then(
             (response) => {
-                dispatch(setSubfields(response.subfields));
+                dispatch(setWebEvents(response.subfields));
             },
             (error) => {
                 ErrorCatch(error, dispatch);
@@ -256,17 +258,5 @@ export function fetchPromoCodes(server){
                 ErrorCatch(error, dispatch);
             }
         )
-    }
-}
-
-function ErrorCatch(error, dispatch){
-    if(error.message === 'FAIL_UPDATE_TOKENS'){
-        console.log('FAILED REFRESH TOKEN | LOGOUT');
-        Fetch({}, 'logout');
-        delete localStorage.token;
-        dispatch(setToken(null));
-        dispatch(setUserPromoCodes([]));
-    } else {
-        console.log(error);
     }
 }

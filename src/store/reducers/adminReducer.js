@@ -4,7 +4,7 @@ import {
   SET_ADMIN_USERS
 } from '../types/types';
     
-import initialState from '../initialStateAdmin';
+import { initialStateAdmin as initialState } from '../initialState';
 
 const adminReducer = createReducer(initialState, (adminReducer) => {
   adminReducer

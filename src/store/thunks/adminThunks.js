@@ -3,8 +3,6 @@ import {
 } from '../actions/adminActions';
 
 import {
-    setUserPromoCodes,
-    setToken,
     setErrors
 } from '../actions/userActions';
 
@@ -23,6 +21,7 @@ import { toast } from 'react-hot-toast';
 //
 
 import Fetch from '../../fetch/fetch';
+import ErrorCatch from '../../js/ErrorCatcher';
 
 export function fetchAddWebEvent(data){
     return async (dispatch) => {
@@ -166,16 +165,4 @@ export function fetchLogOutUser(id){
             }
         );
     };
-}
-
-function ErrorCatch(error, dispatch){
-    if(error.message === 'FAIL_UPDATE_TOKENS'){
-        console.log('FAILED REFRESH TOKEN | LOGOUT');
-        Fetch({}, 'logout');
-        delete localStorage.token;
-        dispatch(setToken(null));
-        dispatch(setUserPromoCodes([]));
-    } else {
-        console.log(error);
-    }
 }
