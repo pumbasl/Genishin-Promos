@@ -9,7 +9,7 @@ import { toast } from 'react-hot-toast';
 //
 
 //Components
-import { Card } from '../index';
+import { Card, EmptyContainer } from '../index';
 //
 
 //redux
@@ -58,12 +58,6 @@ function ActualPromo({ data }){
             }
         }
     };
-
-    const EmptyContainer = () => (
-        <div className="mb-2">
-            {t('Пусто.')}
-        </div>
-    );
 
     const renderPromocode = (promo) => {
         return(

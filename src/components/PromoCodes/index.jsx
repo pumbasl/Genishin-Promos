@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 //redux
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPromoCodes, fetchUserPromoCodes } from '../../store/thunks/userThunks';
+import { fetchUnRegisterData, fetchRegisterUserData } from '../../store/thunks/userThunks';
 //
 
 //service
@@ -29,20 +29,18 @@ function PromoCodes(){
     const [ resultCodes, setResultCodes ] = useState({});
 
     useEffect(() => { // начало загрузки данных
-        dispatch(fetchPromoCodes(server));
-        if(localStorage.getItem('token')){
-            dispatch(fetchUserPromoCodes());
-        }
+        localStorage.getItem('token') ?
+        dispatch(fetchRegisterUserData(server)) : dispatch(fetchUnRegisterData(server))
 
     }, [dispatch, server]);
 
     useEffect(() => { // проверка на загрузку данных
-        if(promocodes.length && userPromocodes.length){
+        if(promocodes.length){
             setIsLoading(true);
             setResultCodes(CheckCodes(promocodes, userPromocodes));
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [promocodes.length, userPromocodes.length]);
+    }, [promocodes.length]);
 
     if(!isLoading) {
         return(
@@ -59,4 +57,4 @@ function PromoCodes(){
     );
 }
 
-export default PromoCodes;
+export default React.memo(PromoCodes);

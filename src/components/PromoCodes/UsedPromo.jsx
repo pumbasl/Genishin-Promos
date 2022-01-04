@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 //
 
 //Components
-import { Card } from '../index';
+import { Card, EmptyContainer } from '../index';
 //
 
 function Activated({ data }){
@@ -23,12 +23,6 @@ function Activated({ data }){
             </Card.Label>
         );
     };
-
-    const EmptyContainer = () => (
-        <div className="mb-2">
-            {t('Пусто.')}
-        </div>
-    );
 
     return(
         <>

@@ -5,17 +5,11 @@ import { useTranslation } from 'react-i18next';
 //
 
 //Components
-import { Card } from '../index';
+import { Card, EmptyContainer } from '../index';
 //
 
 function History({ data }){
-    const [ t ] = useTranslation();
-
-    const EmptyContainer = () => (
-        <div className="mb-2">
-            {t('Пусто.')}
-        </div>
-    );
+    const { t } = useTranslation();
 
     const renderPromocode = (promo) => {
         return(

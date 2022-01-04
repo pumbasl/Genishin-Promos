@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 
 //Style
@@ -6,7 +6,7 @@ import { Image } from "react-bootstrap";
 //
 
 //components
-import { Card } from '../';
+import { Card, EmptyContainer } from '../';
 //
 
 // Locales
@@ -18,12 +18,10 @@ import { EventLogo } from '../../media';
 //
 
 //redux
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchSubfields } from '../../store/thunks/userThunks';
+import { useSelector } from 'react-redux';
 //
 
 export default function WebEvents(){
-    const dispatch = useDispatch();
     const { t } = useTranslation();
     const webEvents = useSelector((state) => state.user.webEvents);
 
@@ -54,17 +52,13 @@ export default function WebEvents(){
         );
     };
 
-    useEffect(() => {
-        dispatch(fetchSubfields());
-    }, [dispatch]);
-
     return(
         <>
             <h4>
                 <b>{t('Браузерные события')}:</b>
             </h4>
 
-            { webEvents.length !== 0 ? (webEvents.map(renderWebEvents)) : (<div className="mb-1">{t('Пусто')}</div>) }
+            { webEvents.length !== 0 ? (webEvents.map(renderWebEvents)) : (<EmptyContainer />) }
         </>
     );
 }

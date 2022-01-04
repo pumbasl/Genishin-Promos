@@ -13,10 +13,9 @@ import Fetch from '../../fetch/fetch';
 import ErrorCatch from '../../js/ErrorCatcher';
 
 import {
-    getPromoCodes,
+    getUnRegisterData,
     changeServer,
-    getUserPromo,
-    getSubfields,
+    getRegisterUserData,
     newUserPromo,
     login as loginQuery,
     registration,
@@ -189,23 +188,6 @@ export function fetchClickPromo(promos){
     }
 }
 
-export function fetchSubfields(){
-    return async (dispatch) => {
-        await Fetch({
-            query: getSubfields,
-            variables: {}
-        }, 'api')
-        .then(
-            (response) => {
-                dispatch(setWebEvents(response.subfields));
-            },
-            (error) => {
-                ErrorCatch(error, dispatch);
-            }
-        )
-    }
-}
-
 export function fetchChangeServer(server){
     return async (dispatch) => {
         await Fetch({
@@ -225,15 +207,19 @@ export function fetchChangeServer(server){
     }
 }
 
-export function fetchUserPromoCodes(){
+export function fetchRegisterUserData(server){
     return async (dispatch) => {
         await Fetch({
-            query: getUserPromo,
-            variables: {}
+            query: getRegisterUserData,
+            variables: JSON.stringify({
+                server: server
+            })
         }, 'api')
         .then(
             (response) => {
-                dispatch(setUserPromoCodes(response.getRegUserPromo.promos));
+                dispatch(setUserPromoCodes(response?.getRegUserPromo.promos));
+                dispatch(setPromoCodes(response?.promosByServer));
+                dispatch(setWebEvents(response?.subfields));
             },
             (error) => {
                 ErrorCatch(error, dispatch);
@@ -242,10 +228,10 @@ export function fetchUserPromoCodes(){
     }
 }
 
-export function fetchPromoCodes(server){
+export function fetchUnRegisterData(server){
     return async (dispatch) => {
         await Fetch({
-            query: getPromoCodes,
+            query: getUnRegisterData,
             variables: JSON.stringify({
                 server: server
             })
@@ -253,6 +239,7 @@ export function fetchPromoCodes(server){
         .then(
             (response) => {
                 dispatch(setPromoCodes(response?.promosByServer));
+                dispatch(setWebEvents(response?.subfields));
             },
             (error) => {
                 ErrorCatch(error, dispatch);
