@@ -14,6 +14,7 @@ export { default as One } from './img/Background/1.webp';
 export { default as Two } from './img/Background/2.webp';
 export { default as Three } from './img/Background/3.webp';
 export { default as Four } from './img/Background/4.webp';
+export { default as Five } from './img/Background/5.webp';
 //
 
 //form

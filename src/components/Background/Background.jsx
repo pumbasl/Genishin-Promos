@@ -2,7 +2,7 @@ import React from 'react';
 
 //pictures
 // import { One, Two, Three, Four } from '../../media';
-import { One } from '../../media';
+import { Five } from '../../media';
 //
 
 //style
@@ -19,6 +19,6 @@ import { Background } from '../../style/style';
 export default function BackgroundComponent(){
     // const BackgroundRandom = pictures[randomInteger(0, 3)];
     return(
-        <Background image={One} />
+        <Background image={Five} />
     );
 }
